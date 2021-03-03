@@ -1,82 +1,74 @@
 import SwiftUI
 
 struct LogInView: View {
-    @State var fullname: String = ""
-    @State var username: String = ""
+    @EnvironmentObject var viewRouter: ViewRouter
     @State var email: String = ""
     @State var password: String = ""
-    @State var confirmPassword: String = ""
-
+    
+    
     var body: some View {
-        NavigationView {
-            ZStack(){
+        VStack(spacing: 20){
+            VStack(){
+            Image("b")
+                .resizable()
+                .frame(width:175, height:175)
+                .padding(.top, 30)
+            Text("Sign In")
+                .font(.largeTitle)
+                .bold()
+            }
+            ZStack{
                 Rectangle()
-                    .fill(Color(red: 240/255, green: 240/255, blue: 240/255))
-                Rectangle()
-                    .fill(Color.blue)
-                    .frame(width: 420, height: 80)
-                    .padding(.bottom, 700)
-                Rectangle()
-                    .fill(Color.white)
-                    .frame(width: 390, height: 550)
-        VStack(spacing: 40){
-            HStack(spacing:140){
-                Button(action:{ print("Clicked Sign Up")}) { Text("Sign Up").font(.body).foregroundColor(.white).padding(.top, 30)}
-                Button(action:{print("Clicked Sign In")}) {Text("Sign In").font(.body).foregroundColor(.white).padding(.top, 30) }
+                    .fill(Color(.systemGray5))
+                    .frame(width: 370, height: 60)
+                    .cornerRadius(30.0)
+                HStack{
+                    Image(systemName: "envelope")
+                        .foregroundColor(Color(.systemGray2))
+                    TextField("Email", text: $email)
                 }
-            Spacer()
-            TextField("Full name", text: $fullname)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            TextField("Username", text: $username)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            TextField("Email", text: $email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            TextField("Password", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            TextField("Confirm Password", text: $confirmPassword)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding(.leading, 15)
+            }
+            .padding(.top, 35)
+            .padding(.leading, 30)
+            .padding(.trailing, 30)
+            ZStack{
+                Rectangle()
+                    .fill(Color(.systemGray5))
+                    .frame(width: 370, height: 60)
+                    .cornerRadius(30.0)
+                HStack{
+                    Image(systemName: "lock")
+                        .foregroundColor(Color(.systemGray2))
+                    TextField("Password", text: $password)
+                }
+                .padding(.leading, 15)
+            }
+            .padding(.leading, 30)
+            .padding(.trailing, 30)
+            
             ZStack(){
                 VStack(spacing: 15){
                 Rectangle()
                     .fill(Color.blue)
-                    .frame(width: 370, height: 50)
+                    .frame(width: 370, height: 60)
+                    .cornerRadius(30.0)
                 Rectangle()
                     .fill(Color.blue)
-                    .frame(width: 370, height: 50)
+                    .frame(width: 370, height: 60)
+                    .cornerRadius(30.0)
                 }
-            VStack(spacing: 45){
-                Button(action:{ print("Clicked Sign Up")}) { Text("Sign Up")
-                        .font(.body)
-                        .foregroundColor(.white)}
-                Button(action:{print("Clicked Continue with Google")}) {
-                    Text("Continue with Google")
-                        .font(.body)
-                        .foregroundColor(.white)
-                }
+            VStack(spacing: 55){
+                Button(action:{ viewRouter.currentPage = .page3; }) { Text("Sign In").font(.body).foregroundColor(.white)}
+                    Button(action:{print("Clicked Continue with Google")}) {Text("Continue with Google").font(.body).foregroundColor(.white) }
                 }
             }
+            Button(action:{ viewRouter.currentPage = .page1; }) { Text("Don't have an account? Sign Up").font(.body).foregroundColor(.blue)}
+                .padding(.top, 25)
             Spacer()
-            Text("By clicking Create An Account, you agree to our Terms of Services.").font(.callout).multilineTextAlignment(.center)
         }
-        .padding(.leading, 25)
-        .padding(.trailing, 25)
-            }
-        .navigationBarItems(leading: (
-                            Button(action: {}) {
-                                Image(systemName: "line.horizontal.3")
-                                    .imageScale(.large)
-                            }),
-                            trailing: (
-                            Button(action: {}) {
-                                Image(systemName: "magnifyingglass")
-                                    .imageScale(.large)
-                            }))
-        .navigationBarTitle("Welcome", displayMode: .inline)
-
-
-        }
-        
     }
+    
 }
 
 struct LogInView_Previews: PreviewProvider {

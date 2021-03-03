@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5799F3125EF46DE00A66652 /* SpendingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5799F3025EF46DE00A66652 /* SpendingDetailView.swift */; };
+		B5799F3425EF46ED00A66652 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5799F3325EF46ED00A66652 /* SignUpView.swift */; };
+		B5799F3725EF46F700A66652 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5799F3625EF46F700A66652 /* ViewRouter.swift */; };
+		B5799F3A25EF46FE00A66652 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5799F3925EF46FE00A66652 /* MotherView.swift */; };
 		B5B00BA625E0AAE70023ABE5 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B00BA525E0AAE70023ABE5 /* DashboardView.swift */; };
 		B5C6566F25DD311F00A9FABC /* Rev0App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6566E25DD311F00A9FABC /* Rev0App.swift */; };
 		B5C6567125DD311F00A9FABC /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6567025DD311F00A9FABC /* LogInView.swift */; };
@@ -14,38 +18,11 @@
 		B5C6567625DD312000A9FABC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5C6567525DD312000A9FABC /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		FF96803325E48FA100AA432B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FF96802B25E48FA100AA432B /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
-			remoteInfo = Charts;
-		};
-		FF96803525E48FA100AA432B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FF96802B25E48FA100AA432B /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
-			remoteInfo = ChartsTests;
-		};
-		FF96804225E499B900AA432B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FF96803D25E499B900AA432B /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
-			remoteInfo = Charts;
-		};
-		FF96804425E499B900AA432B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FF96803D25E499B900AA432B /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
-			remoteInfo = ChartsTests;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		B5799F3025EF46DE00A66652 /* SpendingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingDetailView.swift; sourceTree = "<group>"; };
+		B5799F3325EF46ED00A66652 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		B5799F3625EF46F700A66652 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		B5799F3925EF46FE00A66652 /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
 		B5B00BA525E0AAE70023ABE5 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		B5C6566B25DD311F00A9FABC /* Rev0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rev0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C6566E25DD311F00A9FABC /* Rev0App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rev0App.swift; sourceTree = "<group>"; };
@@ -53,8 +30,6 @@
 		B5C6567225DD312000A9FABC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5C6567525DD312000A9FABC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B5C6567725DD312000A9FABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FF96802B25E48FA100AA432B /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
-		FF96803D25E499B900AA432B /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Downloads/Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +66,10 @@
 				B5C6566E25DD311F00A9FABC /* Rev0App.swift */,
 				B5C6567025DD311F00A9FABC /* LogInView.swift */,
 				B5B00BA525E0AAE70023ABE5 /* DashboardView.swift */,
+				B5799F3025EF46DE00A66652 /* SpendingDetailView.swift */,
+				B5799F3925EF46FE00A66652 /* MotherView.swift */,
+				B5799F3325EF46ED00A66652 /* SignUpView.swift */,
+				B5799F3625EF46F700A66652 /* ViewRouter.swift */,
 				B5C6567225DD312000A9FABC /* Assets.xcassets */,
 				B5C6567725DD312000A9FABC /* Info.plist */,
 				B5C6567425DD312000A9FABC /* Preview Content */,
@@ -109,28 +88,8 @@
 		FF96802A25E48FA000AA432B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FF96803D25E499B900AA432B /* Charts.xcodeproj */,
-				FF96802B25E48FA100AA432B /* Charts.xcodeproj */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		FF96802C25E48FA100AA432B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FF96803425E48FA100AA432B /* Charts.framework */,
-				FF96803625E48FA100AA432B /* ChartsTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		FF96803E25E499B900AA432B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FF96804325E499B900AA432B /* Charts.framework */,
-				FF96804525E499B900AA432B /* ChartsTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,53 +137,12 @@
 			mainGroup = B5C6566225DD311F00A9FABC;
 			productRefGroup = B5C6566C25DD311F00A9FABC /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = FF96802C25E48FA100AA432B /* Products */;
-					ProjectRef = FF96802B25E48FA100AA432B /* Charts.xcodeproj */;
-				},
-				{
-					ProductGroup = FF96803E25E499B900AA432B /* Products */;
-					ProjectRef = FF96803D25E499B900AA432B /* Charts.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				B5C6566A25DD311F00A9FABC /* Rev0 */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		FF96803425E48FA100AA432B /* Charts.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Charts.framework;
-			remoteRef = FF96803325E48FA100AA432B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FF96803625E48FA100AA432B /* ChartsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ChartsTests.xctest;
-			remoteRef = FF96803525E48FA100AA432B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FF96804325E499B900AA432B /* Charts.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Charts.framework;
-			remoteRef = FF96804225E499B900AA432B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FF96804525E499B900AA432B /* ChartsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ChartsTests.xctest;
-			remoteRef = FF96804425E499B900AA432B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B5C6566925DD311F00A9FABC /* Resources */ = {
@@ -244,6 +162,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5C6567125DD311F00A9FABC /* LogInView.swift in Sources */,
+				B5799F3A25EF46FE00A66652 /* MotherView.swift in Sources */,
+				B5799F3425EF46ED00A66652 /* SignUpView.swift in Sources */,
+				B5799F3125EF46DE00A66652 /* SpendingDetailView.swift in Sources */,
+				B5799F3725EF46F700A66652 /* ViewRouter.swift in Sources */,
 				B5B00BA625E0AAE70023ABE5 /* DashboardView.swift in Sources */,
 				B5C6566F25DD311F00A9FABC /* Rev0App.swift in Sources */,
 			);
