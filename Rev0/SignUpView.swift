@@ -1,3 +1,10 @@
+//
+//  SignUpView.swift
+//  Rev0
+//
+//  Created by Ben on 2/22/21.
+//
+
 import SwiftUI
 
 struct SignUpView: View {
