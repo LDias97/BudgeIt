@@ -144,6 +144,8 @@ struct NetWorthCardView: View {
 
 struct BudgetCardView : View {
     
+    @EnvironmentObject var viewRouter: ViewRouter
+    
     var body: some View {
         
         ZStack(alignment: .top){
@@ -156,7 +158,11 @@ struct BudgetCardView : View {
                     Text("Budgets")
                         .font(.headline)
                     Spacer()
-                    Button(action: { print("BudgetDetailView clicked" )} ) {
+                    
+                    // BudgetDetailView Button Action
+                    Button(action: {
+                            viewRouter.currentPage = .page5
+                            print("BudgetDetailView clicked" )} ) {
                         Image(systemName: "chevron.forward")
                             .imageScale(.large)
                             .foregroundColor(Color(.black))
@@ -556,29 +562,186 @@ struct SpendingCardView : View {
 
 struct IncomeCardView: View {
     
-    var body : some View {
+    @EnvironmentObject var viewRouter: ViewRouter
+    
+    var body: some View {
         ZStack(alignment: .top){
             Rectangle()
                 .fill(Color(.white))
-                .frame(width: 375, height: 150 )
+                .frame(width: 375, height: 350 )
                 .cornerRadius(30.0)
-            HStack(){
-                Text("Income")
-                    .font(.headline)
-                    .bold()
-                Spacer()
-                Button(action: { print("IncomeDetailView clicked" )} ) {
-                    Image(systemName: "chevron.forward")
-                        .imageScale(.large)
-                        .foregroundColor(Color(.black))
+            VStack(spacing: 10){
+                HStack(){
+                    Text("Income")
+                        .font(.headline)
+                    
+                    Spacer()
+                    
+                    // IncomeDetailView Button Action
+                    Button(action:{
+                            viewRouter.currentPage = .page4;
+                            print("IncomeDetailView clicked")} )
+                    {
+                        Image(systemName: "chevron.forward")
+                            .imageScale(.large)
+                            .foregroundColor(Color(.black))
+                    }
+                    .padding(.trailing, 50)
                 }
-                .padding(.trailing, 50)
+                .padding(.leading, 50)
+                .padding(.top, 20)
                 
+                // Deposit 1 - "Work"
+                HStack(){
+                    VStack(spacing: 5){
+                        HStack(){
+                            Text("Work")
+                                .font(.caption)
+                                .bold()
+                            Spacer()
+                            
+                        }
+                        HStack(){
+                            Text("Bank of America")
+                                .font(.caption2)
+                            Spacer()}
+                        
+                    }
+                    Spacer()
+                    VStack(spacing: 5){
+                        HStack(){
+                            Spacer()
+                            Text("+$1000.50")
+                                .font(.caption)
+                                .foregroundColor(Color(.green))
+                                .bold()
+                        }
+                        HStack(){
+                            Spacer()
+                            Text("Processing 3/2/21")
+                                .font(.caption2)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
+                .padding(.leading, 50)
+                .padding(.trailing, 50)
+                .padding(.top, 20)
+                
+                // Deposit 2 - "ATM"
+                HStack(){
+                    VStack(spacing: 5){
+                        HStack(){
+                            Text("ATM Deposit")
+                                .font(.caption)
+                                .bold()
+                            Spacer()
+                            
+                        }
+                        HStack(){
+                            Text("Bank of America")
+                                .font(.caption2)
+                                .foregroundColor(.gray)
+                            Spacer()}
+                    }
+                    Spacer()
+                    VStack(spacing: 5){
+                        HStack(){
+                            Spacer()
+                            Text("+$200.00")
+                                .font(.caption)
+                                .foregroundColor(Color(.green))
+                                .bold()
+                        }
+                        HStack(){
+                            Spacer()
+                            Text("Processed on 3/3/21")
+                                .font(.caption2)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
+                .padding(.leading, 50)
+                .padding(.trailing, 50)
+                .padding(.top, 20)
+                
+                // Depsoit 3 - "Work"
+                HStack(){
+                    VStack(spacing: 5){
+                        HStack(){
+                            Text("Work")
+                                .font(.caption)
+                                .bold()
+                            Spacer()
+                            
+                        }
+                        HStack(){
+                            Text("Bank of America")
+                                .font(.caption2)
+                                .foregroundColor(.gray)
+                            Spacer()}
+                        
+                    }
+                    Spacer()
+                    VStack(spacing: 5){
+                        HStack(){
+                            Spacer()
+                            Text("+$1050.00")
+                                .font(.caption)
+                                .foregroundColor(Color(.green))
+                                .bold()
+                        }
+                        HStack(){
+                            Spacer()
+                            Text("Processed on 2/27/21")
+                                .font(.caption2)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
+                .padding(.leading, 50)
+                .padding(.trailing, 50)
+                .padding(.top, 20)
+                
+                // Deposit 4 - "Transfer"
+                HStack(){
+                    VStack(spacing: 5){
+                        HStack(){
+                            Text("Transfer from Venmo")
+                                .font(.caption)
+                                .bold()
+                            Spacer()
+                            
+                        }
+                        HStack(){
+                            Text("Venmo")
+                                .font(.caption2)
+                                .foregroundColor(.gray)
+                            Spacer()}
+                        
+                    }
+                    Spacer()
+                    VStack(spacing: 5){
+                        HStack(){
+                            Spacer()
+                            Text("+$8.75")
+                                .font(.caption)
+                                .foregroundColor(Color(.green))
+                                .bold()
+                        }
+                        HStack(){
+                            Spacer()
+                            Text("Processing 3/3/21")
+                                .font(.caption2)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
+                .padding(.leading, 50)
+                .padding(.trailing, 50)
+                .padding(.top, 20)
             }
-            .padding(.leading, 50)
-            .padding(.top, 20)
         }
-        
     }
 }
 

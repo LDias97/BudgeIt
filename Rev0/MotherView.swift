@@ -1,10 +1,11 @@
 import SwiftUI
 
 enum Page {
-    case page1
-    case page2
-    case page3
-    case page4
+    case page1 // SignUp
+    case page2 // LogIn
+    case page3 // Dashboard
+    case page4 // Spending
+    case page5 // BudgeIt
 }
 
 struct MotherView: View {
@@ -21,6 +22,8 @@ struct MotherView: View {
             DashboardView()
         case .page4:
             SpendingDetailView()
+        case .page5:
+            BudgetDetailView()
         }
     }
 }
