@@ -5,6 +5,9 @@ let lightPurple = Color(red: 177/255, green: 127/255, blue: 248/255)
 let red = Color(red: 220/255, green: 104/255, blue: 101/255)
 let green = Color(red: 87/255, green: 210/255, blue: 150/255)
 
+// Move over DetailView and PieView structs into this class rather than "SpendingDetailView" since other views such as Income and Budget may use it as well
+// Have this page work as parent class?
+
 struct DashboardView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
@@ -51,15 +54,18 @@ struct DashboardView: View {
                         NetWorthCardView()
                     }
                     .padding(.top, 44)
+                    // Open BudgeItDetailViews
                     Button(action: { viewRouter.currentPage = .page3; }){
                         BudgetCardView()
                             .foregroundColor(.black)
                     }
+                    // Open SpendingDetailView
                     Button(action: { viewRouter.currentPage = .page4; }){
                         SpendingCardView()
                             .foregroundColor(.black)
                     }
-                    Button(action: { viewRouter.currentPage = .page4; }){
+                    // Open IncomeDetailView
+                    Button(action: { viewRouter.currentPage = .page6; }){
                         IncomeCardView()
                             .foregroundColor(.black)
                     }
@@ -369,6 +375,7 @@ struct BudgetCardView : View {
         }
     }
 }
+
 
 struct SpendingCardView : View {
     

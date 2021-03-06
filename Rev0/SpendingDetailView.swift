@@ -94,6 +94,7 @@ struct DetailView : View {
                     Spacer()
                     Text("Entertainment")
                         .font(.title3)
+                        .foregroundColor(.black)
                         .bold()
                     Spacer()
                     Button(action: { print("back button clicked" )} ) {

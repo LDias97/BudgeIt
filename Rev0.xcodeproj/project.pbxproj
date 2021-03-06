@@ -16,6 +16,7 @@
 		B5FF2CBC25E8A4A20032E577 /* SpendingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF2CBB25E8A4A20032E577 /* SpendingDetailView.swift */; };
 		B5FF2CC225E8BDD60032E577 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF2CC125E8BDD60032E577 /* MotherView.swift */; };
 		B5FF2CC525E8BE1D0032E577 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF2CC425E8BE1D0032E577 /* ViewRouter.swift */; };
+		FF65818725F40F1F00D47939 /* IncomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF65818625F40F1F00D47939 /* IncomeDetailView.swift */; };
 		FFF70FBD25EFD9190042D0F2 /* BudgetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF70FBC25EFD9190042D0F2 /* BudgetDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		B5FF2CBB25E8A4A20032E577 /* SpendingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingDetailView.swift; sourceTree = "<group>"; };
 		B5FF2CC125E8BDD60032E577 /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
 		B5FF2CC425E8BE1D0032E577 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		FF65818625F40F1F00D47939 /* IncomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeDetailView.swift; sourceTree = "<group>"; };
 		FFF70FBC25EFD9190042D0F2 /* BudgetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +71,7 @@
 				B5FF2CB225E71C710032E577 /* DashboardView.swift */,
 				B5FF2CBB25E8A4A20032E577 /* SpendingDetailView.swift */,
 				FFF70FBC25EFD9190042D0F2 /* BudgetDetailView.swift */,
+				FF65818625F40F1F00D47939 /* IncomeDetailView.swift */,
 				B5FF2CB725E71C990032E577 /* LogInView.swift */,
 				B5FF2CB325E71C710032E577 /* SignUpView.swift */,
 				B5FF2CC425E8BE1D0032E577 /* ViewRouter.swift */,
@@ -171,6 +174,7 @@
 				B5FF2CBC25E8A4A20032E577 /* SpendingDetailView.swift in Sources */,
 				B5FF2CB525E71C710032E577 /* SignUpView.swift in Sources */,
 				B5FF2CB825E71C990032E577 /* LogInView.swift in Sources */,
+				FF65818725F40F1F00D47939 /* IncomeDetailView.swift in Sources */,
 				B5FF2CB425E71C710032E577 /* DashboardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

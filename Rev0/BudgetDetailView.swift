@@ -5,7 +5,6 @@
 //  Created by Luann Dias on 3/3/21.
 //
 
-import Foundation
 import SwiftUI
 // import SpendingDetailView()
 
@@ -64,20 +63,56 @@ struct BudgetDetailView: View {
 }
 
 // Set the sizes for the bar chart depending on the amount of income and deposits.
+// Need to align bars to the bottom
 
 struct BarChartView: View {
+    
+    let months: [String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    
     var body : some View {
-        ZStack(){
-            HStack(){
-                Rectangle()
-                    .fill(Color.blue)
-                    .frame(width: 40, height: 100)
-                    .ignoresSafeArea()
-                Rectangle()
-                    .fill(Color.green)
-                    .frame(width: 40, height: 75)
-                    .ignoresSafeArea()
+        ScrollView(.horizontal){
+            ZStack{
+                HStack {
+                    // ForEach loop for green bar
+                    ForEach(0..<12) { income in
+                        VStack{
+                            HStack{
+                                Rectangle()
+                                    .fill(Color.green)
+                                    .frame(width: 40, height: 75)
+                                    .ignoresSafeArea()
+                                    //.padding(.bottom)
+                                // Inner ForEach loop for blue bar
+                                ForEach(0..<1) { spending in
+                                    HStack{
+                                        Rectangle()
+                                            .fill(Color.blue)
+                                            .frame(width: 40, height: 100)
+                                            .ignoresSafeArea()
+                                            .padding(.bottom)
+                                    }
+                                    //.padding(.bottom, 25)
+                                }
+                            }
+                            .padding(20) // Distance between each month
+                            .padding(.top, 50)
+                            Text(months[income]) // Month labels (X-Axis)
+                                .foregroundColor(.black)
+                        }
+                    }
+                }
+                // Grid Lines
+//                ForEach(0..<5) { line in
+//                    VStack{
+//                        Path() { path in
+//                            //path.move(to: CGPoint(x:20, y: 20))
+//                            path.addLine(to: CGPoint(x: 300, y:20))
+//                        }
+//                        .stroke(Color.gray, lineWidth: 10)
+//                    }
+//                }
             }
+
         }
     }
 }
