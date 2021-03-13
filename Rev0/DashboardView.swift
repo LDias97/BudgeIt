@@ -410,6 +410,7 @@ struct SpendingCardView : View {
                 
                 // Transaction 1 - "Auto and Transport Example"
                 HStack(){
+                    
                     VStack(spacing: 5){
                         HStack(){
                             Text("Shell Gas")
