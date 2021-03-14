@@ -7,9 +7,17 @@
 
 import SwiftUI
 
-enum incomeSelectorText : String {
-    case payment = "Payment"
-    case salary = "Salary"
+enum incomeSelectorText : Int {
+    case payment
+    case salary
+    
+    static let mapper: [incomeSelectorText: String] = [
+        .payment : "Payment",
+        .salary : "Salary"
+    ]
+    var string: String {
+        return incomeSelectorText.mapper[self]!
+    }
 }
 
 // The values of the pie chart should change and rotate after clicking each chevron button and the list of options to see
@@ -57,18 +65,17 @@ struct IncomeDetailView: View {
 
 struct IncomePieView : View {
     @Binding var selector: incomeSelectorText
-    @State var magnifyIndex = 0;
 
     var body : some View {
         ZStack(){
             Circle()
                 .trim(from: 0.0, to: 0.3)
-                .stroke(Color(.systemTeal), lineWidth: 50)
+                .stroke(Color(.systemTeal), lineWidth: selector.rawValue == 0 ? 50 : 30)
                 .frame(width: 200, height: 200)
                 .rotationEffect(.degrees(-90))
             Circle()
                 .trim(from: 0.3, to: 1.0)
-                .stroke(Color(.systemYellow), lineWidth: 30)
+                .stroke(Color(.systemYellow), lineWidth: selector.rawValue == 1 ? 50 : 30)
                 .frame(width: 200, height: 200)
                 .rotationEffect(.degrees(-90))
             VStack(){
@@ -106,7 +113,7 @@ struct IncomeTableView : View {
                     .padding(.leading, 15)
                     Spacer()
                     // Category Text
-                    Text(selector.rawValue)
+                    Text(selector.string)
                         .font(.title3)
                         .bold()
                     Spacer()

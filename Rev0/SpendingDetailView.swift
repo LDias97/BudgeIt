@@ -1,12 +1,19 @@
 import SwiftUI
 
-
-
-enum categorySelectorText : String {
-    case auto = "Auto & Transport"
-    case entertainment = "Entertainment"
-    case bills = "Bills"
-    case food = "Food & Restaurants"
+enum categorySelectorText : Int {
+    case auto
+    case entertainment
+    case bills
+    case food
+    static let mapper: [categorySelectorText: String] = [
+        .auto: "Auto & Transport",
+        .entertainment: "Entertainment",
+        .bills: "Bills",
+        .food : "Food & Restaurants"
+    ]
+    var string: String {
+        return categorySelectorText.mapper[self]!
+    }
 }
 
 struct SpendingDetailView: View {
@@ -63,28 +70,28 @@ struct SpendingDetailView: View {
 
 struct SpendingPieView : View {
     @Binding var selector: categorySelectorText
-    @State var magnifyIndex = 0;
 
     var body : some View {
+        
         ZStack(){
             Circle()
                 .trim(from: 0.0, to: 0.3)
-                .stroke(Color(.systemTeal), lineWidth: 30)
+                .stroke(Color(.systemTeal), lineWidth: selector.rawValue == 0 ? 50 : 30)
                 .frame(width: 200, height: 200)
                 .rotationEffect(.degrees(-90))
             Circle()
                 .trim(from: 0.3, to: 0.5)
-                .stroke(Color(.systemYellow), lineWidth: 30)
+                .stroke(Color(.systemYellow), lineWidth: selector.rawValue == 1 ? 50 : 30)
                 .frame(width: 200, height: 200)
                 .rotationEffect(.degrees(-90))
             Circle()
                 .trim(from: 0.5, to: 0.7)
-                .stroke(Color(.systemPink), lineWidth: 50)
+                .stroke(Color(.systemPink), lineWidth: selector.rawValue == 2 ? 50 : 30)
                 .frame(width: 200, height: 200)
                 .rotationEffect(.degrees(-90))
             Circle()
                 .trim(from: 0.7, to: 1.0)
-                .stroke(Color(.systemIndigo), lineWidth: 30)
+                .stroke(Color(.systemIndigo), lineWidth: selector.rawValue == 3 ? 50 : 30)
                 .frame(width: 200, height: 200)
                 .rotationEffect(.degrees(-90))
             VStack(){
@@ -124,7 +131,7 @@ struct SpendingTableView : View {
                     .padding(.leading, 15)
                     Spacer()
                     // Category Text
-                    Text(selector.rawValue)
+                    Text(selector.string)
                         .font(.title3)
                         .bold()
                     Spacer()
