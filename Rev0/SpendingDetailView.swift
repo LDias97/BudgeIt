@@ -1,18 +1,48 @@
 import SwiftUI
 
-enum categorySelectorText : Int {
+enum categorySelector : Int {
     case auto
     case entertainment
     case bills
     case food
-    static let mapper: [categorySelectorText: String] = [
+    static let names: [categorySelector: String] = [
         .auto: "Auto & Transport",
         .entertainment: "Entertainment",
         .bills: "Bills",
         .food : "Food & Restaurants"
     ]
-    var string: String {
-        return categorySelectorText.mapper[self]!
+    static let percentages: [categorySelector: CGFloat] = [
+        .auto: 0.3,
+        .entertainment: 0.2,
+        .bills: 0.2,
+        .food : 0.3
+    ]
+    
+    static let start: [categorySelector: CGFloat] = [
+        .auto: 0,
+        .entertainment: 0.3,
+        .bills: 0.5,
+        .food : 0.7
+    ]
+    
+    static let end: [categorySelector: CGFloat] = [
+        .auto: 0.3,
+        .entertainment: 0.5,
+        .bills: 0.7,
+        .food : 1.0
+    ]
+
+    var name: String {
+        return categorySelector.names[self]!
+    }
+    var percentage: CGFloat {
+        return categorySelector.percentages[self]!
+    }
+    var start: CGFloat {
+        return categorySelector.start[self]!
+    }
+    var end: CGFloat {
+        return categorySelector.end[self]!
     }
 }
 
@@ -23,7 +53,7 @@ struct SpendingDetailView: View {
     @State var food: String = ""
     @State var entertainment: String = ""
     @State var bills: String = ""
-    @State var selector: categorySelectorText = .auto
+    @State var selector: categorySelector = .auto
     @State var num = 0
     @State var total = 100
     @State var spendingAuto = 20
@@ -69,33 +99,33 @@ struct SpendingDetailView: View {
 }
 
 struct SpendingPieView : View {
-    @Binding var selector: categorySelectorText
+    @Binding var selector: categorySelector
 
     var body : some View {
         
         ZStack(){
             Circle()
-                .trim(from: 0.0, to: 0.3)
+                .trim(from: categorySelector.auto.start, to: categorySelector.auto.end)
                 .stroke(Color(.systemTeal), lineWidth: selector.rawValue == 0 ? 50 : 30)
                 .frame(width: 200, height: 200)
                 .rotationEffect(.degrees(-90))
             Circle()
-                .trim(from: 0.3, to: 0.5)
+                .trim(from: categorySelector.entertainment.start, to: categorySelector.entertainment.end)
                 .stroke(Color(.systemYellow), lineWidth: selector.rawValue == 1 ? 50 : 30)
                 .frame(width: 200, height: 200)
                 .rotationEffect(.degrees(-90))
             Circle()
-                .trim(from: 0.5, to: 0.7)
+                .trim(from: categorySelector.bills.start, to: categorySelector.bills.end)
                 .stroke(Color(.systemPink), lineWidth: selector.rawValue == 2 ? 50 : 30)
                 .frame(width: 200, height: 200)
                 .rotationEffect(.degrees(-90))
             Circle()
-                .trim(from: 0.7, to: 1.0)
+                .trim(from: categorySelector.food.start, to: categorySelector.food.end)
                 .stroke(Color(.systemIndigo), lineWidth: selector.rawValue == 3 ? 50 : 30)
                 .frame(width: 200, height: 200)
                 .rotationEffect(.degrees(-90))
             VStack(){
-                Text("28%")
+                Text(String(format: "%.0f", selector.percentage*100) + "%")
                     .font(.title)
             }
         }
@@ -103,7 +133,7 @@ struct SpendingPieView : View {
 }
 
 struct SpendingTableView : View {
-    @Binding var selector: categorySelectorText
+    @Binding var selector: categorySelector
     @State var num = 0
     
     var body : some View {
@@ -131,7 +161,7 @@ struct SpendingTableView : View {
                     .padding(.leading, 15)
                     Spacer()
                     // Category Text
-                    Text(selector.string)
+                    Text(selector.name)
                         .font(.title3)
                         .bold()
                     Spacer()

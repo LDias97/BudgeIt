@@ -7,16 +7,41 @@
 
 import SwiftUI
 
-enum incomeSelectorText : Int {
+enum incomeSelector : Int {
     case payment
     case salary
     
-    static let mapper: [incomeSelectorText: String] = [
+    static let names: [incomeSelector: String] = [
         .payment : "Payment",
         .salary : "Salary"
     ]
-    var string: String {
-        return incomeSelectorText.mapper[self]!
+    
+    static let percentages: [incomeSelector: CGFloat] = [
+        .payment: 0.3,
+        .salary: 0.7,
+    ]
+    
+    static let start: [incomeSelector: CGFloat] = [
+        .payment: 0.0,
+        .salary: 0.3,
+    ]
+    
+    static let end: [incomeSelector: CGFloat] = [
+        .payment: 0.3,
+        .salary: 1.0,
+    ]
+
+    var name: String {
+        return incomeSelector.names[self]!
+    }
+    var percentage: CGFloat {
+        return incomeSelector.percentages[self]!
+    }
+    var start: CGFloat {
+        return incomeSelector.start[self]!
+    }
+    var end: CGFloat {
+        return incomeSelector.end[self]!
     }
 }
 
@@ -24,7 +49,7 @@ enum incomeSelectorText : Int {
 struct IncomeDetailView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
-    @State var selector: incomeSelectorText = .payment
+    @State var selector: incomeSelector = .payment
     @State var num = 0
 
     var body: some View {
@@ -64,22 +89,22 @@ struct IncomeDetailView: View {
 }
 
 struct IncomePieView : View {
-    @Binding var selector: incomeSelectorText
+    @Binding var selector: incomeSelector
 
     var body : some View {
         ZStack(){
             Circle()
-                .trim(from: 0.0, to: 0.3)
+                .trim(from: incomeSelector.payment.start, to: incomeSelector.payment.end)
                 .stroke(Color(.systemTeal), lineWidth: selector.rawValue == 0 ? 50 : 30)
                 .frame(width: 200, height: 200)
                 .rotationEffect(.degrees(-90))
             Circle()
-                .trim(from: 0.3, to: 1.0)
+                .trim(from: incomeSelector.salary.start, to: incomeSelector.salary.end)
                 .stroke(Color(.systemYellow), lineWidth: selector.rawValue == 1 ? 50 : 30)
                 .frame(width: 200, height: 200)
                 .rotationEffect(.degrees(-90))
             VStack(){
-                Text("28%")
+                Text(String(format: "%.0f", selector.percentage*100) + "%")
                     .font(.title)
             }
         }
@@ -87,7 +112,7 @@ struct IncomePieView : View {
 }
 
 struct IncomeTableView : View {
-    @Binding var selector: incomeSelectorText
+    @Binding var selector: incomeSelector
     @State var num = 0
     
     var body : some View {
@@ -113,7 +138,7 @@ struct IncomeTableView : View {
                     .padding(.leading, 15)
                     Spacer()
                     // Category Text
-                    Text(selector.string)
+                    Text(selector.name)
                         .font(.title3)
                         .bold()
                     Spacer()
