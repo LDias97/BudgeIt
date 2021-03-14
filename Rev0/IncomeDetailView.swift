@@ -7,12 +7,17 @@
 
 import SwiftUI
 
+enum incomeSelectorText : String {
+    case payment = "Payment"
+    case salary = "Salary"
+}
 
-// The values should be "Payment/Salary" and "Other Income" instead of entertainment, food, etc.
 // The values of the pie chart should change and rotate after clicking each chevron button and the list of options to see
 struct IncomeDetailView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
+    @State var selector: incomeSelectorText = .payment
+    @State var num = 0
 
     var body: some View {
         ZStack(){
@@ -38,10 +43,10 @@ struct IncomeDetailView: View {
                     }
                     .padding(.trailing, 15)
                 }
-                PieView()
+                IncomePieView(selector: $selector)
                     .padding(.top, 30)
                 Spacer()
-                DetailView()
+                IncomeTableView(selector: $selector)
                     .padding(.top, 30)
             }
             .padding(.top, 20)
@@ -49,6 +54,88 @@ struct IncomeDetailView: View {
     }
     
 }
+
+struct IncomePieView : View {
+    @Binding var selector: incomeSelectorText
+    @State var magnifyIndex = 0;
+
+    var body : some View {
+        ZStack(){
+            Circle()
+                .trim(from: 0.0, to: 0.3)
+                .stroke(Color(.systemTeal), lineWidth: 50)
+                .frame(width: 200, height: 200)
+                .rotationEffect(.degrees(-90))
+            Circle()
+                .trim(from: 0.3, to: 1.0)
+                .stroke(Color(.systemYellow), lineWidth: 30)
+                .frame(width: 200, height: 200)
+                .rotationEffect(.degrees(-90))
+            VStack(){
+                Text("28%")
+                    .font(.title)
+            }
+        }
+    }
+}
+
+struct IncomeTableView : View {
+    @Binding var selector: incomeSelectorText
+    @State var num = 0
+    
+    var body : some View {
+        ZStack(){
+            Rectangle()
+                .fill(Color.white)
+                .frame(width: 400, height: 500)
+            VStack(){
+                HStack(){
+                    // backward arrow
+                    Button(action: {
+                        num = (num == 1 ? num + 1 : num - 1)
+                        switch(abs(num)%2){
+                        case 0: selector = .payment
+                        case 1: selector = .salary
+                        default: fatalError("cannot be here")
+                        }
+                    } ) {
+                        Image(systemName: "chevron.backward")
+                            .imageScale(.large)
+                            .foregroundColor(Color(.black))
+                    }
+                    .padding(.leading, 15)
+                    Spacer()
+                    // Category Text
+                    Text(selector.rawValue)
+                        .font(.title3)
+                        .bold()
+                    Spacer()
+                    // forward arrow
+                    Button(action: {
+                        num = (num == 1 ? num - 1 : num + 1)
+                        switch(abs(num)%2){
+                        case 0: selector = .payment
+                        case 1: selector = .salary
+                        default: fatalError("cannot be here")
+                        }
+                    } ) {
+                        Image(systemName: "chevron.forward")
+                            .imageScale(.large)
+                            .foregroundColor(Color(.black))
+                    }
+                    .padding(.trailing, 15)
+                }
+                Divider()
+                Spacer()
+            }
+            .padding(.leading, 20)
+            .padding(.trailing, 20)
+            .padding(.top, 20)
+        }
+    }
+    
+}
+
 
 struct IncomeDetailView_Previews: PreviewProvider {
     static var previews: some View {

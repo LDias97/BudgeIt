@@ -1,5 +1,14 @@
 import SwiftUI
 
+
+
+enum categorySelectorText : String {
+    case auto = "Auto & Transport"
+    case entertainment = "Entertainment"
+    case bills = "Bills"
+    case food = "Food & Restaurants"
+}
+
 struct SpendingDetailView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
@@ -7,7 +16,15 @@ struct SpendingDetailView: View {
     @State var food: String = ""
     @State var entertainment: String = ""
     @State var bills: String = ""
+    @State var selector: categorySelectorText = .auto
+    @State var num = 0
+    @State var total = 100
+    @State var spendingAuto = 20
+    @State var spentOnEntertainment = 10
+    @State var spentOnBills = 50
+    @State var spentOnFood = 20
 
+    
     var body: some View {
         ZStack(){
             Rectangle()
@@ -32,10 +49,10 @@ struct SpendingDetailView: View {
                     }
                     .padding(.trailing, 15)
                 }
-                PieView()
+                SpendingPieView(selector: $selector)
                     .padding(.top, 30)
                 Spacer()
-                DetailView()
+                SpendingTableView(selector: $selector)
                     .padding(.top, 30)
             }
             .padding(.top, 20)
@@ -44,10 +61,12 @@ struct SpendingDetailView: View {
     
 }
 
-struct PieView : View {
+struct SpendingPieView : View {
+    @Binding var selector: categorySelectorText
+    @State var magnifyIndex = 0;
+
     var body : some View {
         ZStack(){
-            
             Circle()
                 .trim(from: 0.0, to: 0.3)
                 .stroke(Color(.systemTeal), lineWidth: 30)
@@ -71,13 +90,15 @@ struct PieView : View {
             VStack(){
                 Text("28%")
                     .font(.title)
-
             }
         }
     }
 }
 
-struct DetailView : View {
+struct SpendingTableView : View {
+    @Binding var selector: categorySelectorText
+    @State var num = 0
+    
     var body : some View {
         ZStack(){
             Rectangle()
@@ -85,19 +106,39 @@ struct DetailView : View {
                 .frame(width: 400, height: 500)
             VStack(){
                 HStack(){
-                    Button(action: { print("back button clicked" )} ) {
+                    // backward arrow
+                    Button(action: {
+                        num = (num == 3 ? num + 3 : num - 1)
+                        switch(abs(num)%4){
+                        case 0: selector = .auto
+                        case 1: selector = .entertainment
+                        case 2: selector = .bills
+                        case 3: selector = .food
+                        default: fatalError("cannot be here")
+                        }
+                    } ) {
                         Image(systemName: "chevron.backward")
                             .imageScale(.large)
                             .foregroundColor(Color(.black))
                     }
                     .padding(.leading, 15)
                     Spacer()
-                    Text("Entertainment")
+                    // Category Text
+                    Text(selector.rawValue)
                         .font(.title3)
-                        .foregroundColor(.black)
                         .bold()
                     Spacer()
-                    Button(action: { print("back button clicked" )} ) {
+                    // forward arrow
+                    Button(action: {
+                        num = (num == 3 ? num - 3 : num + 1)
+                        switch(abs(num)%4){
+                        case 0: selector = .auto
+                        case 1: selector = .entertainment
+                        case 2: selector = .bills
+                        case 3: selector = .food
+                        default: fatalError("cannot be here")
+                        }
+                    } ) {
                         Image(systemName: "chevron.forward")
                             .imageScale(.large)
                             .foregroundColor(Color(.black))
