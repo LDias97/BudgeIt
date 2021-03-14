@@ -45,7 +45,6 @@ enum incomeSelector : Int {
     }
 }
 
-// The values of the pie chart should change and rotate after clicking each chevron button and the list of options to see
 struct IncomeDetailView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter

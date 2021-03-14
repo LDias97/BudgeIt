@@ -16,7 +16,7 @@ struct DashboardView: View {
     @State var food: String = ""
     @State var entertainment: String = ""
     @State var bills: String = ""
-    @State var showMenu = false
+    @State var showMenu = true
     
     var body: some View {
         
@@ -101,6 +101,14 @@ struct DashboardView: View {
             }
         }
         .gesture(drag)
+        .gesture(DragGesture(minimumDistance: 0).onEnded({ (value) in
+            if (value.location.x > UIScreen.main.bounds.width*0.6){
+                withAnimation {
+                    self.showMenu = false
+                }
+            }
+        }))
+        
     }
 }
 
@@ -612,11 +620,16 @@ struct MenuView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack(){
+                VStack(alignment: .center){
+                    Image("b")
+                        .resizable()
+                        .frame(width:150, height:150)
+                        .padding(.top, 70)
                 VStack(alignment: .leading) {
                     Rectangle()
                         .fill(Color(.systemGray3))
                         .frame(height: 1)
-                        .padding(.top, 200)
+                        .padding(.top, 30)
                     Button(action: { withAnimation(.default){showMenu.toggle()} } ) {
                         HStack {
                             Image(systemName: "person")
@@ -689,6 +702,7 @@ struct MenuView: View {
                 }
                 .padding(.leading, 30)
                 .padding(.trailing, 30)
+                }
                 .frame(width: UIScreen.main.bounds.width*0.6, height:UIScreen.main.bounds.height)
                 .background(Rectangle()
                                 .fill(Color(.systemGray5))
