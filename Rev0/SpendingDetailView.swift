@@ -86,8 +86,9 @@ struct SpendingDetailView: View {
                     }
                     .padding(.trailing, 15)
                 }
-                SpendingPieView(selector: $selector)
-                    .padding(.top, 30)
+                    SpendingPieView(selector: $selector)
+                        .padding(.top, 30)
+                        .animation(Animation.interactiveSpring())
                 Spacer()
                 SpendingTableView(selector: $selector)
                     .padding(.top, 30)
@@ -114,6 +115,7 @@ struct SpendingPieView : View {
                 .stroke(Color(.systemYellow), lineWidth: selector.rawValue == 1 ? 50 : 30)
                 .frame(width: 200, height: 200)
                 .rotationEffect(.degrees(-90))
+            
             Circle()
                 .trim(from: categorySelector.bills.start, to: categorySelector.bills.end)
                 .stroke(Color(.systemPink), lineWidth: selector.rawValue == 2 ? 50 : 30)
@@ -126,7 +128,9 @@ struct SpendingPieView : View {
                 .rotationEffect(.degrees(-90))
             VStack(){
                 Text(String(format: "%.0f", selector.percentage*100) + "%")
-                    .font(.title)
+                    .font(.largeTitle)
+                    .foregroundColor(.black)
+                    .padding(.leading)
             }
         }
     }

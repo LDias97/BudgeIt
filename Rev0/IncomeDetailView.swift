@@ -5,6 +5,7 @@
 //  Created by Luann Dias on 3/6/21.
 //
 
+
 import SwiftUI
 
 enum incomeSelector : Int {
@@ -77,6 +78,7 @@ struct IncomeDetailView: View {
                 }
                 IncomePieView(selector: $selector)
                     .padding(.top, 30)
+                    .animation(Animation.interactiveSpring())
                 Spacer()
                 IncomeTableView(selector: $selector)
                     .padding(.top, 30)

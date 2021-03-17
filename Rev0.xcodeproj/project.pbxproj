@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B55AC0E526005B1F003263D6 /* DIN Alternate Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B55AC0E426005B1F003263D6 /* DIN Alternate Bold.ttf */; };
+		B55AC0E826005BB7003263D6 /* Menlo.ttc in Resources */ = {isa = PBXBuildFile; fileRef = B55AC0E726005BB7003263D6 /* Menlo.ttc */; };
+		B55AC0EB26005C3E003263D6 /* GillSans.ttc in Resources */ = {isa = PBXBuildFile; fileRef = B55AC0EA26005C3E003263D6 /* GillSans.ttc */; };
+		B55AC0EE26008759003263D6 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55AC0ED26008759003263D6 /* NotificationsView.swift */; };
+		B55AC0F126008765003263D6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55AC0F026008765003263D6 /* SettingsView.swift */; };
+		B55AC0F42600876C003263D6 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55AC0F32600876C003263D6 /* HelpView.swift */; };
+		B55AC0F726008795003263D6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55AC0F626008795003263D6 /* ProfileView.swift */; };
 		B5C6566F25DD311F00A9FABC /* Rev0App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6566E25DD311F00A9FABC /* Rev0App.swift */; };
 		B5C6567325DD312000A9FABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5C6567225DD312000A9FABC /* Assets.xcassets */; };
 		B5C6567625DD312000A9FABC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5C6567525DD312000A9FABC /* Preview Assets.xcassets */; };
@@ -21,6 +28,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B55AC0E426005B1F003263D6 /* DIN Alternate Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DIN Alternate Bold.ttf"; path = "../../../../../../../System/Library/Fonts/Supplemental/DIN Alternate Bold.ttf"; sourceTree = "<group>"; };
+		B55AC0E726005BB7003263D6 /* Menlo.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; name = Menlo.ttc; path = ../../../../../../../System/Library/Fonts/Menlo.ttc; sourceTree = "<group>"; };
+		B55AC0EA26005C3E003263D6 /* GillSans.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; name = GillSans.ttc; path = ../../../../../../../System/Library/Fonts/Supplemental/GillSans.ttc; sourceTree = "<group>"; };
+		B55AC0ED26008759003263D6 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		B55AC0F026008765003263D6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B55AC0F32600876C003263D6 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		B55AC0F626008795003263D6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		B5C6566B25DD311F00A9FABC /* Rev0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rev0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C6566E25DD311F00A9FABC /* Rev0App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rev0App.swift; sourceTree = "<group>"; };
 		B5C6567225DD312000A9FABC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -47,6 +61,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B55AC0E326005AB6003263D6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B55AC0EA26005C3E003263D6 /* GillSans.ttc */,
+				B55AC0E726005BB7003263D6 /* Menlo.ttc */,
+				B55AC0E426005B1F003263D6 /* DIN Alternate Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		B5C6566225DD311F00A9FABC = {
 			isa = PBXGroup;
 			children = (
@@ -67,9 +91,14 @@
 		B5C6566D25DD311F00A9FABC /* Rev0 */ = {
 			isa = PBXGroup;
 			children = (
+				B55AC0E326005AB6003263D6 /* Fonts */,
 				B5C6566E25DD311F00A9FABC /* Rev0App.swift */,
+				B55AC0ED26008759003263D6 /* NotificationsView.swift */,
 				B5FF2CB225E71C710032E577 /* DashboardView.swift */,
+				B55AC0F626008795003263D6 /* ProfileView.swift */,
+				B55AC0F32600876C003263D6 /* HelpView.swift */,
 				B5FF2CBB25E8A4A20032E577 /* SpendingDetailView.swift */,
+				B55AC0F026008765003263D6 /* SettingsView.swift */,
 				FFF70FBC25EFD9190042D0F2 /* BudgetDetailView.swift */,
 				FF65818625F40F1F00D47939 /* IncomeDetailView.swift */,
 				B5FF2CB725E71C990032E577 /* LogInView.swift */,
@@ -155,8 +184,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B55AC0EB26005C3E003263D6 /* GillSans.ttc in Resources */,
 				B5C6567625DD312000A9FABC /* Preview Assets.xcassets in Resources */,
+				B55AC0E826005BB7003263D6 /* Menlo.ttc in Resources */,
 				B5C6567325DD312000A9FABC /* Assets.xcassets in Resources */,
+				B55AC0E526005B1F003263D6 /* DIN Alternate Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +200,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5C6566F25DD311F00A9FABC /* Rev0App.swift in Sources */,
+				B55AC0F726008795003263D6 /* ProfileView.swift in Sources */,
+				B55AC0F42600876C003263D6 /* HelpView.swift in Sources */,
+				B55AC0EE26008759003263D6 /* NotificationsView.swift in Sources */,
 				B5FF2CC525E8BE1D0032E577 /* ViewRouter.swift in Sources */,
 				FFF70FBD25EFD9190042D0F2 /* BudgetDetailView.swift in Sources */,
 				B5FF2CC225E8BDD60032E577 /* MotherView.swift in Sources */,
@@ -176,6 +211,7 @@
 				B5FF2CB825E71C990032E577 /* LogInView.swift in Sources */,
 				FF65818725F40F1F00D47939 /* IncomeDetailView.swift in Sources */,
 				B5FF2CB425E71C710032E577 /* DashboardView.swift in Sources */,
+				B55AC0F126008765003263D6 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,6 +6,7 @@ struct LogInView: View {
     @State var password: String = ""
     
     
+    
     var body: some View {
         VStack(spacing: 20){
             VStack(){
@@ -50,11 +51,11 @@ struct LogInView: View {
             ZStack(){
                 VStack(spacing: 15){
                 Rectangle()
-                    .fill(Color.blue)
+                    .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
                     .frame(width: 370, height: 60)
                     .cornerRadius(30.0)
                 Rectangle()
-                    .fill(Color.blue)
+                    .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
                     .frame(width: 370, height: 60)
                     .cornerRadius(30.0)
                 }
