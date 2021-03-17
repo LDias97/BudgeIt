@@ -4,11 +4,9 @@
 //
 //  Created by Luann Dias on 3/3/21.
 //
-
 import SwiftUI
 import UserNotifications
 // import SpendingDetailView()
-
 
 // TODO
 // Need to create object of SpendingDetailView to use PieChart
@@ -16,7 +14,6 @@ import UserNotifications
 // Let the user set a maximum amount to spend on each category every month and have BudgeIt give tips and averages
 // Allow the user to set an option to round every transaction to the nearest dollar and deposit that difference onto a preferred savings account. For instance: If the user spent $24.85 on something, BudgeIt should be able to round that to 25.00 and deposit that difference of $0.15 into a "piggy bank" account. If this setting is turned on, it should be able to turn off by itself once the account reaches a very low balance to prevent it going negative and having overdraft fees.
 // Show cash flow with bar charts, show two bars for each month within the past year (one for income and one for spent) from $0 - $10K
-
 struct BudgetDetailView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
@@ -24,8 +21,9 @@ struct BudgetDetailView: View {
     @State var food: String = ""
     @State var entertainment: String = ""
     @State var bills: String = ""
+    @State var selectedMonth: Int = 0
+    
     // var pieChart: SpendingDetailView
-
     var body: some View {
         ScrollView {
             ZStack(){
@@ -57,7 +55,7 @@ struct BudgetDetailView: View {
                         }
                         .padding(.trailing, 15)
                     }
-                    BarChartView()
+                    BarChartView(selectedMonth: $selectedMonth)
                     Spacer()
                     BudgetOptionsView()
                         .padding(.top, 30)
@@ -76,8 +74,8 @@ struct BudgetDetailView: View {
 
 // Set the sizes for the bar chart depending on the amount of income and deposits.
 // Need to align bars to the bottom
-
 struct BarChartView: View {
+    @Binding var selectedMonth: Int
     
     let months: [String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     
@@ -90,11 +88,13 @@ struct BarChartView: View {
                         ForEach(0..<12) { income in
                             VStack{
                                 HStack{
+                                    VStack(){
+                                        Spacer()
                                     Rectangle()
                                         .fill(Color.green)
                                         .frame(width: 40, height: 75)
                                         .ignoresSafeArea()
-                                        //.padding(.bottom)
+                                    }
                                     // Inner ForEach loop for blue bar
                                     ForEach(0..<1) { spending in
                                         HStack{
@@ -102,9 +102,7 @@ struct BarChartView: View {
                                                 .fill(Color.blue)
                                                 .frame(width: 40, height: 100)
                                                 .ignoresSafeArea()
-                                                .padding(.bottom)
                                         }
-                                        //.padding(.bottom, 25)
                                     }
                                 }
                                 .padding(20) // Distance between each month
@@ -120,7 +118,7 @@ struct BarChartView: View {
                 .padding(.bottom)
             }
         }
-        MonthlyInfoView()
+        MonthlyInfoView(selectedMonth: $selectedMonth)
     }
 }
 
@@ -132,6 +130,9 @@ struct MonthlyInfoView: View {
     var spendingValue: Double = 0.0
     var difference: Double = 0.0 // income - spending, cast to string
     var id: Int = 0
+    
+    @Binding var selectedMonth: Int
+
     
     var body : some View {
         ScrollView(.horizontal){
@@ -327,7 +328,6 @@ struct BudgetDetailView_Previews: PreviewProvider {
 
 
 
-
 //if exceedBudget {
 //    UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) {
 //        success, error in
@@ -339,13 +339,11 @@ struct BudgetDetailView_Previews: PreviewProvider {
 //    }
 //}
 
-
 // Budget Notification Settings
 //                    let budgetReachedToggle = Binding<Bool> (
 //                        get: {self.budgetReachedAlert},
 //                        set: {newValue in self.budgetReachedAlert = newValue}
 //                    )
-
 //Toggle("Budget Reached", isOn: $budgetReachedAlert)
 //    .padding(20)
 //if budgetReachedAlert {

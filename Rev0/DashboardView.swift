@@ -130,7 +130,7 @@ struct DashboardView: View {
                                     .onTapGesture {
                                         viewRouter.currentPage = .page5;
                                     }
-                        BarChartView()
+                        BarChartDashView()
                         SpendingCardView()
                             .foregroundColor(.black)
                             .onTapGesture {
@@ -645,7 +645,7 @@ struct BudgetCardView : View {
 
 }
 
-struct BarChartView: View {
+struct BarChartDashView: View {
     @State var i = 0
     @State var j = 3
     @State var wmy = 1
