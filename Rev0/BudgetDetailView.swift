@@ -55,6 +55,7 @@ struct BudgetDetailView: View {
                         }
                         .padding(.trailing, 15)
                     }
+                    .padding(.top, 40)
                     BarChartView(selectedMonth: $selectedMonth)
                     Spacer()
                     BudgetOptionsView()

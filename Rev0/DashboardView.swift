@@ -125,11 +125,11 @@ struct DashboardView: View {
                             NetWorthCardView()
                         }
                         .padding(.top, 44)
-                                BudgetCardView(editBudgets: $editBudgets, Food: $food)
-                                    .foregroundColor(.black)
-                                    .onTapGesture {
-                                        viewRouter.currentPage = .page5;
-                                    }
+                        BudgetCardView(editBudgets: $editBudgets, Food: $food)
+                            .foregroundColor(.black)
+                            .onTapGesture {
+                                viewRouter.currentPage = .page5;
+                            }
                         BarChartDashView()
                         SpendingCardView()
                             .foregroundColor(.black)
@@ -249,284 +249,348 @@ struct BudgetCardView : View {
         ZStack(alignment: .top){
             if !editBudgets {
                 ZStack{
-            Rectangle()
-                .fill(Color(.white))
-                .frame(width: 375, height: 350)
-                .cornerRadius(20.0)
-                .shadow(color: Color.gray.opacity(0.25), radius: 5, x: 0, y: 0)
-            VStack(spacing: 10){
-                HStack(){
-                    Text("Budgets")
-                        .font((Font.custom("DIN Alternate Bold", size: 20)))
-                    Spacer()
-                    Button(action: { self.editBudgets = true;
-                            withAnimation { self.degrees += 180;} }) {
-                        Image(systemName: "pencil")
-                            .imageScale(.medium)
-                            .foregroundColor(Color(.black))
-                    }
-                }
-                .padding(.leading, 50)
-                .padding(.trailing, 40)
-                
-                HStack(){
-                    ZStack(){
-                        Circle()
-                            .stroke(Color(.systemGray6), lineWidth: 3)
-                            .frame(width: 40, height:40)
-                        Circle()
-                            .trim(from: 0.0, to: 0.9)
-                            .stroke(Color(.blue), lineWidth: 3)
-                            .frame(width: 40, height:40)
-                            .rotationEffect(.degrees(-90))
-                        Image(systemName: "car.fill")
-                            .foregroundColor(Color(.systemGray3))                            }
-                    VStack(spacing: 5){
+                    Rectangle()
+                        .fill(Color(.white))
+                        .frame(width: 375, height: 350)
+                        .cornerRadius(20.0)
+                        .shadow(color: Color.gray.opacity(0.25), radius: 5, x: 0, y: 0)
+                    VStack(spacing: 10){
                         HStack(){
-                            Text("Auto & Transport")
-                                .font((Font.custom("DIN Alternate Bold", size: 14)))
-                                .bold()
+                            Text("Budgets")
+                                .font((Font.custom("DIN Alternate Bold", size: 20)))
                             Spacer()
-                            
+                            Button(action: { self.editBudgets = true;
+                                    withAnimation { self.degrees += 180;} }) {
+                                Image(systemName: "pencil")
+                                    .imageScale(.medium)
+                                    .foregroundColor(Color(.black))
+                            }
                         }
-                        HStack(){
-                            Text("$700 left")
-                                .font((Font.custom("DIN Alternate Bold", size: 12)))
-                                .foregroundColor(.gray)
-                            Spacer()}
+                        .padding(.leading, 50)
+                        .padding(.trailing, 40)
                         
-                    }
-                    Spacer()
-                    VStack(spacing: 5){
                         HStack(){
+                            ZStack(){
+                                Circle()
+                                    .stroke(Color(.systemGray6), lineWidth: 3)
+                                    .frame(width: 40, height:40)
+                                Circle()
+                                    .trim(from: 0.0, to: 0.9)
+                                    .stroke(Color(.blue), lineWidth: 3)
+                                    .frame(width: 40, height:40)
+                                    .rotationEffect(.degrees(-90))
+                                Image(systemName: "car.fill")
+                                    .foregroundColor(Color(.systemGray3))                            }
+                            VStack(spacing: 5){
+                                HStack(){
+                                    Text("Auto & Transport")
+                                        .font((Font.custom("DIN Alternate Bold", size: 14)))
+                                        .bold()
+                                    Spacer()
+                                    
+                                }
+                                HStack(){
+                                    Text("$700 left")
+                                        .font((Font.custom("DIN Alternate Bold", size: 12)))
+                                        .foregroundColor(.gray)
+                                    Spacer()}
+                                
+                            }
                             Spacer()
-                            Text("$1,200")
-                                .font((Font.custom("DIN Alternate Bold", size: 14)))
-                                .foregroundColor(Color(.blue))
-                                .bold()
+                            VStack(spacing: 5){
+                                HStack(){
+                                    Spacer()
+                                    Text("$1,200")
+                                        .font((Font.custom("DIN Alternate Bold", size: 14)))
+                                        .foregroundColor(Color(.blue))
+                                        .bold()
+                                }
+                                HStack(){
+                                    Spacer()
+                                    Text("$500 of 1,200")
+                                        .font((Font.custom("DIN Alternate Bold", size: 12)))
+                                        .foregroundColor(.gray)
+                                }
+                            }
                         }
-                        HStack(){
-                            Spacer()
-                            Text("$500 of 1,200")
-                                .font((Font.custom("DIN Alternate Bold", size: 12)))
-                                .foregroundColor(.gray)
-                        }
-                    }
-                }
-                .padding(.leading, 50)
-                .padding(.trailing, 50)
-                .padding(.top, 20)
-                Rectangle()
-                    .fill(Color(.systemGray6))
-                    .frame(height: 1)
-                    .padding(.leading, 40)
-                    .padding(.trailing, 40)
-                    .padding(.top, 5)
-                
-                HStack(){
-                    ZStack(){
-                        Circle()
-                            .stroke(Color(.systemGray6), lineWidth: 3)
-                            .frame(width: 40, height:40)
-                        Circle()
-                            .trim(from: 0.0, to: 0.7)
-                            .stroke(Color(.systemTeal), lineWidth: 3)
-                            .frame(width: 40, height:40)
-                            .rotationEffect(.degrees(-90))
-                        Image(systemName: "cart.fill")
-                            .foregroundColor(Color(.systemGray3))                            }
-                    VStack(spacing: 5){
-                        HStack(){
-                            Text("Food & Restaurants")
-                                .font((Font.custom("DIN Alternate Bold", size: 14)))
-                                .bold()
-                            Spacer()
-                            
-                        }
-                        HStack(){
-                            Text("$700 left")
-                                .font((Font.custom("DIN Alternate Bold", size: 12)))
-                                .foregroundColor(.gray)
-                            Spacer()}
-                    }
-                    Spacer()
-                    VStack(spacing: 5){
-                        HStack(){
-                            Spacer()
-                            Text("$1,200")
-                                .font((Font.custom("DIN Alternate Bold", size: 14)))
-                                .foregroundColor(Color(.blue))
-                                .bold()
-                        }
-                        HStack(){
-                            Spacer()
-                            Text("$500 of 1,200")
-                                .font((Font.custom("DIN Alternate Bold", size: 12)))
-                                .foregroundColor(.gray)
-                        }
-                    }
-                }
-                .padding(.leading, 50)
-                .padding(.trailing, 50)
-                .padding(.top, 5)
-                Rectangle()
-                    .fill(Color(.systemGray6))
-                    .frame(height: 1)
-                    .padding(.leading, 40)
-                    .padding(.trailing, 40)
-                    .padding(.top, 5)
-                HStack(){
-                    ZStack(){
-                        Circle()
-                            .stroke(Color(.systemGray6), lineWidth: 3)
-                            .frame(width: 40, height:40)
-                        Circle()
-                            .trim(from: 0, to: 0.75)
-                            .stroke(Color(.systemPink), lineWidth: 3)
-                            .frame(width: 40, height:40)
-                            .rotationEffect(.degrees(-90))
-                        Image(systemName: "gamecontroller.fill")
-                            .foregroundColor(Color(.systemGray3))
-                    }
-                    VStack(spacing: 5){
-                        HStack(){
-                            Text("Entertainment")
-                                .font((Font.custom("DIN Alternate Bold", size: 14)))
-                                .bold()
-                            Spacer()
-                            
-                        }
-                        HStack(){
-                            Text("$700 left")
-                                .font((Font.custom("DIN Alternate Bold", size: 12)))
-                                .foregroundColor(.gray)
-                            Spacer()}
+                        .padding(.leading, 50)
+                        .padding(.trailing, 50)
+                        .padding(.top, 20)
+                        Rectangle()
+                            .fill(Color(.systemGray6))
+                            .frame(height: 1)
+                            .padding(.leading, 40)
+                            .padding(.trailing, 40)
+                            .padding(.top, 5)
                         
-                    }
-                    Spacer()
-                    VStack(spacing: 5){
                         HStack(){
+                            ZStack(){
+                                Circle()
+                                    .stroke(Color(.systemGray6), lineWidth: 3)
+                                    .frame(width: 40, height:40)
+                                Circle()
+                                    .trim(from: 0.0, to: 0.7)
+                                    .stroke(Color(.systemTeal), lineWidth: 3)
+                                    .frame(width: 40, height:40)
+                                    .rotationEffect(.degrees(-90))
+                                Image(systemName: "cart.fill")
+                                    .foregroundColor(Color(.systemGray3))                            }
+                            VStack(spacing: 5){
+                                HStack(){
+                                    Text("Food & Restaurants")
+                                        .font((Font.custom("DIN Alternate Bold", size: 14)))
+                                        .bold()
+                                    Spacer()
+                                    
+                                }
+                                HStack(){
+                                    Text("$700 left")
+                                        .font((Font.custom("DIN Alternate Bold", size: 12)))
+                                        .foregroundColor(.gray)
+                                    Spacer()}
+                            }
                             Spacer()
-                            Text("$1,200")
-                                .font((Font.custom("DIN Alternate Bold", size: 14)))
-                                .foregroundColor(Color(.blue))
-                                .bold()
+                            VStack(spacing: 5){
+                                HStack(){
+                                    Spacer()
+                                    Text("$1,200")
+                                        .font((Font.custom("DIN Alternate Bold", size: 14)))
+                                        .foregroundColor(Color(.blue))
+                                        .bold()
+                                }
+                                HStack(){
+                                    Spacer()
+                                    Text("$500 of 1,200")
+                                        .font((Font.custom("DIN Alternate Bold", size: 12)))
+                                        .foregroundColor(.gray)
+                                }
+                            }
                         }
+                        .padding(.leading, 50)
+                        .padding(.trailing, 50)
+                        .padding(.top, 5)
+                        Rectangle()
+                            .fill(Color(.systemGray6))
+                            .frame(height: 1)
+                            .padding(.leading, 40)
+                            .padding(.trailing, 40)
+                            .padding(.top, 5)
                         HStack(){
+                            ZStack(){
+                                Circle()
+                                    .stroke(Color(.systemGray6), lineWidth: 3)
+                                    .frame(width: 40, height:40)
+                                Circle()
+                                    .trim(from: 0, to: 0.75)
+                                    .stroke(Color(.systemPink), lineWidth: 3)
+                                    .frame(width: 40, height:40)
+                                    .rotationEffect(.degrees(-90))
+                                Image(systemName: "gamecontroller.fill")
+                                    .foregroundColor(Color(.systemGray3))
+                            }
+                            VStack(spacing: 5){
+                                HStack(){
+                                    Text("Entertainment")
+                                        .font((Font.custom("DIN Alternate Bold", size: 14)))
+                                        .bold()
+                                    Spacer()
+                                    
+                                }
+                                HStack(){
+                                    Text("$700 left")
+                                        .font((Font.custom("DIN Alternate Bold", size: 12)))
+                                        .foregroundColor(.gray)
+                                    Spacer()}
+                                
+                            }
                             Spacer()
-                            Text("$500 of 1,200")
-                                .font((Font.custom("DIN Alternate Bold", size: 12)))
-                                .foregroundColor(.gray)
+                            VStack(spacing: 5){
+                                HStack(){
+                                    Spacer()
+                                    Text("$1,200")
+                                        .font((Font.custom("DIN Alternate Bold", size: 14)))
+                                        .foregroundColor(Color(.blue))
+                                        .bold()
+                                }
+                                HStack(){
+                                    Spacer()
+                                    Text("$500 of 1,200")
+                                        .font((Font.custom("DIN Alternate Bold", size: 12)))
+                                        .foregroundColor(.gray)
+                                }
+                            }
                         }
-                    }
-                }
-                .padding(.leading, 50)
-                .padding(.trailing, 50)
-                .padding(.top, 5)
-                Rectangle()
-                    .fill(Color(.systemGray6))
-                    .frame(height: 1)
-                    .padding(.leading, 40)
-                    .padding(.trailing, 40)
-                    .padding(.top, 5)
-                
-                HStack(){
-                    ZStack(){
-                        Circle()
-                            .stroke(Color(.systemGray6), lineWidth: 3)
-                            .frame(width: 40, height:40)
-                        Circle()
-                            .trim(from: 0.0, to: 0.6)
-                            .stroke(Color(.systemOrange), lineWidth: 3)
-                            .frame(width: 40, height:40)
-                            .rotationEffect(.degrees(-90))
-                        Image(systemName: "house.fill")
-                            .foregroundColor(Color(.systemGray3))
-                    }
-                    
-                    VStack(spacing: 5){
-                        HStack(){
-                            Text("Bills")
-                                .font((Font.custom("DIN Alternate Bold", size: 14)))
-                                .bold()
-                            Spacer()
-                            
-                        }
-                        HStack(){
-                            Text("$700 left")
-                                .font((Font.custom("DIN Alternate Bold", size: 12)))
-                                .foregroundColor(.gray)
-                            Spacer()}
+                        .padding(.leading, 50)
+                        .padding(.trailing, 50)
+                        .padding(.top, 5)
+                        Rectangle()
+                            .fill(Color(.systemGray6))
+                            .frame(height: 1)
+                            .padding(.leading, 40)
+                            .padding(.trailing, 40)
+                            .padding(.top, 5)
                         
-                    }
-                    Spacer()
-                    VStack(spacing: 5){
                         HStack(){
+                            ZStack(){
+                                Circle()
+                                    .stroke(Color(.systemGray6), lineWidth: 3)
+                                    .frame(width: 40, height:40)
+                                Circle()
+                                    .trim(from: 0.0, to: 0.6)
+                                    .stroke(Color(.systemOrange), lineWidth: 3)
+                                    .frame(width: 40, height:40)
+                                    .rotationEffect(.degrees(-90))
+                                Image(systemName: "house.fill")
+                                    .foregroundColor(Color(.systemGray3))
+                            }
+                            
+                            VStack(spacing: 5){
+                                HStack(){
+                                    Text("Bills")
+                                        .font((Font.custom("DIN Alternate Bold", size: 14)))
+                                        .bold()
+                                    Spacer()
+                                    
+                                }
+                                HStack(){
+                                    Text("$700 left")
+                                        .font((Font.custom("DIN Alternate Bold", size: 12)))
+                                        .foregroundColor(.gray)
+                                    Spacer()}
+                                
+                            }
                             Spacer()
-                            Text("$1,200")
-                                .font((Font.custom("DIN Alternate Bold", size: 14)))
-                                .foregroundColor(Color(.blue))
-                                .bold()
+                            VStack(spacing: 5){
+                                HStack(){
+                                    Spacer()
+                                    Text("$1,200")
+                                        .font((Font.custom("DIN Alternate Bold", size: 14)))
+                                        .foregroundColor(Color(.blue))
+                                        .bold()
+                                }
+                                HStack(){
+                                    Spacer()
+                                    Text("$500 of 1,200")
+                                        .font((Font.custom("DIN Alternate Bold", size: 12)))
+                                        .foregroundColor(.gray)
+                                }
+                            }
                         }
-                        HStack(){
-                            Spacer()
-                            Text("$500 of 1,200")
-                                .font((Font.custom("DIN Alternate Bold", size: 12)))
-                                .foregroundColor(.gray)
-                        }
+                        .padding(.leading, 50)
+                        .padding(.trailing, 50)
+                        .padding(.top, 10)
                     }
                 }
-                .padding(.leading, 50)
-                .padding(.trailing, 50)
-                .padding(.top, 10)
-            }
-        }
                 .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
             }
-
+            
             else {
-            ZStack(alignment: .top){
-                Rectangle()
-                    .fill(Color(.white))
-                    .frame(width: 375, height: 350 )
-                    .cornerRadius(20.0)
-                    .shadow(color: Color.gray.opacity(0.25), radius: 5, x: 0, y: 0)
-                VStack(spacing: 10){
-                    HStack(){
-                        Text("Edit Budgets")
-                            .font((Font.custom("DIN Alternate Bold", size: 20)))
-                        Spacer()
-                        Button(action: { self.editBudgets = false;
-                                withAnimation { self.degrees -= 180;} }) {
-                            Image(systemName: "checkmark")
-                                .imageScale(.medium)
-                                .foregroundColor(Color(.black))
+                ZStack(alignment: .top){
+                    Rectangle()
+                        .fill(Color(.white))
+                        .frame(width: 375, height: 350 )
+                        .cornerRadius(20.0)
+                        .shadow(color: Color.gray.opacity(0.25), radius: 5, x: 0, y: 0)
+                    VStack(spacing: 10){
+                        HStack(){
+                            Text("Edit Budgets")
+                                .font((Font.custom("DIN Alternate Bold", size: 20)))
+                            Spacer()
+                            Button(action: { self.editBudgets = false;
+                                    withAnimation { self.degrees -= 180;} }) {
+                                Image(systemName: "checkmark")
+                                    .imageScale(.medium)
+                                    .foregroundColor(Color(.black))
+                            }
                         }
-                    }
-                    .padding(.trailing, 40)
-                    .padding(.leading, 50)
-                    .padding(.top, 20)
-                    
-                    HStack(){
-                        ZStack{
-                            Circle()
-                                .stroke(Color(.white), lineWidth: 3)
-                                .frame(width: 40, height:40)
-                            Image(systemName: "car.fill")
-                                .foregroundColor(Color(.blue))
+                        .padding(.trailing, 40)
+                        .padding(.leading, 50)
+                        .padding(.top, 20)
+                        
+                        HStack(){
+                            ZStack{
+                                Circle()
+                                    .stroke(Color(.white), lineWidth: 3)
+                                    .frame(width: 40, height:40)
+                                Image(systemName: "car.fill")
+                                    .foregroundColor(Color(.blue))
+                            }
+                            VStack(spacing: 5){
+                                HStack(){
+                                    Spacer()
+                                    Text("Auto & Transport")
+                                        .font((Font.custom("DIN Alternate Bold", size: 16)))
+                                        .bold()
+                                    Spacer()
+                                    
+                                }
+                            }
+                            Spacer()
+                            VStack(spacing: 5){
+                                HStack(){
+                                    Spacer()
+                                    Text("$1,200")
+                                        .font((Font.custom("DIN Alternate Bold", size: 20)))
+                                        .foregroundColor(Color(.blue))
+                                        .bold()
+                                }
+                            }
                         }
-                        VStack(spacing: 5){
+                        .padding(.leading, 50)
+                        .padding(.trailing, 50)
+                        .padding(.top, 20)
+                        Rectangle()
+                            .fill(Color(.systemGray6))
+                            .frame(height: 1)
+                            .padding(.leading, 40)
+                            .padding(.trailing, 40)
+                            .padding(.top, 5)
+                        
+                        HStack(){
+                            ZStack{
+                                Circle()
+                                    .stroke(Color(.white), lineWidth: 3)
+                                    .frame(width: 40, height:40)
+                                Image(systemName: "cart.fill")
+                                    .foregroundColor(Color(.systemTeal))
+                            }
                             HStack(){
+                                Text("Food & Restaurants")
+                                    .font((Font.custom("DIN Alternate Bold", size: 16)))
+                                    .bold()
                                 Spacer()
-                                Text("Auto & Transport")
+                            }
+                            Spacer()
+                            Text("$1,200")
+                                .font((Font.custom("DIN Alternate Bold", size: 20)))
+                                .foregroundColor(Color(.blue))
+                                .bold()
+                        }
+                        .padding(.leading, 50)
+                        .padding(.trailing, 50)
+                        .padding(.top, 5)
+                        Rectangle()
+                            .fill(Color(.systemGray6))
+                            .frame(height: 1)
+                            .padding(.leading, 40)
+                            .padding(.trailing, 40)
+                            .padding(.top, 5)
+                        HStack(){
+                            ZStack{
+                                Circle()
+                                    .stroke(Color(.white), lineWidth: 3)
+                                    .frame(width: 40, height:40)
+                                Image(systemName: "gamecontroller.fill")
+                                    .foregroundColor(Color(.systemPink))
+                            }
+                            HStack(){
+                                Text("Entertainment")
                                     .font((Font.custom("DIN Alternate Bold", size: 16)))
                                     .bold()
                                 Spacer()
                                 
                             }
-                        }
-                        Spacer()
-                        VStack(spacing: 5){
+                            Spacer()
                             HStack(){
                                 Spacer()
                                 Text("$1,200")
@@ -535,114 +599,50 @@ struct BudgetCardView : View {
                                     .bold()
                             }
                         }
-                    }
-                    .padding(.leading, 50)
-                    .padding(.trailing, 50)
-                    .padding(.top, 20)
-                    Rectangle()
-                        .fill(Color(.systemGray6))
-                        .frame(height: 1)
-                        .padding(.leading, 40)
-                        .padding(.trailing, 40)
+                        .padding(.leading, 50)
+                        .padding(.trailing, 50)
                         .padding(.top, 5)
-                    
-                    HStack(){
-                        ZStack{
-                            Circle()
-                                .stroke(Color(.white), lineWidth: 3)
-                                .frame(width: 40, height:40)
-                            Image(systemName: "cart.fill")
-                                .foregroundColor(Color(.systemTeal))
-                        }
+                        Rectangle()
+                            .fill(Color(.systemGray6))
+                            .frame(height: 1)
+                            .padding(.leading, 40)
+                            .padding(.trailing, 40)
+                            .padding(.top, 5)
+                        
                         HStack(){
-                            Text("Food & Restaurants")
-                                .font((Font.custom("DIN Alternate Bold", size: 16)))
-                                .bold()
+                            ZStack{
+                                Circle()
+                                    .stroke(Color(.white), lineWidth: 3)
+                                    .frame(width: 40, height:40)
+                                Image(systemName: "house.fill")
+                                    .foregroundColor(Color(.systemOrange))
+                            }
+                            HStack(){
+                                Text("Bills")
+                                    .font((Font.custom("DIN Alternate Bold", size: 16)))
+                                    .bold()
+                                Spacer()
+                            }
                             Spacer()
+                            HStack(){
+                                Spacer()
+                                Text("$1,200")
+                                    .font((Font.custom("DIN Alternate Bold", size: 20)))
+                                    .foregroundColor(Color(.blue))
+                                    .bold()
+                            }
                         }
-                        Spacer()
-                        Text("$1,200")
-                            .font((Font.custom("DIN Alternate Bold", size: 20)))
-                            .foregroundColor(Color(.blue))
-                            .bold()
+                        .padding(.leading, 50)
+                        .padding(.trailing, 50)
+                        .padding(.top, 10)
                     }
-                    .padding(.leading, 50)
-                    .padding(.trailing, 50)
-                    .padding(.top, 5)
-                    Rectangle()
-                        .fill(Color(.systemGray6))
-                        .frame(height: 1)
-                        .padding(.leading, 40)
-                        .padding(.trailing, 40)
-                        .padding(.top, 5)
-                    HStack(){
-                        ZStack{
-                            Circle()
-                                .stroke(Color(.white), lineWidth: 3)
-                                .frame(width: 40, height:40)
-                            Image(systemName: "gamecontroller.fill")
-                                .foregroundColor(Color(.systemPink))
-                        }
-                        HStack(){
-                            Text("Entertainment")
-                                .font((Font.custom("DIN Alternate Bold", size: 16)))
-                                .bold()
-                            Spacer()
-                            
-                        }
-                        Spacer()
-                        HStack(){
-                            Spacer()
-                            Text("$1,200")
-                                .font((Font.custom("DIN Alternate Bold", size: 20)))
-                                .foregroundColor(Color(.blue))
-                                .bold()
-                        }
-                    }
-                    .padding(.leading, 50)
-                    .padding(.trailing, 50)
-                    .padding(.top, 5)
-                    Rectangle()
-                        .fill(Color(.systemGray6))
-                        .frame(height: 1)
-                        .padding(.leading, 40)
-                        .padding(.trailing, 40)
-                        .padding(.top, 5)
-                    
-                    HStack(){
-                        ZStack{
-                            Circle()
-                                .stroke(Color(.white), lineWidth: 3)
-                                .frame(width: 40, height:40)
-                            Image(systemName: "house.fill")
-                                .foregroundColor(Color(.systemOrange))
-                        }
-                        HStack(){
-                            Text("Bills")
-                                .font((Font.custom("DIN Alternate Bold", size: 16)))
-                                .bold()
-                            Spacer()
-                        }
-                        Spacer()
-                        HStack(){
-                            Spacer()
-                            Text("$1,200")
-                                .font((Font.custom("DIN Alternate Bold", size: 20)))
-                                .foregroundColor(Color(.blue))
-                                .bold()
-                        }
-                    }
-                    .padding(.leading, 50)
-                    .padding(.trailing, 50)
-                    .padding(.top, 10)
                 }
             }
         }
-        }
         .rotation3DEffect(.degrees(degrees), axis: (x: 0, y: 1, z: 0))
         .animation(.easeInOut)
-}
-
+    }
+    
 }
 
 struct BarChartDashView: View {
@@ -663,11 +663,11 @@ struct BarChartDashView: View {
                         ZStack{
                             Rectangle()
                                 .fill(wmy == 0 ?
-                                                    
+                                        
                                         (LinearGradient(gradient: Gradient(colors: [ Color(.systemBlue),Color(.cyan)]), startPoint: .leading, endPoint: .trailing))
-                                    :
-                                                    
-                                                    (LinearGradient(gradient: Gradient(colors: [ Color(.systemGray5)]), startPoint: .trailing, endPoint: .leading)))
+                                        :
+                                        
+                                        (LinearGradient(gradient: Gradient(colors: [ Color(.systemGray5)]), startPoint: .trailing, endPoint: .leading)))
                                 .frame(width: 75, height: 40)
                                 .cornerRadius(30)
                             Text("Week")
@@ -679,11 +679,11 @@ struct BarChartDashView: View {
                         ZStack{
                             Rectangle()
                                 .fill(wmy == 1 ?
-                                                    
-                                                    (LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
-                                    :
-                                                    
-                                                    (LinearGradient(gradient: Gradient(colors: [ Color(.systemGray5)]), startPoint: .trailing, endPoint: .leading)))
+                                        
+                                        (LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
+                                        :
+                                        
+                                        (LinearGradient(gradient: Gradient(colors: [ Color(.systemGray5)]), startPoint: .trailing, endPoint: .leading)))
                                 .frame(width: 75, height: 40)
                                 .cornerRadius(30)
                             Text("Month")
@@ -695,11 +695,11 @@ struct BarChartDashView: View {
                         ZStack{
                             Rectangle()
                                 .fill(wmy == 2 ?
-                                                    
+                                        
                                         (LinearGradient(gradient: Gradient(colors: [ Color(.systemPink),Color(.systemOrange)]), startPoint: .trailing, endPoint: .leading))
-                                    :
-                                                    
-                                                    (LinearGradient(gradient: Gradient(colors: [ Color(.systemGray5)]), startPoint: .trailing, endPoint: .leading)))
+                                        :
+                                        
+                                        (LinearGradient(gradient: Gradient(colors: [ Color(.systemGray5)]), startPoint: .trailing, endPoint: .leading)))
                                 .frame(width: 75, height: 40)
                                 .cornerRadius(30)
                             Text("Year")
@@ -1042,32 +1042,199 @@ struct SpendingCardView : View {
 
 struct IncomeCardView: View {
     
+    @EnvironmentObject var viewRouter: ViewRouter
+    
     var body : some View {
+        
         ZStack(alignment: .top){
             Rectangle()
                 .fill(Color(.white))
-                .frame(width: 375, height: 150 )
+                .frame(width: 375, height: 300 )
                 .cornerRadius(20.0)
                 .shadow(color: Color.gray.opacity(0.25), radius: 5, x: 0, y: 0)
-            HStack(){
-                Text("Income")
-                    .font(.headline)
-                    .bold()
-                Spacer()
-                Button(action: { print("IncomeDetailView clicked" )} ) {
-                    Image(systemName: "chevron.forward")
-                        .imageScale(.large)
-                        .foregroundColor(Color(.black))
+            VStack(spacing: 10){
+                HStack(){
+                    Text("Income")
+                        .font(Font.custom("DIN Alternate Bold", size: 20))
+                    Spacer()
+                    // SpendingDetailView Button Action
+                    Button(action:{
+                            viewRouter.currentPage = .page4;} )
+                    {
+                        Image(systemName: "chevron.forward")
+                            .imageScale(.large)
+                            .foregroundColor(Color(.black))
+                    }
                 }
-                .padding(.trailing, 50)
+                .padding(.top, 20)
+                VStack() {
+                    ZStack(){
+                        VStack(spacing: 10){
+                            HStack(){
+                                HStack(){
+                                    Rectangle()
+                                        .foregroundColor(Color(.systemGreen))
+                                        .frame(width: 3, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                        .cornerRadius(10.0)
+                                    VStack(alignment: .leading, spacing:5) {
+                                        Text("Work")
+                                            .font(Font.custom("DIN Alternate Bold", size: 14))
+                                            .bold()
+                                        HStack(){
+                                            Text("Bank of America - 3/15/21")
+                                                .font(Font.custom("DIN Alternate Bold", size: 12))
+                                                .foregroundColor(.gray)
+                                        }
+                                    }
+                                    .padding(.leading, 5)
+                                    .padding(.top, 10)
+                                }
+                                Spacer()
+                                VStack(spacing: 5){
+                                    HStack(){
+                                        Spacer()
+                                        Text("$1200.00")
+                                            .font(Font.custom("DIN Alternate Bold", size: 14))
+                                            .foregroundColor(.green)
+                                            .bold()
+                                    }
+                                    HStack(){
+                                        Spacer()
+                                        Text("Pending")
+                                            .font(Font.custom("DIN Alternate Bold", size: 12))
+                                            .foregroundColor(.gray)
+                                    }
+                                }
+                            }
+                            .padding(.top, 10)
+                            Rectangle()
+                                .fill(Color(.systemGray6))
+                                .frame(height: 1)
+                            
+                            // Transaction 2
+                            HStack(){
+                                HStack(){
+                                    Rectangle()
+                                        .foregroundColor(Color(.systemGreen))
+                                        .frame(width: 3, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                        .cornerRadius(10.0)
+                                    VStack(alignment: .leading, spacing:5) {
+                                        Text("Work")
+                                            .font(Font.custom("DIN Alternate Bold", size: 14))
+                                            .bold()
+                                        HStack(){
+                                            Text("Bank of America - 3/10/21")
+                                                .font(Font.custom("DIN Alternate Bold", size: 12))
+                                                .foregroundColor(.gray)
+                                        }
+                                    }
+                                    .padding(.leading, 5)
+                                }
+                                Spacer()
+                                VStack(spacing: 5){
+                                    HStack(){
+                                        Spacer()
+                                        Text("$1200.00")
+                                            .font(Font.custom("DIN Alternate Bold", size: 14))
+                                            .foregroundColor(.green)
+                                            .bold()
+                                    }
+                                    HStack(){
+                                        Spacer()
+                                        Text("Pending")
+                                            .font(Font.custom("DIN Alternate Bold", size: 12))
+                                            .foregroundColor(.gray)
+                                    }
+                                }
+                            }
+                            Rectangle()
+                                .fill(Color(.systemGray6))
+                                .frame(height: 1)
+
+                            // Transaction 3
+                            HStack(){
+                                HStack(){
+                                    Rectangle()
+                                        .foregroundColor(Color(.systemGreen))
+                                        .frame(width: 3, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                        .cornerRadius(10.0)
+                                    VStack(alignment: .leading, spacing:5) {
+                                        Text("Work")
+                                            .font(Font.custom("DIN Alternate Bold", size: 14))
+                                            .bold()
+                                        HStack(){
+                                            Text("Bank of America - 3/8/21")
+                                                .font(Font.custom("DIN Alternate Bold", size: 12))
+                                                .foregroundColor(.gray)
+                                        }
+                                    }
+                                    .padding(.leading, 5)
+                                }
+                                Spacer()
+                                VStack(spacing: 5){
+                                    HStack(){
+                                        Spacer()
+                                        Text("$1200.00")
+                                            .font(Font.custom("DIN Alternate Bold", size: 14))
+                                            .foregroundColor(.green)
+                                            .bold()
+                                    }
+                                    HStack(){
+                                        Spacer()
+                                        Text("Processed")
+                                            .font(Font.custom("DIN Alternate Bold", size: 12))
+                                            .foregroundColor(.gray)
+                                    }
+                                }
+                            }
+                            Rectangle()
+                                .fill(Color(.systemGray6))
+                                .frame(height: 1)
+                            HStack(){
+                                HStack(){
+                                    Rectangle()
+                                        .foregroundColor(Color(.systemGreen))
+                                        .frame(width: 3, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                        .cornerRadius(10.0)
+                                    VStack(alignment: .leading, spacing:5) {
+                                        Text("Work")
+                                            .font(Font.custom("DIN Alternate Bold", size: 14))
+                                            .bold()
+                                        HStack(){
+                                            Text("Bank of America - 3/7/21")
+                                                .font(Font.custom("DIN Alternate Bold", size: 12))
+                                                .foregroundColor(.gray)
+                                        }
+                                    }
+                                }
+                                Spacer()
+                                VStack(spacing: 5){
+                                    HStack(){
+                                        Spacer()
+                                        Text("$1300.00")
+                                            .font(Font.custom("DIN Alternate Bold", size: 14))
+                                            .foregroundColor(.green)
+                                            .bold()
+                                    }
+                                    HStack(){
+                                        Spacer()
+                                        Text("Processed")
+                                            .font(Font.custom("DIN Alternate Bold", size: 12))
+                                            .foregroundColor(.gray)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
                 
             }
-            .padding(.leading, 50)
-            .padding(.top, 20)
+                .padding(.leading, 50)
+                .padding(.trailing, 40)
+            }
         }
-        
     }
-}
+
 
 struct MenuView: View {
     @EnvironmentObject var viewRouter: ViewRouter
