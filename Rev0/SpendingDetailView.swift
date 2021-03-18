@@ -81,7 +81,7 @@ struct SpendingDetailView: View {
                         }
                         .padding(.leading, 15)
                         Spacer()
-                        Text("Spending").font(.title3).bold()
+                        Text("Spending")                        .font(Font.custom("DIN Alternate Bold", size: 24))
                             .padding(.top)
                         Spacer()
                         Button(action: { print("dot menu clicked" )} ) {
@@ -94,15 +94,15 @@ struct SpendingDetailView: View {
                         .padding(.trailing, 15)
                     }
                         SpendingPieView(selector: $selector)
-                            .padding(.top, 30)
+                            .padding(.top, 50)
                             .animation(Animation.interactiveSpring())
                     Spacer()
                     SpendingTableView(selector: $selector)
-                        .padding(.top, 30)
+                        .padding(.top, 50)
                     BarChartDashView()
                     
                 }
-                .padding(.top, 20)
+                .padding(.top, 50)
             }
         }
         .background(VStack(){
@@ -143,7 +143,7 @@ struct SpendingPieView : View {
                 .rotationEffect(.degrees(-90))
             VStack(){
                 Text(String(format: "%.0f", selector.percentage*100) + "%")
-                    .font(.largeTitle)
+                    .font(Font.custom("DIN Alternate Bold", size: 50))
                     .foregroundColor(.black)
                     .padding(.leading)
             }
@@ -182,8 +182,7 @@ struct SpendingTableView : View {
                     Spacer()
                     // Category Text
                     Text(selector.name)
-                        .font(.title3)
-                        .bold()
+                        .font(Font.custom("DIN Alternate Bold", size: 22))
                     Spacer()
                     // forward arrow
                     Button(action: {

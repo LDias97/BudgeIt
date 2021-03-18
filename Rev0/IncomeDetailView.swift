@@ -66,7 +66,7 @@ struct IncomeDetailView: View {
                     }
                     .padding(.leading, 15)
                     Spacer()
-                    Text("Income").font(.title3).bold()
+                    Text("Income")                        .font(Font.custom("DIN Alternate Bold", size: 24))
                     Spacer()
                     Button(action: { print("dot menu clicked" )} ) {
                         Image(systemName: "ellipsis")
@@ -106,7 +106,7 @@ struct IncomePieView : View {
                 .rotationEffect(.degrees(-90))
             VStack(){
                 Text(String(format: "%.0f", selector.percentage*100) + "%")
-                    .font(.title)
+                    .font(Font.custom("DIN Alternate Bold", size: 50))
             }
         }
     }
@@ -140,8 +140,7 @@ struct IncomeTableView : View {
                     Spacer()
                     // Category Text
                     Text(selector.name)
-                        .font(.title3)
-                        .bold()
+                        .font(Font.custom("DIN Alternate Bold", size: 22))
                     Spacer()
                     // forward arrow
                     Button(action: {

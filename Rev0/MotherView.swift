@@ -7,6 +7,11 @@ enum Page {
     case page4 // Spending
     case page5 // BudgeIt
     case page6 // Income
+    case page7 // Notifications
+    case page8 // Profile
+    case page9 // Settings
+    case page10 // Help
+
 }
 
 struct MotherView: View {
@@ -27,7 +32,16 @@ struct MotherView: View {
             BudgetDetailView()
         case .page6:
             IncomeDetailView()
+        case .page7:
+            NotificationsView()
+        case .page8:
+            ProfileView()
+        case .page9:
+            SettingsView()
+        case .page10:
+            HelpView()
         }
+        
     }
 }
 

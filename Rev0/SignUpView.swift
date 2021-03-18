@@ -87,11 +87,11 @@ struct SignUpView: View {
             ZStack(){
                 VStack(spacing: 20){
                 Rectangle()
-                    .fill(Color.blue)
+                    .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
                     .frame(width: 370, height: 60)
                     .cornerRadius(30.0)
                 Rectangle()
-                    .fill(Color.blue)
+                    .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
                     .frame(width: 370, height: 60)
                     .cornerRadius(30.0)
                 }

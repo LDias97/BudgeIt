@@ -1235,7 +1235,6 @@ struct IncomeCardView: View {
         }
     }
 
-
 struct MenuView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @Binding var showMenu: Bool
@@ -1253,7 +1252,7 @@ struct MenuView: View {
                             .fill(Color(.systemGray3))
                             .frame(height: 1)
                             .padding(.top, 30)
-                        Button(action: { withAnimation(.default){showMenu.toggle()} } ) {
+                        Button(action: { viewRouter.currentPage = .page8; } ){
                             HStack {
                                 Image(systemName: "person")
                                     .foregroundColor(darkPurple)
@@ -1269,7 +1268,7 @@ struct MenuView: View {
                             }
                         }
                         .padding(.top, 30)
-                        Button(action: { print("Notifications button clicked" )} ) {
+                        Button(action: { viewRouter.currentPage = .page7; } ) {
                             HStack {
                                 Image(systemName: "bell")
                                     .foregroundColor(darkPurple)
@@ -1289,7 +1288,7 @@ struct MenuView: View {
                             .fill(Color(.systemGray3))
                             .frame(height: 1)
                             .padding(.top,30)
-                        Button(action: { viewRouter.currentPage = .page1;} ) {
+                        Button(action: { viewRouter.currentPage = .page9;} ) {
                             HStack {
                                 Image(systemName: "gearshape")
                                     .foregroundColor(darkPurple)
@@ -1305,7 +1304,7 @@ struct MenuView: View {
                             }
                         }
                         .padding(.top, 30)
-                        Button(action: { viewRouter.currentPage = .page1;} ) {
+                        Button(action: { viewRouter.currentPage = .page10;} ) {
                             HStack {
                                 Image(systemName: "questionmark.circle")
                                     .foregroundColor(darkPurple)
