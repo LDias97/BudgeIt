@@ -41,7 +41,6 @@ struct MotherView: View {
         case .page10:
             HelpView()
         }
-        
     }
 }
 

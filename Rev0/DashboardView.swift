@@ -1,4 +1,5 @@
 import SwiftUI
+import Firebase
 
 let darkPurple = Color(red: 96/255, green: 96/255, blue: 235/255)
 let lightPurple = Color(red: 177/255, green: 127/255, blue: 248/255)
@@ -1267,7 +1268,7 @@ struct MenuView: View {
                                     .imageScale(.small)
                             }
                         }
-                        .padding(.top, 30)
+                        .padding(.top, 50)
                         Button(action: { viewRouter.currentPage = .page7; } ) {
                             HStack {
                                 Image(systemName: "bell")
@@ -1284,10 +1285,6 @@ struct MenuView: View {
                             }
                         }
                         .padding(.top, 50)
-                        Rectangle()
-                            .fill(Color(.systemGray3))
-                            .frame(height: 1)
-                            .padding(.top,30)
                         Button(action: { viewRouter.currentPage = .page9;} ) {
                             HStack {
                                 Image(systemName: "gearshape")
@@ -1303,7 +1300,7 @@ struct MenuView: View {
                                     .imageScale(.small)
                             }
                         }
-                        .padding(.top, 30)
+                        .padding(.top, 50)
                         Button(action: { viewRouter.currentPage = .page10;} ) {
                             HStack {
                                 Image(systemName: "questionmark.circle")
@@ -1317,6 +1314,30 @@ struct MenuView: View {
                                 Image(systemName: "chevron.right")
                                     .foregroundColor(Color(.darkGray))
                                     .imageScale(.small)
+                            }
+                        }
+                        .padding(.top, 50)
+                        Rectangle()
+                            .fill(Color(.systemGray3))
+                            .frame(height: 1)
+                            .padding(.top,50)
+                        Button(action: {
+                            do{
+                                try Auth.auth().signOut();
+                                viewRouter.currentPage = .page2;
+                            }
+                            catch{
+                                debugPrint(error.localizedDescription)
+                            }}) {
+                            HStack {
+                                Image(systemName: "arrow.down.left.circle")
+                                    .foregroundColor(darkPurple)
+                                    .imageScale(.medium)
+                                    .padding(.trailing, 10)
+                                Text("Log Out")
+                                    .foregroundColor(Color(.darkGray))
+                                    .font(.body)
+                                Spacer()
                             }
                         }
                         .padding(.top, 50)

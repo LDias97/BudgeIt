@@ -1,14 +1,8 @@
-//
-//  SignUpView.swift
-//  Rev0
-//
-//  Created by Ben on 2/22/21.
-//
-
 import SwiftUI
+import Firebase
 
 struct SignUpView: View {
-
+    
     @EnvironmentObject var viewRouter: ViewRouter
     @State var fullname: String = ""
     @State var email: String = ""
@@ -17,7 +11,7 @@ struct SignUpView: View {
     
     var body: some View {
         VStack(spacing: 20){
-                VStack(){
+            VStack(){
                 Image("b")
                     .resizable()
                     .frame(width:175, height:175)
@@ -25,7 +19,7 @@ struct SignUpView: View {
                 Text("Sign Up")
                     .font(.largeTitle)
                     .bold()
-                }
+            }
             ZStack{
                 Rectangle()
                     .fill(Color(.systemGray5))
@@ -86,21 +80,36 @@ struct SignUpView: View {
             
             ZStack(){
                 VStack(spacing: 20){
-                Rectangle()
-                    .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
-                    .frame(width: 370, height: 60)
-                    .cornerRadius(30.0)
-                Rectangle()
-                    .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
-                    .frame(width: 370, height: 60)
-                    .cornerRadius(30.0)
+                    Rectangle()
+                        .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
+                        .frame(width: 370, height: 60)
+                        .cornerRadius(30.0)
+                    Rectangle()
+                        .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
+                        .frame(width: 370, height: 60)
+                        .cornerRadius(30.0)
                 }
-            VStack(spacing: 60){
-                Button(action:{ viewRouter.currentPage = .page3; }) { Text("Sign Up").font(.body).foregroundColor(.white)}
+                VStack(spacing: 60){
+                    Button(action:{ signup(); viewRouter.currentPage = .page3; }) { Text("Sign Up").font(.body).foregroundColor(.white)}
                     Button(action:{print("Clicked Continue with Google")}) {Text("Continue with Google").font(.body).foregroundColor(.white) }
                 }
             }
             Button(action:{ viewRouter.currentPage = .page2;}) { Text("Already have an account? Sign In").font(.body).foregroundColor(.blue)}
+        }
+    }
+    
+    func signup() {
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+            if error != nil {
+                print(error?.localizedDescription ?? "")
+            } else {
+                if(password == confirmPassword){
+                    print("success")
+                }
+                else{
+                    print("Passwords don't match, please try again.")
+                }
+            }
         }
     }
     
