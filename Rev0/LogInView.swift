@@ -40,7 +40,7 @@ struct LogInView: View {
                 HStack{
                     Image(systemName: "lock")
                         .foregroundColor(Color(.systemGray2))
-                    TextField("Password", text: $password)
+                    SecureField("Password", text: $password)
                 }
                 .padding(.leading, 15)
             }
