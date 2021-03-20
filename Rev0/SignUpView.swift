@@ -44,6 +44,7 @@ struct SignUpView: View {
                     Image(systemName: "envelope")
                         .foregroundColor(Color(.systemGray2))
                     TextField("Email", text: $email)
+                        .autocapitalization(.none)
                 }
                 .padding(.leading, 15)
             }

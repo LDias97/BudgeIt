@@ -26,6 +26,7 @@ struct LogInView: View {
                     Image(systemName: "envelope")
                         .foregroundColor(Color(.systemGray2))
                     TextField("Email", text: $email)
+                        .autocapitalization(.none)
                 }
                 .padding(.leading, 15)
             }
@@ -41,6 +42,7 @@ struct LogInView: View {
                     Image(systemName: "lock")
                         .foregroundColor(Color(.systemGray2))
                     SecureField("Password", text: $password)
+                        .autocapitalization(.none)
                 }
                 .padding(.leading, 15)
             }
