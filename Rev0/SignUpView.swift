@@ -28,7 +28,7 @@ struct SignUpView: View {
                 HStack{
                     Image(systemName: "person")
                         .foregroundColor(Color(.systemGray2))
-                    TextField("Full Name", text: $email)
+                    TextField("Full Name", text: $fullname)
                 }
                 .padding(.leading, 15)
             }
@@ -44,6 +44,7 @@ struct SignUpView: View {
                     Image(systemName: "envelope")
                         .foregroundColor(Color(.systemGray2))
                     TextField("Email", text: $email)
+                        .autocapitalization(.none)
                 }
                 .padding(.leading, 15)
             }
@@ -57,7 +58,7 @@ struct SignUpView: View {
                 HStack{
                     Image(systemName: "lock")
                         .foregroundColor(Color(.systemGray2))
-                    TextField("Password", text: $password)
+                    SecureField("Password", text: $password)
                 }
                 .padding(.leading, 15)
             }
@@ -71,7 +72,7 @@ struct SignUpView: View {
                 HStack{
                     Image(systemName: "lock.rotation")
                         .foregroundColor(Color(.systemGray2))
-                    TextField("Confirm Password", text: $confirmPassword)
+                    SecureField("Confirm Password", text: $confirmPassword)
                 }
                 .padding(.leading, 15)
             }
