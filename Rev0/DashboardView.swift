@@ -146,10 +146,10 @@ struct DashboardView: View {
                     }
                 }
             }
-            .background(VStack(){
+            .background(
                 Rectangle()
                     .fill(Color(.systemGray6))
-            })
+            )
             .ignoresSafeArea()
             .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             HStack(){
