@@ -1,9 +1,3 @@
-//
-//  BudgetDetailView.swift
-//  Rev0
-//
-//  Created by Luann Dias on 3/3/21.
-//
 import SwiftUI
 import UserNotifications
 // import SpendingDetailView()
@@ -91,10 +85,10 @@ struct BarChartView: View {
                                 HStack{
                                     VStack(){
                                         Spacer()
-                                    Rectangle()
-                                        .fill(Color.green)
-                                        .frame(width: 40, height: 75)
-                                        .ignoresSafeArea()
+                                        Rectangle()
+                                            .fill(Color.green)
+                                            .frame(width: 40, height: 75)
+                                            .ignoresSafeArea()
                                     }
                                     // Inner ForEach loop for blue bar
                                     ForEach(0..<1) { spending in
@@ -111,7 +105,7 @@ struct BarChartView: View {
                                 Button(months[income]){ // Month labels (X-Axis)
                                     value.scrollTo(income)
                                 }
-                                    .foregroundColor(.black)
+                                .foregroundColor(.black)
                             }
                         }
                     }
@@ -133,7 +127,7 @@ struct MonthlyInfoView: View {
     var id: Int = 0
     
     @Binding var selectedMonth: Int
-
+    
     
     var body : some View {
         ScrollView(.horizontal){
@@ -163,7 +157,7 @@ struct MonthlyInfoView: View {
                                         Text("Surplus:")
                                             .foregroundColor(.black)
                                             .padding(.bottom, 5)
-                                            //.padding(.leading, 30)
+                                        //.padding(.leading, 30)
                                     }
                                 }
                                 Spacer()

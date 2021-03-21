@@ -11,7 +11,7 @@ enum Page {
     case page8 // Profile
     case page9 // Settings
     case page10 // Help
-
+    
 }
 
 struct MotherView: View {

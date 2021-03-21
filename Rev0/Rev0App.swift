@@ -1,12 +1,4 @@
-//
-//  Rev0App.swift
-//  Rev0
-//
-//  Created by Ben on 2/17/21.
-//
-
 import SwiftUI
-import Firebase
 
 @main
 struct Rev0App: App {
