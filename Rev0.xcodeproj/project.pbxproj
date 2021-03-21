@@ -27,6 +27,10 @@
 		B5FF2CBC25E8A4A20032E577 /* SpendingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF2CBB25E8A4A20032E577 /* SpendingDetailView.swift */; };
 		B5FF2CC225E8BDD60032E577 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF2CC125E8BDD60032E577 /* MotherView.swift */; };
 		B5FF2CC525E8BE1D0032E577 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF2CC425E8BE1D0032E577 /* ViewRouter.swift */; };
+		FF1F4E9526079DC100316114 /* PlaidAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1F4E9426079DC100316114 /* PlaidAPI.swift */; };
+		FF1F4EA82607B43A00316114 /* BankAccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1F4EA72607B43A00316114 /* BankAccountsView.swift */; };
+		FF1F4EAC2607B7DC00316114 /* ManageBankAccountsVCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1F4EAA2607B7DC00316114 /* ManageBankAccountsVCViewController.swift */; };
+		FF1F4EAD2607B7DC00316114 /* ManageBankAccountsVCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF1F4EAB2607B7DC00316114 /* ManageBankAccountsVCViewController.xib */; };
 		FF65818725F40F1F00D47939 /* IncomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF65818625F40F1F00D47939 /* IncomeDetailView.swift */; };
 		FFF70FBD25EFD9190042D0F2 /* BudgetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF70FBC25EFD9190042D0F2 /* BudgetDetailView.swift */; };
 /* End PBXBuildFile section */
@@ -56,6 +60,10 @@
 		B5FF2CBB25E8A4A20032E577 /* SpendingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingDetailView.swift; sourceTree = "<group>"; };
 		B5FF2CC125E8BDD60032E577 /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
 		B5FF2CC425E8BE1D0032E577 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		FF1F4E9426079DC100316114 /* PlaidAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidAPI.swift; sourceTree = "<group>"; };
+		FF1F4EA72607B43A00316114 /* BankAccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountsView.swift; sourceTree = "<group>"; };
+		FF1F4EAA2607B7DC00316114 /* ManageBankAccountsVCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageBankAccountsVCViewController.swift; sourceTree = "<group>"; };
+		FF1F4EAB2607B7DC00316114 /* ManageBankAccountsVCViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ManageBankAccountsVCViewController.xib; sourceTree = "<group>"; };
 		FF65818625F40F1F00D47939 /* IncomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeDetailView.swift; sourceTree = "<group>"; };
 		FFF70FBC25EFD9190042D0F2 /* BudgetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +119,8 @@
 		B5C6566D25DD311F00A9FABC /* Rev0 */ = {
 			isa = PBXGroup;
 			children = (
+				FF1F4E8F260798F700316114 /* Plaid */,
+				FF1F4E8C2607985F00316114 /* LogInRegister */,
 				B56FB2E826045545000A7FFA /* Model */,
 				B55AC0E326005AB6003263D6 /* Fonts */,
 				B5C6566E25DD311F00A9FABC /* Rev0App.swift */,
@@ -121,6 +131,7 @@
 				B5FF2CBB25E8A4A20032E577 /* SpendingDetailView.swift */,
 				FFF70FBC25EFD9190042D0F2 /* BudgetDetailView.swift */,
 				FF65818625F40F1F00D47939 /* IncomeDetailView.swift */,
+				FF1F4EA72607B43A00316114 /* BankAccountsView.swift */,
 				B5FF2CB725E71C990032E577 /* LogInView.swift */,
 				B5FF2CB325E71C710032E577 /* SignUpView.swift */,
 				B5FF2CC425E8BE1D0032E577 /* ViewRouter.swift */,
@@ -150,6 +161,23 @@
 				85E10DC7E99006C3824D5C35 /* Pods-Rev0.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FF1F4E8C2607985F00316114 /* LogInRegister */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LogInRegister;
+			sourceTree = "<group>";
+		};
+		FF1F4E8F260798F700316114 /* Plaid */ = {
+			isa = PBXGroup;
+			children = (
+				FF1F4E9426079DC100316114 /* PlaidAPI.swift */,
+				FF1F4EAA2607B7DC00316114 /* ManageBankAccountsVCViewController.swift */,
+				FF1F4EAB2607B7DC00316114 /* ManageBankAccountsVCViewController.xib */,
+			);
+			path = Plaid;
 			sourceTree = "<group>";
 		};
 		FF96802A25E48FA000AA432B /* Frameworks */ = {
@@ -222,6 +250,7 @@
 				B55AC0EB26005C3E003263D6 /* GillSans.ttc in Resources */,
 				B5C6567625DD312000A9FABC /* Preview Assets.xcassets in Resources */,
 				B55AC0E826005BB7003263D6 /* Menlo.ttc in Resources */,
+				FF1F4EAD2607B7DC00316114 /* ManageBankAccountsVCViewController.xib in Resources */,
 				B5C6567325DD312000A9FABC /* Assets.xcassets in Resources */,
 				B55AC0E526005B1F003263D6 /* DIN Alternate Bold.ttf in Resources */,
 				B56FB26026044D7F000A7FFA /* GoogleService-Info.plist in Resources */,
@@ -282,14 +311,17 @@
 				B55AC0F42600876C003263D6 /* HelpView.swift in Sources */,
 				B55AC0EE26008759003263D6 /* NotificationsView.swift in Sources */,
 				B56FB26F26044F78000A7FFA /* AppDelegate.swift in Sources */,
+				FF1F4EA82607B43A00316114 /* BankAccountsView.swift in Sources */,
 				B5FF2CC525E8BE1D0032E577 /* ViewRouter.swift in Sources */,
 				FFF70FBD25EFD9190042D0F2 /* BudgetDetailView.swift in Sources */,
+				FF1F4EAC2607B7DC00316114 /* ManageBankAccountsVCViewController.swift in Sources */,
 				B5FF2CC225E8BDD60032E577 /* MotherView.swift in Sources */,
 				B5FF2CBC25E8A4A20032E577 /* SpendingDetailView.swift in Sources */,
 				B5FF2CB525E71C710032E577 /* SignUpView.swift in Sources */,
 				B5FF2CB825E71C990032E577 /* LogInView.swift in Sources */,
 				FF65818725F40F1F00D47939 /* IncomeDetailView.swift in Sources */,
 				B5FF2CB425E71C710032E577 /* DashboardView.swift in Sources */,
+				FF1F4E9526079DC100316114 /* PlaidAPI.swift in Sources */,
 				B56FB2EA26045555000A7FFA /* UserModel.swift in Sources */,
 				B55AC0F126008765003263D6 /* SettingsView.swift in Sources */,
 			);

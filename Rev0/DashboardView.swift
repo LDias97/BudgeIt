@@ -155,7 +155,7 @@ struct DashboardView: View {
             HStack(){
                 MenuView(showMenu: $showMenu)
                     .offset(x: self.showMenu ? 0 : 0 - (UIScreen.main.bounds.width))
-                    .background(Color.primary.opacity(self.showMenu ? 0.6 : 0))
+                    //.background(Color.primary.opacity(self.showMenu ? 0.6 : 0))
                     .ignoresSafeArea()
                 Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
             }

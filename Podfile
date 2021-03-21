@@ -6,6 +6,7 @@ target 'Rev0' do
   use_frameworks!
 	pod 'Plaid'
 	pod 'Firebase/Auth'
+  pod 'Firebase/Functions'
   # Pods for Rev0
 
 end
