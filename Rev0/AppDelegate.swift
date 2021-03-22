@@ -1,5 +1,7 @@
 import UIKit
+import LinkKit
 import Firebase
+import FirebaseFunctions
 
 class AppDelegate: NSObject, UIApplicationDelegate {
 
