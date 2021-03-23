@@ -31,6 +31,9 @@
 		B5FF2CC225E8BDD60032E577 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF2CC125E8BDD60032E577 /* MotherView.swift */; };
 		B5FF2CC525E8BE1D0032E577 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF2CC425E8BE1D0032E577 /* ViewRouter.swift */; };
 		FF65818725F40F1F00D47939 /* IncomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF65818625F40F1F00D47939 /* IncomeDetailView.swift */; };
+		FF7E786626094BF1001F3BBD /* Plaid+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7E786526094BF1001F3BBD /* Plaid+Ext.swift */; };
+		FF7E7879260968EF001F3BBD /* BankAccountsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7E7877260968EF001F3BBD /* BankAccountsVC.swift */; };
+		FF7E787A260968EF001F3BBD /* BankAccountsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7E7878260968EF001F3BBD /* BankAccountsVC.xib */; };
 		FFF70FBD25EFD9190042D0F2 /* BudgetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF70FBC25EFD9190042D0F2 /* BudgetDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +66,9 @@
 		B5FF2CC125E8BDD60032E577 /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
 		B5FF2CC425E8BE1D0032E577 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		FF65818625F40F1F00D47939 /* IncomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeDetailView.swift; sourceTree = "<group>"; };
+		FF7E786526094BF1001F3BBD /* Plaid+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plaid+Ext.swift"; sourceTree = "<group>"; };
+		FF7E7877260968EF001F3BBD /* BankAccountsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountsVC.swift; sourceTree = "<group>"; };
+		FF7E7878260968EF001F3BBD /* BankAccountsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankAccountsVC.xib; sourceTree = "<group>"; };
 		FFF70FBC25EFD9190042D0F2 /* BudgetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,13 +89,15 @@
 			children = (
 				B55AC0E426005B1F003263D6 /* DIN Alternate Bold.ttf */,
 			);
-			path = Fonts;
+			name = Fonts;
+			path = ../Fonts;
 			sourceTree = "<group>";
 		};
 		B56FB2E826045545000A7FFA /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				B56FB2E926045555000A7FFA /* UserModel.swift */,
+				B55AC0E326005AB6003263D6 /* Fonts */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -118,7 +126,6 @@
 				B5CC2A7826083E2C00847A4B /* Dashboard */,
 				FF1F4E8F260798F700316114 /* Plaid */,
 				B56FB2E826045545000A7FFA /* Model */,
-				B55AC0E326005AB6003263D6 /* Fonts */,
 				B5C6566E25DD311F00A9FABC /* Rev0App.swift */,
 				B55AC0ED26008759003263D6 /* NotificationsView.swift */,
 				B55AC0F626008795003263D6 /* ProfileView.swift */,
@@ -173,6 +180,9 @@
 			children = (
 				B5CC29F326082A5700847A4B /* PlaidAPI.swift */,
 				B5CC29F726082A6400847A4B /* ManageBankAccountsVC.swift */,
+				FF7E7877260968EF001F3BBD /* BankAccountsVC.swift */,
+				FF7E7878260968EF001F3BBD /* BankAccountsVC.xib */,
+				FF7E786526094BF1001F3BBD /* Plaid+Ext.swift */,
 			);
 			path = Plaid;
 			sourceTree = "<group>";
@@ -244,6 +254,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF7E787A260968EF001F3BBD /* BankAccountsVC.xib in Resources */,
 				B5C6567625DD312000A9FABC /* Preview Assets.xcassets in Resources */,
 				B5C6567325DD312000A9FABC /* Assets.xcassets in Resources */,
 				B55AC0E526005B1F003263D6 /* DIN Alternate Bold.ttf in Resources */,
@@ -306,6 +317,7 @@
 				B55AC0F42600876C003263D6 /* HelpView.swift in Sources */,
 				B55AC0EE26008759003263D6 /* NotificationsView.swift in Sources */,
 				B56FB26F26044F78000A7FFA /* AppDelegate.swift in Sources */,
+				FF7E786626094BF1001F3BBD /* Plaid+Ext.swift in Sources */,
 				B5CC29F826082A6400847A4B /* ManageBankAccountsVC.swift in Sources */,
 				B5FF2CC525E8BE1D0032E577 /* ViewRouter.swift in Sources */,
 				B5CC2A97260842F600847A4B /* FontExt.swift in Sources */,
@@ -313,6 +325,7 @@
 				FFF70FBD25EFD9190042D0F2 /* BudgetDetailView.swift in Sources */,
 				B5FF2CC225E8BDD60032E577 /* MotherView.swift in Sources */,
 				B5FF2CBC25E8A4A20032E577 /* SpendingDetailView.swift in Sources */,
+				FF7E7879260968EF001F3BBD /* BankAccountsVC.swift in Sources */,
 				B5FF2CB525E71C710032E577 /* SignUpView.swift in Sources */,
 				B5FF2CB825E71C990032E577 /* LogInView.swift in Sources */,
 				FF65818725F40F1F00D47939 /* IncomeDetailView.swift in Sources */,

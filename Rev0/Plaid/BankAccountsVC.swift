@@ -1,42 +1,51 @@
-//import UIKit
-//import LinkKit
-//import FirebaseFunctions
 //
-//class ManageBankAccountsVC: UIViewController {
+//  BankAccountsVC.swift
+//  Rev0
 //
-//    @IBOutlet weak var tableView: UITableView!
+//  Created by Luann Dias on 3/22/21.
 //
-//    var banks = [Bank]()
-//    var linkHandler: Handler?
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        banks = Wallet.instance.bankAccounts
-//
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//        tableView.tableFooterView = UIView()
-//    }
-//
-//    @IBAction func addBankAccountClicked(_ sender: Any) {
-//        presentPlaidLinkUsingLinkToken()
-//    }
-//}
-//
-//extension ManageBankAccountsVC: UITableViewDelegate, UITableViewDataSource {
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return banks.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let bank = banks[indexPath.row]
-//        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "BankCell")
-//        cell.textLabel?.text = bank.bankName
-//        cell.detailTextLabel?.text = "Ending In: \(bank.lastFour)"
-//        return cell
-//    }
-//
+
+import UIKit
+import LinkKit
+import FirebaseFunctions
+
+class BankAccountsVC: UIViewController {
+
+    @IBOutlet weak var tableView: UITableView!
+
+    var banks = [String]() // Originally type Banks
+    var linkHandler: Handler?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // banks = Wallet.instance.bankAccounts
+        
+        banks.append("Bank of America")
+
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView()
+    }
+
+    @IBAction func addBankAccountClicked(_ sender: Any) {
+        presentPlaidLinkUsingLinkToken()
+    }
+}
+
+extension BankAccountsVC: UITableViewDelegate, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return banks.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let bank = banks[indexPath.row]
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "BankCell")
+        cell.textLabel?.text = bank // .bankName
+        // cell.detailTextLabel?.text = "Ending In: \(bank.lastFour)"
+        return cell
+    }
+
 //    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
 //        return true
 //    }
@@ -86,4 +95,5 @@
 //            }
 //        }
 //    }
-//}
+}
+

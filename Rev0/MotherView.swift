@@ -11,7 +11,7 @@ enum Page {
     case page8 // Profile
     case page9 // Settings
     case page10 // Help
-    //case page11 // Bank Accounts
+    // case page11 // Bank Accounts
 
 }
 
@@ -42,7 +42,7 @@ struct MotherView: View {
         case .page10:
             HelpView()
 //        case .page11:
-//            ManageBankAccountsVCViewController()
+//            BankAccountsVC()
         }
     }
 }
