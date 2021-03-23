@@ -11,7 +11,7 @@ enum Page {
     case page8 // Profile
     case page9 // Settings
     case page10 // Help
-    // case page11 // Bank Accounts
+    case page11 // Bank Accounts
 
 }
 
@@ -41,11 +41,21 @@ struct MotherView: View {
             SettingsView()
         case .page10:
             HelpView()
-//        case .page11:
-//            BankAccountsVC()
+        case .page11:
+            LinkView()
         }
     }
 }
+
+struct LinkView: View {
+    var body: some View {
+        Button("Click", action: {
+            let vc = ViewController(); vc.presentSwiftUILinkToken();
+            })
+    }
+}
+
+
 
 struct MotherView_Previews: PreviewProvider {
     static var previews: some View {

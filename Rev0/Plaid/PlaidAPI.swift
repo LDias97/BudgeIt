@@ -13,7 +13,6 @@ class PlaidAPI {
             guard let linkToken = result?.data as? String else {
                 return completion(nil)
             }
-            
             completion(linkToken)
         }
     }

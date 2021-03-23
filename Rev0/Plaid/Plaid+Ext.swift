@@ -18,12 +18,7 @@ extension BankAccountsVC {
             guard let self = self else { return }
             
             guard let token = token , !token.isEmpty else { return }
-            
-            /// The designated initializer for `LinkTokenConfiguration`.
-            ///
-            /// - Parameters:
-            ///   - token: The token to use when communicating with Plaid's backend API
-            ///   - onSuccess: Called when the flow finished successfully
+
             var linkConfiguration = LinkTokenConfiguration(token: token) { (success) in
                 print(success.publicToken)
                 print(success.metadata)
@@ -37,10 +32,7 @@ extension BankAccountsVC {
                 }
             }
             
-            
-            /// Create a new handler to integrate Plaid Link for iOS.
-            /// - Parameter linkTokenConfiguration: Configures the created Plaid Link for a specific use-case or flow.
-            /// - Returns: a `Result` that either contains a `Handler` to present Plaid Link or a `CreateError` with details of what went wrong.
+
             let presenter = Plaid.create(linkConfiguration)
             switch(presenter) {
             case .failure(let error):

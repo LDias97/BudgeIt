@@ -59,7 +59,7 @@ struct LogInView: View {
                     .cornerRadius(30.0)
                 }
             VStack(spacing: 55){
-                    Button(action:{  login(); viewRouter.currentPage = .page3; }) { Text("Sign In").font(.body).foregroundColor(.white)}.disabled(password.isEmpty || email.isEmpty)
+                    Button(action:{  login(); viewRouter.currentPage = .page11; }) { Text("Sign In").font(.body).foregroundColor(.white)}.disabled(password.isEmpty || email.isEmpty)
                     Button(action:{print("Clicked Continue with Google")}) {Text("Continue with Google").font(.body).foregroundColor(.white) }.disabled(password.isEmpty || email.isEmpty)
 
                 }

@@ -90,11 +90,11 @@ struct SignUpView: View {
                         .cornerRadius(30.0)
                 }
                 VStack(spacing: 60){
-                    Button(action:{ signup(); viewRouter.currentPage = .page3; }) { Text("Sign Up").font(.body).foregroundColor(.white)}
-                    Button(action:{print("Clicked Continue with Google")}) {Text("Continue with Google").font(.body).foregroundColor(.white) }
+                    Button(action:{ signup(); viewRouter.currentPage = .page3; }) { Text("Sign Up").font(.body).foregroundColor(.white) }
+                    Button(action:{print("Clicked Continue with Google")}) { Text("Continue with Google").font(.body).foregroundColor(.white) }
                 }
             }
-            Button(action:{ viewRouter.currentPage = .page2;}) { Text("Already have an account? Sign In").font(.body).foregroundColor(.blue)}
+            Button(action:{ viewRouter.currentPage = .page2;}) { Text("Already have an account? Sign In").font(.body).foregroundColor(.blue) }
         }
     }
     
@@ -112,7 +112,6 @@ struct SignUpView: View {
             }
         }
     }
-    
 }
 
 struct SignUpView_Previews: PreviewProvider {
