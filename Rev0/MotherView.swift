@@ -13,14 +13,14 @@ enum Page {
     case page9 // Settings
     case page10 // Help
     case page11 // Bank Accounts
-    
+
 }
 
 struct MotherView: View {
-    
+
     @EnvironmentObject var viewRouter: ViewRouter
     @State private var showLink = false
-    
+
     var body: some View {
         switch viewRouter.currentPage{
         case .page1:
@@ -58,7 +58,7 @@ struct MotherView: View {
 }
 
 struct LinkView: View {
-    
+
     let config = ViewController().createLinkTokenConfiguration()
 
     var body: some View {
@@ -75,4 +75,3 @@ struct MotherView_Previews: PreviewProvider {
         MotherView().environmentObject(ViewRouter())
     }
 }
-

@@ -37,6 +37,7 @@
 		FF7E786626094BF1001F3BBD /* Plaid+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7E786526094BF1001F3BBD /* Plaid+Ext.swift */; };
 		FF7E7879260968EF001F3BBD /* BankAccountsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7E7877260968EF001F3BBD /* BankAccountsVC.swift */; };
 		FF7E787A260968EF001F3BBD /* BankAccountsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7E7878260968EF001F3BBD /* BankAccountsVC.xib */; };
+		FF7E787D26097105001F3BBD /* BankAccountsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7E787C26097105001F3BBD /* BankAccountsManager.swift */; };
 		FFF70FBD25EFD9190042D0F2 /* BudgetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF70FBC25EFD9190042D0F2 /* BudgetDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		FF7E786526094BF1001F3BBD /* Plaid+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plaid+Ext.swift"; sourceTree = "<group>"; };
 		FF7E7877260968EF001F3BBD /* BankAccountsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountsVC.swift; sourceTree = "<group>"; };
 		FF7E7878260968EF001F3BBD /* BankAccountsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankAccountsVC.xib; sourceTree = "<group>"; };
+		FF7E787C26097105001F3BBD /* BankAccountsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountsManager.swift; sourceTree = "<group>"; };
 		FFF70FBC25EFD9190042D0F2 /* BudgetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +191,11 @@
 			isa = PBXGroup;
 			children = (
 				B5CC29F326082A5700847A4B /* PlaidAPI.swift */,
+<<<<<<< Updated upstream
+=======
+				B5CC29F726082A6400847A4B /* ManageBankAccountsVC.swift */,
+				FF7E787C26097105001F3BBD /* BankAccountsManager.swift */,
+>>>>>>> Stashed changes
 				FF7E7877260968EF001F3BBD /* BankAccountsVC.swift */,
 				FF7E7878260968EF001F3BBD /* BankAccountsVC.xib */,
 				FF7E786526094BF1001F3BBD /* Plaid+Ext.swift */,
@@ -340,6 +347,7 @@
 				FF7E7879260968EF001F3BBD /* BankAccountsVC.swift in Sources */,
 				B5FF2CB525E71C710032E577 /* SignUpView.swift in Sources */,
 				B5FF2CB825E71C990032E577 /* LogInView.swift in Sources */,
+				FF7E787D26097105001F3BBD /* BankAccountsManager.swift in Sources */,
 				FF65818725F40F1F00D47939 /* IncomeDetailView.swift in Sources */,
 				B5CC2A7226083E1700847A4B /* BudgetViewModel.swift in Sources */,
 				B5CC2A7426083E1700847A4B /* NetWorthViewModel.swift in Sources */,
