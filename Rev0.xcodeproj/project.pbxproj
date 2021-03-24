@@ -20,7 +20,6 @@
 		B5B8579E260980940071CC47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B8579D260980940071CC47 /* ViewController.swift */; };
 		B5B857A1260980B40071CC47 /* ViewController+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B857A0260980B40071CC47 /* ViewController+SwiftUI.swift */; };
 		B5B857A7260980F50071CC47 /* ViewController+LinkToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B857A6260980F50071CC47 /* ViewController+LinkToken.swift */; };
-		B5B857AC2609B13D0071CC47 /* ViewController+PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B857AB2609B13D0071CC47 /* ViewController+PublicKey.swift */; };
 		B5C6566F25DD311F00A9FABC /* Rev0App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6566E25DD311F00A9FABC /* Rev0App.swift */; };
 		B5C6567325DD312000A9FABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5C6567225DD312000A9FABC /* Assets.xcassets */; };
 		B5C6567625DD312000A9FABC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5C6567525DD312000A9FABC /* Preview Assets.xcassets */; };
@@ -57,7 +56,6 @@
 		B5B8579D260980940071CC47 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B5B857A0260980B40071CC47 /* ViewController+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+SwiftUI.swift"; sourceTree = "<group>"; };
 		B5B857A6260980F50071CC47 /* ViewController+LinkToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+LinkToken.swift"; sourceTree = "<group>"; };
-		B5B857AB2609B13D0071CC47 /* ViewController+PublicKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+PublicKey.swift"; sourceTree = "<group>"; };
 		B5C6566B25DD311F00A9FABC /* Rev0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rev0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C6566E25DD311F00A9FABC /* Rev0App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rev0App.swift; sourceTree = "<group>"; };
 		B5C6567225DD312000A9FABC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -169,7 +167,6 @@
 			children = (
 				B5CC2A6F26083E1700847A4B /* BudgetViewModel.swift */,
 				B5CC2A7126083E1700847A4B /* DashboardView.swift */,
-				B5B857AB2609B13D0071CC47 /* ViewController+PublicKey.swift */,
 				B5CC2A7026083E1700847A4B /* NetWorthViewModel.swift */,
 				B5B8579A2609804F0071CC47 /* LinkKitSwiftUISupport.swift */,
 				B5B8579D260980940071CC47 /* ViewController.swift */,
@@ -332,7 +329,6 @@
 				B5B8579E260980940071CC47 /* ViewController.swift in Sources */,
 				FF7E786626094BF1001F3BBD /* Plaid+Ext.swift in Sources */,
 				B5FF2CC525E8BE1D0032E577 /* ViewRouter.swift in Sources */,
-				B5B857AC2609B13D0071CC47 /* ViewController+PublicKey.swift in Sources */,
 				B5B857A1260980B40071CC47 /* ViewController+SwiftUI.swift in Sources */,
 				B5B857A7260980F50071CC47 /* ViewController+LinkToken.swift in Sources */,
 				B5CC2A97260842F600847A4B /* FontExt.swift in Sources */,

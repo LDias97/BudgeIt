@@ -1,4 +1,5 @@
 import SwiftUI
+import LinkKit
 
 enum Page {
     case page1 // SignUp
@@ -12,12 +13,13 @@ enum Page {
     case page9 // Settings
     case page10 // Help
     case page11 // Bank Accounts
-
+    
 }
 
 struct MotherView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
+    @State private var showLink = false
     
     var body: some View {
         switch viewRouter.currentPage{
@@ -42,18 +44,29 @@ struct MotherView: View {
         case .page10:
             HelpView()
         case .page11:
-            LinkView()
+            Button(action: {
+                self.showLink = true
+            }) { Text("Add Account") }
+            .sheet(isPresented: self.$showLink,
+                   onDismiss: {
+                    self.showLink = false
+                   }, content: {
+                    LinkView()
+                   })
         }
     }
 }
 
 struct LinkView: View {
+    
+    let config = ViewController().createLinkTokenConfiguration()
+
     var body: some View {
-        Button("Click", action: {
-            let vc = ViewController(); vc.presentSwiftUILinkToken();
-            })
+        LinkController(configuration: .linkToken(config))
     }
 }
+
+
 
 
 

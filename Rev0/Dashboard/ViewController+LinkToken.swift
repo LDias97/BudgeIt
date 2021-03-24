@@ -1,17 +1,20 @@
-//
-//  ViewController+LinkToken.swift
-//  LinkDemo-Swift
-//
-//  Copyright © 2020 Plaid Inc. All rights reserved.
-//
-
 import LinkKit
+import FirebaseFunctions
 
 extension ViewController {
-
+    
     func createLinkTokenConfiguration() -> LinkTokenConfiguration {
+        
+        var linkToken = "GENERATED_LINK_TOKEN"
 
-        let linkToken = "<#GENERATED_LINK_TOKEN#>"
+        Functions.functions().httpsCallable("createPlaidLinkToken").call() { (result, error) in
+            if let error = error {
+                debugPrint(error.localizedDescription)
+            }
+            if let token = result?.data as? String {
+                linkToken = token
+            }
+        }
 
         var linkConfiguration = LinkTokenConfiguration(token: linkToken) { success in
             print("public-token: \(success.publicToken) metadata: \(success.metadata)")
@@ -26,8 +29,6 @@ extension ViewController {
         return linkConfiguration
     }
 
-    // MARK: Start Plaid Link using a Link token
-    // For details please see https://plaid.com/docs/#create-link-token
     func presentPlaidLinkUsingLinkToken() {
         let linkConfiguration = createLinkTokenConfiguration()
         let result = Plaid.create(linkConfiguration)
@@ -35,6 +36,7 @@ extension ViewController {
         case .failure(let error):
             print("Unable to create Plaid handler due to: \(error)")
         case .success(let handler):
+            print("worked")
             handler.open(presentUsing: .viewController(self))
             linkHandler = handler
         }
