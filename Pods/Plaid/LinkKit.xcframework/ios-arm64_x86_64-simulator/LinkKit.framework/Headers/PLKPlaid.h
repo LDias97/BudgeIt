@@ -50,8 +50,6 @@ typedef NS_ENUM(NSInteger, PLKEventNameValue) {
     PLKEventNameValueSubmitCredentials,
     PLKEventNameValueSubmitMFA,
     PLKEventNameValueTransitionView,
-    PLKEventNameValueMatchedSelectInstitution,
-    PLKEventNameValueMatchedSelectVerifyMethod,
 };
 
 
@@ -86,9 +84,6 @@ typedef NS_ENUM(NSInteger, PLKViewNameValue) {
     PLKViewNameValueRecaptcha,
     PLKViewNameValueSelectAccount,
     PLKViewNameValueSelectInstitution,
-    PLKViewNameValueMatchedConsent,
-    PLKViewNameValueMatchedCredential,
-    PLKViewNameValueMatchedMFA,
 };
 
 typedef NS_ENUM(NSInteger, PLKAccountSubtypeValueOther) {
@@ -570,10 +565,7 @@ typedef NS_ENUM(NSInteger, PLKEnvironment) {
 
 @end
 
-/// Both `PLKPresentationHandler` and `PLKDismissalHandler` clsoures take the Plaid Link View Controller to be
-/// presented or dismissed as a parameter.
 typedef void(^PLKPresentationHandler)(UIViewController *);
-typedef void(^PLKDismissalHandler)(UIViewController *);
 
 @protocol PLKHandler <NSObject>
 
@@ -582,15 +574,9 @@ typedef void(^PLKDismissalHandler)(UIViewController *);
 - (void)openWithContextViewController:(UIViewController *)viewController
                               options:(NSDictionary<NSString *, NSString *> *)options;
 
-- (void)openWithPresentationHandler:(PLKPresentationHandler)presentationHandler DEPRECATED_MSG_ATTRIBUTE("openWithPresentationHandler: is deprecated in favor openWithPresentationHandler:dismissalHandler:");
-- (void)openWithPresentationHandler:(PLKPresentationHandler)presentationHandler
-                   dismissalHandler:(PLKDismissalHandler)dismissalHandler;
+- (void)openWithPresentationHandler:(PLKPresentationHandler)presentationHandler;
 
 - (void)openWithPresentationHandler:(PLKPresentationHandler)presentationHandler
-options:(NSDictionary<NSString *, NSString *> *)options  DEPRECATED_MSG_ATTRIBUTE("openWithPresentationHandler:options: is deprecated in favor openWithPresentationHandler:dismissalHandler:options:");
-
-- (void)openWithPresentationHandler:(PLKPresentationHandler)presentationHandler
-                   dismissalHandler:(PLKDismissalHandler)dismissalHandler
                             options:(NSDictionary<NSString *, NSString *> *)options;
 
 - (NSError * __nullable)continueFromRedirectUri:(NSURL *)redirectUri;

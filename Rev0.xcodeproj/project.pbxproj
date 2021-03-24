@@ -15,29 +15,19 @@
 		B55AC0F726008795003263D6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55AC0F626008795003263D6 /* ProfileView.swift */; };
 		B56FB26026044D7F000A7FFA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B56FB25F26044D7F000A7FFA /* GoogleService-Info.plist */; };
 		B56FB26F26044F78000A7FFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FB26E26044F78000A7FFA /* AppDelegate.swift */; };
-		B56FB2EA26045555000A7FFA /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FB2E926045555000A7FFA /* UserModel.swift */; };
-		B5B8579B2609804F0071CC47 /* LinkKitSwiftUISupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B8579A2609804F0071CC47 /* LinkKitSwiftUISupport.swift */; };
-		B5B8579E260980940071CC47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B8579D260980940071CC47 /* ViewController.swift */; };
-		B5B857A1260980B40071CC47 /* ViewController+SwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B857A0260980B40071CC47 /* ViewController+SwiftUI.swift */; };
-		B5B857A7260980F50071CC47 /* ViewController+LinkToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B857A6260980F50071CC47 /* ViewController+LinkToken.swift */; };
 		B5C6566F25DD311F00A9FABC /* Rev0App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6566E25DD311F00A9FABC /* Rev0App.swift */; };
 		B5C6567325DD312000A9FABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5C6567225DD312000A9FABC /* Assets.xcassets */; };
 		B5C6567625DD312000A9FABC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5C6567525DD312000A9FABC /* Preview Assets.xcassets */; };
-		B5CC29F426082A5700847A4B /* PlaidAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC29F326082A5700847A4B /* PlaidAPI.swift */; };
-		B5CC2A7226083E1700847A4B /* BudgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC2A6F26083E1700847A4B /* BudgetViewModel.swift */; };
-		B5CC2A7326083E1700847A4B /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC2A7126083E1700847A4B /* DashboardView.swift */; };
-		B5CC2A7426083E1700847A4B /* NetWorthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC2A7026083E1700847A4B /* NetWorthViewModel.swift */; };
-		B5CC2A97260842F600847A4B /* FontExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC2A96260842F600847A4B /* FontExt.swift */; };
+		B5CC28F52607C6A700847A4B /* NetWorthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC28F42607C6A700847A4B /* NetWorthViewModel.swift */; };
+		B5CC28F82607D49D00847A4B /* CustomFontExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC28F72607D49D00847A4B /* CustomFontExt.swift */; };
+		B5CC28FD2607E19200847A4B /* BudgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CC28FC2607E19200847A4B /* BudgetViewModel.swift */; };
+		B5FF2CB425E71C710032E577 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF2CB225E71C710032E577 /* DashboardView.swift */; };
 		B5FF2CB525E71C710032E577 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF2CB325E71C710032E577 /* SignUpView.swift */; };
 		B5FF2CB825E71C990032E577 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF2CB725E71C990032E577 /* LogInView.swift */; };
 		B5FF2CBC25E8A4A20032E577 /* SpendingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF2CBB25E8A4A20032E577 /* SpendingDetailView.swift */; };
 		B5FF2CC225E8BDD60032E577 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF2CC125E8BDD60032E577 /* MotherView.swift */; };
 		B5FF2CC525E8BE1D0032E577 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF2CC425E8BE1D0032E577 /* ViewRouter.swift */; };
 		FF65818725F40F1F00D47939 /* IncomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF65818625F40F1F00D47939 /* IncomeDetailView.swift */; };
-		FF7E786626094BF1001F3BBD /* Plaid+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7E786526094BF1001F3BBD /* Plaid+Ext.swift */; };
-		FF7E7879260968EF001F3BBD /* BankAccountsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7E7877260968EF001F3BBD /* BankAccountsVC.swift */; };
-		FF7E787A260968EF001F3BBD /* BankAccountsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF7E7878260968EF001F3BBD /* BankAccountsVC.xib */; };
-		FF7E787D26097105001F3BBD /* BankAccountsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7E787C26097105001F3BBD /* BankAccountsManager.swift */; };
 		FFF70FBD25EFD9190042D0F2 /* BudgetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF70FBC25EFD9190042D0F2 /* BudgetDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,31 +42,21 @@
 		B55AC0F626008795003263D6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		B56FB25F26044D7F000A7FFA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B56FB26E26044F78000A7FFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B56FB2E926045555000A7FFA /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		B5B8579A2609804F0071CC47 /* LinkKitSwiftUISupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkKitSwiftUISupport.swift; sourceTree = "<group>"; };
-		B5B8579D260980940071CC47 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B5B857A0260980B40071CC47 /* ViewController+SwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+SwiftUI.swift"; sourceTree = "<group>"; };
-		B5B857A6260980F50071CC47 /* ViewController+LinkToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+LinkToken.swift"; sourceTree = "<group>"; };
 		B5C6566B25DD311F00A9FABC /* Rev0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rev0.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C6566E25DD311F00A9FABC /* Rev0App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rev0App.swift; sourceTree = "<group>"; };
 		B5C6567225DD312000A9FABC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5C6567525DD312000A9FABC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B5C6567725DD312000A9FABC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B5CC29F326082A5700847A4B /* PlaidAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaidAPI.swift; sourceTree = "<group>"; };
-		B5CC2A6F26083E1700847A4B /* BudgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewModel.swift; sourceTree = "<group>"; };
-		B5CC2A7026083E1700847A4B /* NetWorthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorthViewModel.swift; sourceTree = "<group>"; };
-		B5CC2A7126083E1700847A4B /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
-		B5CC2A96260842F600847A4B /* FontExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExt.swift; sourceTree = "<group>"; };
+		B5CC28F42607C6A700847A4B /* NetWorthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorthViewModel.swift; sourceTree = "<group>"; };
+		B5CC28F72607D49D00847A4B /* CustomFontExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFontExt.swift; sourceTree = "<group>"; };
+		B5CC28FC2607E19200847A4B /* BudgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewModel.swift; sourceTree = "<group>"; };
+		B5FF2CB225E71C710032E577 /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		B5FF2CB325E71C710032E577 /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		B5FF2CB725E71C990032E577 /* LogInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		B5FF2CBB25E8A4A20032E577 /* SpendingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingDetailView.swift; sourceTree = "<group>"; };
 		B5FF2CC125E8BDD60032E577 /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
 		B5FF2CC425E8BE1D0032E577 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		FF65818625F40F1F00D47939 /* IncomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeDetailView.swift; sourceTree = "<group>"; };
-		FF7E786526094BF1001F3BBD /* Plaid+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plaid+Ext.swift"; sourceTree = "<group>"; };
-		FF7E7877260968EF001F3BBD /* BankAccountsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountsVC.swift; sourceTree = "<group>"; };
-		FF7E7878260968EF001F3BBD /* BankAccountsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankAccountsVC.xib; sourceTree = "<group>"; };
-		FF7E787C26097105001F3BBD /* BankAccountsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountsManager.swift; sourceTree = "<group>"; };
 		FFF70FBC25EFD9190042D0F2 /* BudgetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,17 +77,7 @@
 			children = (
 				B55AC0E426005B1F003263D6 /* DIN Alternate Bold.ttf */,
 			);
-			name = Fonts;
-			path = ../Fonts;
-			sourceTree = "<group>";
-		};
-		B56FB2E826045545000A7FFA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				B56FB2E926045555000A7FFA /* UserModel.swift */,
-				B55AC0E326005AB6003263D6 /* Fonts */,
-			);
-			path = Model;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		B5C6566225DD311F00A9FABC = {
@@ -131,9 +101,8 @@
 		B5C6566D25DD311F00A9FABC /* Rev0 */ = {
 			isa = PBXGroup;
 			children = (
-				B5CC2A7826083E2C00847A4B /* Dashboard */,
-				FF1F4E8F260798F700316114 /* Plaid */,
-				B56FB2E826045545000A7FFA /* Model */,
+				B5CC28F22607C55D00847A4B /* Dashboard */,
+				B55AC0E326005AB6003263D6 /* Fonts */,
 				B5C6566E25DD311F00A9FABC /* Rev0App.swift */,
 				B55AC0ED26008759003263D6 /* NotificationsView.swift */,
 				B55AC0F626008795003263D6 /* ProfileView.swift */,
@@ -151,7 +120,7 @@
 				B56FB25F26044D7F000A7FFA /* GoogleService-Info.plist */,
 				B5C6567725DD312000A9FABC /* Info.plist */,
 				B5C6567425DD312000A9FABC /* Preview Content */,
-				B5CC2A96260842F600847A4B /* FontExt.swift */,
+				B5CC28F72607D49D00847A4B /* CustomFontExt.swift */,
 			);
 			path = Rev0;
 			sourceTree = "<group>";
@@ -164,16 +133,12 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		B5CC2A7826083E2C00847A4B /* Dashboard */ = {
+		B5CC28F22607C55D00847A4B /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				B5CC2A6F26083E1700847A4B /* BudgetViewModel.swift */,
-				B5CC2A7126083E1700847A4B /* DashboardView.swift */,
-				B5CC2A7026083E1700847A4B /* NetWorthViewModel.swift */,
-				B5B8579A2609804F0071CC47 /* LinkKitSwiftUISupport.swift */,
-				B5B8579D260980940071CC47 /* ViewController.swift */,
-				B5B857A0260980B40071CC47 /* ViewController+SwiftUI.swift */,
-				B5B857A6260980F50071CC47 /* ViewController+LinkToken.swift */,
+				B5FF2CB225E71C710032E577 /* DashboardView.swift */,
+				B5CC28F42607C6A700847A4B /* NetWorthViewModel.swift */,
+				B5CC28FC2607E19200847A4B /* BudgetViewModel.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -185,22 +150,6 @@
 				85E10DC7E99006C3824D5C35 /* Pods-Rev0.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		FF1F4E8F260798F700316114 /* Plaid */ = {
-			isa = PBXGroup;
-			children = (
-				B5CC29F326082A5700847A4B /* PlaidAPI.swift */,
-<<<<<<< Updated upstream
-=======
-				B5CC29F726082A6400847A4B /* ManageBankAccountsVC.swift */,
-				FF7E787C26097105001F3BBD /* BankAccountsManager.swift */,
->>>>>>> Stashed changes
-				FF7E7877260968EF001F3BBD /* BankAccountsVC.swift */,
-				FF7E7878260968EF001F3BBD /* BankAccountsVC.xib */,
-				FF7E786526094BF1001F3BBD /* Plaid+Ext.swift */,
-			);
-			path = Plaid;
 			sourceTree = "<group>";
 		};
 		FF96802A25E48FA000AA432B /* Frameworks */ = {
@@ -270,7 +219,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF7E787A260968EF001F3BBD /* BankAccountsVC.xib in Resources */,
 				B5C6567625DD312000A9FABC /* Preview Assets.xcassets in Resources */,
 				B5C6567325DD312000A9FABC /* Assets.xcassets in Resources */,
 				B55AC0E526005B1F003263D6 /* DIN Alternate Bold.ttf in Resources */,
@@ -327,31 +275,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5CC29F426082A5700847A4B /* PlaidAPI.swift in Sources */,
 				B5C6566F25DD311F00A9FABC /* Rev0App.swift in Sources */,
 				B55AC0F726008795003263D6 /* ProfileView.swift in Sources */,
 				B55AC0F42600876C003263D6 /* HelpView.swift in Sources */,
 				B55AC0EE26008759003263D6 /* NotificationsView.swift in Sources */,
 				B56FB26F26044F78000A7FFA /* AppDelegate.swift in Sources */,
-				B5B8579E260980940071CC47 /* ViewController.swift in Sources */,
-				FF7E786626094BF1001F3BBD /* Plaid+Ext.swift in Sources */,
 				B5FF2CC525E8BE1D0032E577 /* ViewRouter.swift in Sources */,
-				B5B857A1260980B40071CC47 /* ViewController+SwiftUI.swift in Sources */,
-				B5B857A7260980F50071CC47 /* ViewController+LinkToken.swift in Sources */,
-				B5CC2A97260842F600847A4B /* FontExt.swift in Sources */,
-				B5CC2A7326083E1700847A4B /* DashboardView.swift in Sources */,
 				FFF70FBD25EFD9190042D0F2 /* BudgetDetailView.swift in Sources */,
-				B5B8579B2609804F0071CC47 /* LinkKitSwiftUISupport.swift in Sources */,
 				B5FF2CC225E8BDD60032E577 /* MotherView.swift in Sources */,
+				B5CC28FD2607E19200847A4B /* BudgetViewModel.swift in Sources */,
 				B5FF2CBC25E8A4A20032E577 /* SpendingDetailView.swift in Sources */,
-				FF7E7879260968EF001F3BBD /* BankAccountsVC.swift in Sources */,
 				B5FF2CB525E71C710032E577 /* SignUpView.swift in Sources */,
 				B5FF2CB825E71C990032E577 /* LogInView.swift in Sources */,
-				FF7E787D26097105001F3BBD /* BankAccountsManager.swift in Sources */,
 				FF65818725F40F1F00D47939 /* IncomeDetailView.swift in Sources */,
-				B5CC2A7226083E1700847A4B /* BudgetViewModel.swift in Sources */,
-				B5CC2A7426083E1700847A4B /* NetWorthViewModel.swift in Sources */,
-				B56FB2EA26045555000A7FFA /* UserModel.swift in Sources */,
+				B5FF2CB425E71C710032E577 /* DashboardView.swift in Sources */,
+				B5CC28F82607D49D00847A4B /* CustomFontExt.swift in Sources */,
+				B5CC28F52607C6A700847A4B /* NetWorthViewModel.swift in Sources */,
 				B55AC0F126008765003263D6 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,10 +353,8 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=100 -Xfrontend -warn-long-expression-type-checking=100";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -471,8 +408,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = singlefile;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

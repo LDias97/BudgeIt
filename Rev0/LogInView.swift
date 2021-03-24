@@ -9,13 +9,13 @@ struct LogInView: View {
     var body: some View {
         VStack(spacing: 20){
             VStack(){
-            Image("b")
-                .resizable()
-                .frame(width:175, height:175)
-                .padding(.top, 30)
-            Text("Sign In")
-                .font(.largeTitle)
-                .bold()
+                Image("b")
+                    .resizable()
+                    .frame(width:175, height:175)
+                    .padding(.top, 30)
+                Text("Sign In")
+                    .font(.largeTitle)
+                    .bold()
             }
             ZStack{
                 Rectangle()
@@ -26,6 +26,7 @@ struct LogInView: View {
                     Image(systemName: "envelope")
                         .foregroundColor(Color(.systemGray2))
                     TextField("Email", text: $email)
+                        .autocapitalization(.none)
                 }
                 .padding(.leading, 15)
             }
@@ -41,6 +42,7 @@ struct LogInView: View {
                     Image(systemName: "lock")
                         .foregroundColor(Color(.systemGray2))
                     SecureField("Password", text: $password)
+                        .autocapitalization(.none)
                 }
                 .padding(.leading, 15)
             }
@@ -49,19 +51,18 @@ struct LogInView: View {
             
             ZStack(){
                 VStack(spacing: 15){
-                Rectangle()
-                    .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
-                    .frame(width: 370, height: 60)
-                    .cornerRadius(30.0)
-                Rectangle()
-                    .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
-                    .frame(width: 370, height: 60)
-                    .cornerRadius(30.0)
+                    Rectangle()
+                        .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
+                        .frame(width: 370, height: 60)
+                        .cornerRadius(30.0)
+                    Rectangle()
+                        .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
+                        .frame(width: 370, height: 60)
+                        .cornerRadius(30.0)
                 }
-            VStack(spacing: 55){
-                Button(action:{  login(); viewRouter.currentPage = .page11; }) { Text("Sign In").font(.body).foregroundColor(.white)}.disabled(password.isEmpty || email.isEmpty)
-                    Button(action:{print("Clicked Continue with Google")}) {Text("Continue with Google").font(.body).foregroundColor(.white) }.disabled(password.isEmpty || email.isEmpty)
-
+                VStack(spacing: 55){
+                    Button(action:{  login(); viewRouter.currentPage = .page3; }) { Text("Sign In").font(.body).foregroundColor(.white)}
+                    Button(action:{print("Clicked Continue with Google")}) {Text("Continue with Google").font(.body).foregroundColor(.white) }
                 }
             }
             Button(action:{ viewRouter.currentPage = .page1; }) { Text("Don't have an account? Sign Up").font(.body).foregroundColor(.blue)}
@@ -75,7 +76,7 @@ struct LogInView: View {
             if error != nil {
                 print(error?.localizedDescription ?? "")
             } else {
-                print("log in success")
+                print("success")
             }
         }
     }

@@ -61,7 +61,10 @@ enum MonthSelector : Int {
 struct DashboardView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
-    @ObservedObject var viewModel = BudgetViewModel()
+    @State var auto: String = ""
+    @State var food: String = ""
+    @State var entertainment: String = ""
+    @State var bills: String = ""
     @State var showMenu = false
     @State var editBudgets = false
     
@@ -119,10 +122,10 @@ struct DashboardView: View {
                             NetWorthCardView()
                         }
                         .padding(.top, 44)
-                        BudgetCardView(editBudgets: $editBudgets, limits: viewModel.limits)
-//                            .onTapGesture {
-//                                viewRouter.currentPage = .page5;
-//                            }
+                        BudgetCardView(editBudgets: $editBudgets, Food: $food)
+                        //                            .onTapGesture {
+                        //                                viewRouter.currentPage = .page5;
+                        //                            }
                         BarChartDashView()
                         SpendingCardView()
                             .onTapGesture {
@@ -226,7 +229,10 @@ struct BudgetCardView : View {
     @ObservedObject var viewModel = BudgetViewModel()
     @Binding var editBudgets: Bool
     @State var degrees: Double = 180
-    @State var limits: [CGFloat]
+    @State var Auto = ""
+    @Binding var Food: String
+    @State var Entertainment = ""
+    @State var Bills = ""
     
     var body: some View {
         
@@ -256,7 +262,6 @@ struct BudgetCardView : View {
                                         VStack(spacing: 5){
                                             HStack(){
                                                 Text("\(budget.category)")
-                                            
                                                     .font((Font.custom("DIN Alternate Bold", size: 14)))
                                                     .bold()
                                                 Spacer()
@@ -308,7 +313,7 @@ struct BudgetCardView : View {
                             Text("Edit Budgets")
                                 .font((Font.custom("DIN Alternate Bold", size: 20)))
                             Spacer()
-                            Button(action: { viewModel.updateLimits(limits: limits); self.editBudgets = false;
+                            Button(action: { self.editBudgets = false;
                                     withAnimation { self.degrees -= 180;} }) {
                                 Image(systemName: "checkmark")
                                     .imageScale(.medium)
@@ -319,25 +324,22 @@ struct BudgetCardView : View {
                         .padding(.leading, 50)
                         .padding(.top, 30)
                         VStack(){
-                            ForEach(viewModel.budgets.indices) { index in
+                            ForEach(viewModel.budgets) { budget in
                                 VStack(spacing: 5){
                                     HStack(){
                                         ZStack{
                                             Circle()
                                                 .stroke(Color(.white), lineWidth: 3)
                                                 .frame(width: 40, height:40)
-                                            Image(systemName: viewModel.budgets[index].iconName)
-                                                .foregroundColor(viewModel.budgets[index].color)
+                                            Image(systemName: budget.iconName)
+                                                .foregroundColor(budget.color)
                                         }
-                                        Text("\(viewModel.budgets[index].category)")
+                                        Text("\(budget.category)")
                                             .font((Font.custom("DIN Alternate Bold", size: 14)))
                                         Spacer()
-                                        TextField("$\(viewModel.budgets[index].limit, specifier: "%.2f")", value: $limits[index], formatter: NumberFormatter())
-                                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                                            .fixedSize()
-                                            .multilineTextAlignment(.trailing)
+                                        Text("$\(budget.limit, specifier: "%.2f")")
                                     }
-                                    if(viewModel.budgets[index] != viewModel.budgets[viewModel.budgets.count-1]){
+                                    if(budget != viewModel.budgets[viewModel.budgets.count-1]){
                                         Divider()
                                             .padding(.top, 5)
                                             .padding(.bottom, 5)

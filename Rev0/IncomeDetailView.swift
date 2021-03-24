@@ -1,11 +1,3 @@
-//
-//  IncomeDetailView.swift
-//  Rev0
-//
-//  Created by Luann Dias on 3/6/21.
-//
-
-
 import SwiftUI
 
 enum incomeSelector : Int {
@@ -31,7 +23,7 @@ enum incomeSelector : Int {
         .payment: 0.3,
         .salary: 1.0,
     ]
-
+    
     var name: String {
         return incomeSelector.names[self]!
     }
@@ -51,7 +43,7 @@ struct IncomeDetailView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @State var selector: incomeSelector = .payment
     @State var num = 0
-
+    
     var body: some View {
         ZStack(){
             Rectangle()
@@ -91,7 +83,7 @@ struct IncomeDetailView: View {
 
 struct IncomePieView : View {
     @Binding var selector: incomeSelector
-
+    
     var body : some View {
         ZStack(){
             Circle()
