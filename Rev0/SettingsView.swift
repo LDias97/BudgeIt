@@ -27,7 +27,7 @@ struct SettingsView: View {
                 HStack{
                     Text("Manage Bank Accounts")
                     Spacer()
-                    Button(action: { viewRouter.currentPage = .page3; } ) {
+                    Button(action: { viewRouter.currentPage = .page11; } ) {
                         Image(systemName: "chevron.forward")
                             .imageScale(.large)
                             .foregroundColor(Color(.black))

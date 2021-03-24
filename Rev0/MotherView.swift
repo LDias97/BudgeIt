@@ -42,7 +42,11 @@ struct MotherView: View {
         case .page10:
             HelpView()
         case .page11:
+<<<<<<< Updated upstream
             LinkView()
+=======
+            BankAccountsManager()
+>>>>>>> Stashed changes
         }
     }
 }
