@@ -9,7 +9,7 @@ import Foundation
 import LinkKit
 import FirebaseFunctions
 
-extension BankAccountsVC {
+extension PlaidAPI {
     
     func presentPlaidLinkUsingLinkToken() {
         
