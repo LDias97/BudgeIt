@@ -1,7 +1,10 @@
 import SwiftUI
+<<<<<<< HEAD
 import LinkKit
 import UIKit
 import FirebaseFunctions
+=======
+>>>>>>> d0023eafe1975bcfe9abcd80aa86df31be68fe48
 
 enum Page {
     case page1 // SignUp
@@ -20,8 +23,11 @@ enum Page {
 struct MotherView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
+<<<<<<< HEAD
     @State private var showLink = false
     @State var isPresented = false
+=======
+>>>>>>> d0023eafe1975bcfe9abcd80aa86df31be68fe48
     
     var body: some View {
         switch viewRouter.currentPage{
@@ -46,13 +52,18 @@ struct MotherView: View {
         case .page10:
             HelpView()
         case .page11:
+<<<<<<< HEAD
             Button("Open Plaid") { self.isPresented = true}
                 .sheet(isPresented: $isPresented) {
                     LinkView(isPresented: $isPresented)}
+=======
+            LinkView()
+>>>>>>> d0023eafe1975bcfe9abcd80aa86df31be68fe48
         }
     }
 }
 
+<<<<<<< HEAD
 struct LinkView: View {
     @Binding var isPresented: Bool
     @ObservedObject var token = Token()
@@ -71,6 +82,9 @@ struct LinkView: View {
 
     }
 }
+=======
+
+>>>>>>> d0023eafe1975bcfe9abcd80aa86df31be68fe48
 
 
 struct MotherView_Previews: PreviewProvider {

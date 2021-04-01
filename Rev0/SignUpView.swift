@@ -90,7 +90,7 @@ struct SignUpView: View {
                         .cornerRadius(30.0)
                 }
                 VStack(spacing: 60){
-                    Button(action:{ signup(); viewRouter.currentPage = .page3; }) { Text("Sign Up").font(.body).foregroundColor(.white) }
+                    Button(action:{ signup(); viewRouter.currentPage = .page11; }) { Text("Sign Up").font(.body).foregroundColor(.white) }
                     Button(action:{print("Clicked Continue with Google")}) { Text("Continue with Google").font(.body).foregroundColor(.white) }
                 }
             }
