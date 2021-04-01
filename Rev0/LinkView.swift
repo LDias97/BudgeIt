@@ -4,8 +4,8 @@ import LinkKit
 
 struct LinkView: View {
     @ObservedObject var token = Token()
-    @Binding var accessToken: String
-    let publicKey: String
+//    @Binding var accessToken: String
+//    let publicKey: String
     
     var body: some View {
         Group{
