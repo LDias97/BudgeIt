@@ -83,8 +83,4 @@ extension ViewController {
         
 //        UserDefaults.standard.set(accessToken, forKey: "plaid-access-token")
     }
-    
-    func setToken(token: String){
-        self.token = token
-    }
 }

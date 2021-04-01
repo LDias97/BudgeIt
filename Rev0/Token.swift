@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-//
-//  Token.swift
-//  Rev0
-//
-//  Created by Luann Dias on 3/31/21.
-//
-
-=======
->>>>>>> d0023eafe1975bcfe9abcd80aa86df31be68fe48
 import Foundation
 import Firebase
 import FirebaseFunctions
@@ -33,10 +23,6 @@ extension Token {
         }
     }
     
-<<<<<<< HEAD
-    
-=======
->>>>>>> d0023eafe1975bcfe9abcd80aa86df31be68fe48
     func setToken(){
         getTokenFromCloud { (linkToken) in
             guard let linkToken = linkToken , !linkToken.isEmpty else { return }

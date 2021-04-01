@@ -31,14 +31,7 @@
 		B5FF2CBC25E8A4A20032E577 /* SpendingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF2CBB25E8A4A20032E577 /* SpendingDetailView.swift */; };
 		B5FF2CC225E8BDD60032E577 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF2CC125E8BDD60032E577 /* MotherView.swift */; };
 		B5FF2CC525E8BE1D0032E577 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF2CC425E8BE1D0032E577 /* ViewRouter.swift */; };
-		FF16F8992615439000E4EDBA /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF16F8982615439000E4EDBA /* Token.swift */; };
-		FF16F89E261544FA00E4EDBA /* token.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF16F89D261544FA00E4EDBA /* token.swift */; };
 		FF65818725F40F1F00D47939 /* IncomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF65818625F40F1F00D47939 /* IncomeDetailView.swift */; };
-<<<<<<< HEAD
-		FF9A3926260B9A2A006165CA /* ViewController+PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A3925260B9A2A006165CA /* ViewController+PublicKey.swift */; };
-		FF9A393126110AF2006165CA /* LinkToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9A393026110AF2006165CA /* LinkToken.swift */; };
-=======
->>>>>>> d0023eafe1975bcfe9abcd80aa86df31be68fe48
 		FFF70FBD25EFD9190042D0F2 /* BudgetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF70FBC25EFD9190042D0F2 /* BudgetDetailView.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,14 +64,7 @@
 		B5FF2CBB25E8A4A20032E577 /* SpendingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingDetailView.swift; sourceTree = "<group>"; };
 		B5FF2CC125E8BDD60032E577 /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
 		B5FF2CC425E8BE1D0032E577 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
-		FF16F8982615439000E4EDBA /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
-		FF16F89D261544FA00E4EDBA /* token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = token.swift; sourceTree = "<group>"; };
 		FF65818625F40F1F00D47939 /* IncomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeDetailView.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		FF9A3925260B9A2A006165CA /* ViewController+PublicKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ViewController+PublicKey.swift"; path = "../../../plaid-link-ios/LinkDemo-Swift/LinkDemo-Swift/ViewController+PublicKey.swift"; sourceTree = "<group>"; };
-		FF9A393026110AF2006165CA /* LinkToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkToken.swift; sourceTree = "<group>"; };
-=======
->>>>>>> d0023eafe1975bcfe9abcd80aa86df31be68fe48
 		FFF70FBC25EFD9190042D0F2 /* BudgetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,22 +85,7 @@
 			children = (
 				B55AC0E426005B1F003263D6 /* DIN Alternate Bold.ttf */,
 			);
-<<<<<<< HEAD
-			name = Fonts;
-			path = ../Fonts;
-			sourceTree = "<group>";
-		};
-		B56FB2E826045545000A7FFA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				B56FB2E926045555000A7FFA /* UserModel.swift */,
-				B55AC0E326005AB6003263D6 /* Fonts */,
-				FF16F89D261544FA00E4EDBA /* token.swift */,
-			);
-			path = Model;
-=======
 			path = Fonts;
->>>>>>> d0023eafe1975bcfe9abcd80aa86df31be68fe48
 			sourceTree = "<group>";
 		};
 		B5C6566225DD311F00A9FABC = {
@@ -139,10 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				B5CC2A7826083E2C00847A4B /* Dashboard */,
-<<<<<<< HEAD
-				B56FB2E826045545000A7FFA /* Model */,
-=======
->>>>>>> d0023eafe1975bcfe9abcd80aa86df31be68fe48
 				B5C6566E25DD311F00A9FABC /* Rev0App.swift */,
 				B55AC0ED26008759003263D6 /* NotificationsView.swift */,
 				B55AC0F626008795003263D6 /* ProfileView.swift */,
@@ -154,8 +121,6 @@
 				B5FF2CB325E71C710032E577 /* SignUpView.swift */,
 				B5258F7D26150472006EFF5C /* LinkView.swift */,
 				B5FF2CC425E8BE1D0032E577 /* ViewRouter.swift */,
-				FF16F8982615439000E4EDBA /* Token.swift */,
-				FF9A393026110AF2006165CA /* LinkToken.swift */,
 				B55AC0F026008765003263D6 /* SettingsView.swift */,
 				B59847DF2614F3BD00C32496 /* Token.swift */,
 				B5FF2CC125E8BDD60032E577 /* MotherView.swift */,
@@ -184,7 +149,6 @@
 				B5CC2A6F26083E1700847A4B /* BudgetViewModel.swift */,
 				B5CC2A7126083E1700847A4B /* DashboardView.swift */,
 				B5CC2A7026083E1700847A4B /* NetWorthViewModel.swift */,
-				FF9A3925260B9A2A006165CA /* ViewController+PublicKey.swift */,
 				B5B8579A2609804F0071CC47 /* LinkKitSwiftUISupport.swift */,
 				B5B8579D260980940071CC47 /* ViewController.swift */,
 			);
@@ -323,35 +287,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< HEAD
-=======
 				B59847E02614F3BD00C32496 /* Token.swift in Sources */,
->>>>>>> d0023eafe1975bcfe9abcd80aa86df31be68fe48
 				B5C6566F25DD311F00A9FABC /* Rev0App.swift in Sources */,
-				FF9A393126110AF2006165CA /* LinkToken.swift in Sources */,
 				B55AC0F726008795003263D6 /* ProfileView.swift in Sources */,
 				B55AC0F42600876C003263D6 /* HelpView.swift in Sources */,
 				B55AC0EE26008759003263D6 /* NotificationsView.swift in Sources */,
 				B56FB26F26044F78000A7FFA /* AppDelegate.swift in Sources */,
 				B5B8579E260980940071CC47 /* ViewController.swift in Sources */,
 				B5FF2CC525E8BE1D0032E577 /* ViewRouter.swift in Sources */,
-<<<<<<< HEAD
-				FF9A3926260B9A2A006165CA /* ViewController+PublicKey.swift in Sources */,
-				B5B857A1260980B40071CC47 /* ViewController+SwiftUI.swift in Sources */,
-				B5B857A7260980F50071CC47 /* ViewController+LinkToken.swift in Sources */,
-=======
->>>>>>> d0023eafe1975bcfe9abcd80aa86df31be68fe48
 				B5CC2A97260842F600847A4B /* FontExt.swift in Sources */,
 				B5CC2A7326083E1700847A4B /* DashboardView.swift in Sources */,
 				FFF70FBD25EFD9190042D0F2 /* BudgetDetailView.swift in Sources */,
 				B5B8579B2609804F0071CC47 /* LinkKitSwiftUISupport.swift in Sources */,
 				B5FF2CC225E8BDD60032E577 /* MotherView.swift in Sources */,
 				B5FF2CBC25E8A4A20032E577 /* SpendingDetailView.swift in Sources */,
-<<<<<<< HEAD
-				FF16F89E261544FA00E4EDBA /* token.swift in Sources */,
-				FF16F8992615439000E4EDBA /* Token.swift in Sources */,
-=======
->>>>>>> d0023eafe1975bcfe9abcd80aa86df31be68fe48
 				B5FF2CB525E71C710032E577 /* SignUpView.swift in Sources */,
 				B5FF2CB825E71C990032E577 /* LogInView.swift in Sources */,
 				FF65818725F40F1F00D47939 /* IncomeDetailView.swift in Sources */,
