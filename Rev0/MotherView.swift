@@ -1,7 +1,4 @@
 import SwiftUI
-import LinkKit
-import UIKit
-import FirebaseFunctions
 
 enum Page {
     case page1 // SignUp
@@ -15,14 +12,11 @@ enum Page {
     case page9 // Settings
     case page10 // Help
     case page11 // Bank Accounts
-    
 }
 
 struct MotherView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
-    @State private var showLink = false
-    @State var isPresented = false
     
     var body: some View {
         switch viewRouter.currentPage{
@@ -47,31 +41,11 @@ struct MotherView: View {
         case .page10:
             HelpView()
         case .page11:
-            Button("Open Plaid") { self.isPresented = true }
-                .sheet(isPresented: $isPresented) {
-                    LinkView(isPresented: $isPresented)}
+            LinkView()
         }
     }
 }
 
-struct LinkView: View {
-    @Binding var isPresented: Bool
-    @ObservedObject var token = Token()
-    
-        var body: some View {
-            Group{
-                if token.hasLoaded {
-                    LinkController(configuration: .linkToken(token.vc.createLinkTokenConfiguration()))
-                }
-                else {
-                    Text("Loading Plaid")
-                }
-            }.onAppear(){
-                self.token.setToken()
-            }
-    }
-    
-}
 
 
 

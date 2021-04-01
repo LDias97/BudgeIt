@@ -23,7 +23,6 @@ extension Token {
         }
     }
     
-    
     func setToken(){
         getTokenFromCloud { (linkToken) in
             guard let linkToken = linkToken , !linkToken.isEmpty else { return }
