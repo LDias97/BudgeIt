@@ -7,6 +7,7 @@ class ViewController: UIViewController {
     @IBOutlet var label: UILabel!
     @IBOutlet var buttonContainerView: UIView!
     var linkHandler: Handler?
+    var token: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,5 +26,9 @@ class ViewController: UIViewController {
 
     @IBAction func didTapButton(_ sender: Any?) {
                 presentSwiftUILinkToken()
+    }
+    
+    func setToken(token: String){
+        self.token = token
     }
 }

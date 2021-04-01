@@ -2,14 +2,18 @@
 import LinkKit
 import SwiftUI
 
+// The Controller that bridges from SwiftUI to UIKit
 struct LinkController {
+    // A wrapper enum for either a public key or link token based configuration
     enum LinkConfigurationType {
         case publicKey(LinkPublicKeyConfiguration)
         case linkToken(LinkTokenConfiguration)
     }
     
     let configuration: LinkConfigurationType
+    
     let openOptions: OpenOptions
+    
     let onCreateError: ((Plaid.CreateError) -> Void)?
 
     init(
