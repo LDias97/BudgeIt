@@ -108,6 +108,7 @@ struct SignUpView: View {
                 print(error?.localizedDescription ?? "")
             } else {
                 if(password == confirmPassword){
+                    UserDefaults.standard.set(true, forKey: "logged_in")
                     print("sign up = success")
                 }
                 else{

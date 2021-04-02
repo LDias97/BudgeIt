@@ -1022,6 +1022,7 @@ struct MenuView: View {
                         Button(action: {
                                 do{
                                     try Auth.auth().signOut();
+                                    UserDefaults.standard.set(false, forKey: "logged_in")
                                     viewRouter.currentPage = .page2;
                                 }
                                 catch{
