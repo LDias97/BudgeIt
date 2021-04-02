@@ -61,6 +61,7 @@ enum MonthSelector : Int {
 struct DashboardView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var bank : BankAccountViewModel
     @ObservedObject var viewModel = BudgetViewModel()
     @State var showMenu = false
     @State var editBudgets = false
@@ -76,14 +77,17 @@ struct DashboardView: View {
                 }
             }
         
+        GeometryReader { geometry in
         ZStack(){
             ScrollView{
                 ZStack(alignment:.top){
                     Rectangle()
                         .fill(Color(.systemGray6))
                     Image("header")
-                        .padding(.bottom, 1568)
-                        .frame(width: 414, height: 1024)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .padding(.bottom, geometry.size.height+350)
+                        .frame(width: geometry.size.width, height: geometry.size.height)
                     VStack(spacing: 30){
                         ZStack(alignment:.top){
                             VStack(){
@@ -151,6 +155,7 @@ struct DashboardView: View {
                 Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
             }
         }
+        }
         .gesture(drag)
         .gesture(DragGesture(minimumDistance: 0).onEnded({ (value) in
             if (value.location.x > UIScreen.main.bounds.width*0.6){
@@ -164,7 +169,8 @@ struct DashboardView: View {
 
 struct NetWorthCardView: View {
     @ObservedObject var viewModel = NetWorthViewModel()
-    
+    @EnvironmentObject var bank: BankAccountViewModel
+
     var body: some View {
         ZStack(){
             Card(width: 375, height: 150)
@@ -172,9 +178,16 @@ struct NetWorthCardView: View {
                 VStack(alignment: .leading, spacing: 15){
                     Text("Net Worth")
                         .font(.custom("DIN Alternate Bold", size: 20))
-                    Text("$\(viewModel.currentBalance,specifier: "%.2f")")
+                    if(bank.balance != nil){
+                    Text("$\(bank.balance!.available!,specifier: "%.2f")")
                         .foregroundColor(green)
                         .font(.custom("DIN Alternate Bold", size: 35))
+                    }
+                    else{
+                        Text("$5,048.00")
+                            .foregroundColor(green)
+                            .font(.custom("DIN Alternate Bold", size: 35))
+                    }
                     viewModel.difference >= 0 ?
                         Text("+$\(abs(viewModel.difference),specifier: "%.2f") this month")
                         .foregroundColor(viewModel.difference > 0 ? green : red)

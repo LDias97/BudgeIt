@@ -33,13 +33,4 @@ extension PlaidAPI {
         }
     }
     
-    func getTransactions(){
-        
-    }
-    
-    func getBalance(){
-        
-    }
-    
-    
 }

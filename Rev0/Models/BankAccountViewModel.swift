@@ -4,27 +4,37 @@ import FirebaseFunctions
 
 final class BankAccountViewModel: ObservableObject, Identifiable {
     
-    @Published var balance: String? = nil
+    @Published var account: Account? = nil
+    @Published var balance: Balance? = nil
     @Published var transactions: [Transaction]? = nil
     
-    func getBalance(completion: @escaping (String?) -> ()){
-        Functions.functions().httpsCallable("getBalance").call { (result, error) in
+    func getBalance(completion: @escaping (Data?) -> ()){
+        let json: [String: Any] = [
+            "accessToken": UserDefaults.standard.value(forKey: "access_token") as! String
+        ]
+        Functions.functions().httpsCallable("getBalance").call(json) { (result, error) in
             if let error = error {
                 debugPrint(error.localizedDescription)
                 return completion(nil)
             }
-            guard let balance = result?.data as? String else {
+            guard let data = result?.data else {
                 return completion(nil)
             }
-            completion(balance)
+            completion(data as? Data)
         }
     }
     
-    func setBalance(){
-        getBalance { (balance) in
-            guard let balance = balance , !balance.isEmpty else { return }
-            DispatchQueue.main.async {
-                self.balance = balance
+    func setBalance() {
+        getBalance { (data) in
+            if let data = data {
+                do {
+                    let account = try JSONDecoder().decode(Account.self, from: data)
+                    self.account = account
+                    self.balance = self.account?.balances
+                    print(self.balance)
+                } catch {
+                    print(error)
+                }
             }
         }
     }
