@@ -8,6 +8,7 @@ struct SignUpView: View {
     @State var email: String = ""
     @State var password: String = ""
     @State var confirmPassword: String = ""
+    @State var showLink = false
     
     var body: some View {
         VStack(spacing: 20){
@@ -90,7 +91,10 @@ struct SignUpView: View {
                         .cornerRadius(30.0)
                 }
                 VStack(spacing: 60){
-                    Button(action:{ signup(); viewRouter.currentPage = .page11; }) { Text("Sign Up").font(.body).foregroundColor(.white) }
+                    Button(action:{ signup(); self.showLink = true;  }) { Text("Sign Up").font(.body).foregroundColor(.white) }
+                        .sheet(isPresented: $showLink){
+                            LinkView()
+                        }
                     Button(action:{print("Clicked Continue with Google")}) { Text("Continue with Google").font(.body).foregroundColor(.white) }
                 }
             }

@@ -1,6 +1,7 @@
 import UIKit
 import LinkKit
 import SwiftUI
+import FirebaseFunctions
 
 class ViewController: UIViewController {
     
@@ -9,6 +10,7 @@ class ViewController: UIViewController {
     @IBOutlet var buttonContainerView: UIView!
     var linkHandler: Handler?
     var token: String?
+    var accessToken: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,13 +42,14 @@ extension ViewController {
         let linkToken = self.token!
         var linkConfiguration = LinkTokenConfiguration(token: linkToken) { success in
             print("public-token: \(success.publicToken) metadata: \(success.metadata)")
-            self.getAccessToken(publicToken: success.publicToken)
+            self.setAccessToken(publicToken: success.publicToken)
         }
         linkConfiguration.onExit = { exit in
             if let error = exit.error {
                 print("exit with \(error)\n\(exit.metadata)")
             } else {
                 print("exit with \(exit.metadata)")
+                self.dismiss(animated: true)
             }
         }
         return linkConfiguration
@@ -77,10 +80,30 @@ extension ViewController {
         present(vc, animated: true, completion: nil)
     }
     
-    func getAccessToken(publicToken: String)
+    func getAccessToken(publicToken: String, completion: @escaping (String?) -> ())
     {
-        
-        
-//        UserDefaults.standard.set(accessToken, forKey: "plaid-access-token")
+        let json: [String: Any] = [
+            "publicToken": publicToken
+        ]
+        Functions.functions().httpsCallable("createPlaidBankAccount").call(json) { (result, error) in
+            if let error = error {
+                debugPrint(error.localizedDescription)
+                return completion(nil)
+            }
+            guard let accesstoken = result?.data as? String else {
+                return completion(nil)
+            }
+            completion(accesstoken)
+        }
     }
+    
+    func setAccessToken(publicToken: String){
+
+        getAccessToken(publicToken: publicToken) { (accessToken) in
+                guard let accessToken = accessToken , !accessToken.isEmpty else { return }
+                UserDefaults.standard.set(accessToken, forKey: "access_token")
+            }
+        }
+    
+    
 }

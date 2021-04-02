@@ -206,10 +206,10 @@ struct NetWorthCardView: View {
                         Text("$\(viewModel.earned,specifier: "%.2f")")
                             .font(.custom("DIN Alternate Bold", size: 20))
                         Spacer()
-                        Text("Earned")
+                        Text("Spent")
                             .foregroundColor(Color(.systemGray))
                             .font(.custom("DIN Alternate Bold", size: 16))
-                        Text("$\(viewModel.earned,specifier: "%.2f")")
+                        Text("$\(viewModel.spent,specifier: "%.2f")")
                             .font(.custom("DIN Alternate Bold", size: 20))
                         Spacer()
                     }

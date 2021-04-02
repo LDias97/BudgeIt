@@ -9,7 +9,6 @@ struct SettingsView: View {
     
     var body: some View {
         
-        
         ZStack(alignment:.top){
             Rectangle()
                 .fill(Color(.systemGray6))
