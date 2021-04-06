@@ -2,9 +2,7 @@ import SwiftUI
 
 struct HelpView: View {
     
-    @State var isEnabled1: Bool = false
-    @State var isEnabled2: Bool = false
-    @State var isEnabled3: Bool = false
+    @EnvironmentObject var viewRouter: ViewRouter
     
     var body: some View {
         
@@ -12,17 +10,18 @@ struct HelpView: View {
             Rectangle()
                 .fill(Color(.systemGray6))
             VStack(){
-                Spacer()
                 HStack{
-                    Toggle("Option1", isOn: $isEnabled1)
+                    Button(action: { viewRouter.currentPage = .page3; } ) {
+                        Image(systemName: "chevron.backward")
+                            .imageScale(.large)
+                            .foregroundColor(Color(.black))
+                    }
+                    Spacer()
+                    Text("Help")
+                        .font(.title)
+                    Spacer()
                 }
-                HStack{
-                    Toggle("Option2", isOn: $isEnabled1)
-                }
-                HStack{
-                    Toggle("Option3", isOn: $isEnabled1)
-                }
-                Spacer()
+                .padding(.top, 70)
             }
             .padding(.leading, 30)
             .padding(.trailing, 30)

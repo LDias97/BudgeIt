@@ -9,8 +9,8 @@ final class NetWorthViewModel: ObservableObject {
     var earned: Double
     
     init(){
-        currentBalance = 5047.00
-        previousBalance = 5447.00
+        currentBalance = BankAccountViewModel().netWorth
+        previousBalance = BankAccountViewModel().previousNetWorth
         difference = currentBalance - previousBalance
         spent = 1830.00
         earned = 1430

@@ -178,8 +178,8 @@ struct NetWorthCardView: View {
                 VStack(alignment: .leading, spacing: 15){
                     Text("Net Worth")
                         .font(.custom("DIN Alternate Bold", size: 20))
-                    if(bank.balance != nil){
-                    Text("$\(bank.balance!.available!,specifier: "%.2f")")
+                    if(bank.netWorth != 0.0){
+                    Text("$\(bank.netWorth,specifier: "%.2f")")
                         .foregroundColor(green)
                         .font(.custom("DIN Alternate Bold", size: 35))
                     }
@@ -1114,6 +1114,7 @@ struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             DashboardView()
+                .environmentObject(BankAccountViewModel())
         }
     }
 }
