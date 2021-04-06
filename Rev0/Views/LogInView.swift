@@ -5,6 +5,7 @@ struct LogInView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @State var email: String = ""
     @State var password: String = ""
+    @State var showingAlert: Bool = false
     
     var body: some View {
         VStack(spacing: 20){
@@ -59,9 +60,12 @@ struct LogInView: View {
                     .cornerRadius(30.0)
                 }
             VStack(spacing: 55){
-                Button(action:{  login(); viewRouter.currentPage = .page3; }) { Text("Sign In").font(.body).foregroundColor(.white)}.disabled(password.isEmpty || email.isEmpty)
+                Button(action:{  login(); }) { Text("Sign In").font(.body).foregroundColor(.white)
+                    .alert(isPresented: $showingAlert) {
+                                Alert(title: Text("Login error"), message: Text("Incorrect email or password. Please try again."), dismissButton: .default(Text("Dismiss")))
+                            }
+                }.disabled(password.isEmpty || email.isEmpty)
                     Button(action:{print("Clicked Continue with Google")}) {Text("Continue with Google").font(.body).foregroundColor(.white) }.disabled(password.isEmpty || email.isEmpty)
-
                 }
             }
             Button(action:{ viewRouter.currentPage = .page1; }) { Text("Don't have an account? Sign Up").font(.body).foregroundColor(.blue)}
@@ -74,9 +78,10 @@ struct LogInView: View {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if error != nil {
                 print(error?.localizedDescription ?? "")
+                showingAlert = true
             } else {
                 UserDefaults.standard.set(true, forKey: "logged_in")
-                print("log in success")
+                viewRouter.currentPage = .page3
             }
         }
     }

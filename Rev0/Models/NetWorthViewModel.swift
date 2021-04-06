@@ -10,7 +10,15 @@ final class NetWorthViewModel: ObservableObject {
     
     init(){
         currentBalance = BankAccountViewModel().netWorth
-        previousBalance = BankAccountViewModel().previousNetWorth
+        previousBalance = 130000.00
+        difference = currentBalance - previousBalance
+        spent = 1830.00
+        earned = 1430
+    }
+    
+    func update(){
+        currentBalance = BankAccountViewModel().netWorth
+        previousBalance = 130000.00
         difference = currentBalance - previousBalance
         spent = 1830.00
         earned = 1430

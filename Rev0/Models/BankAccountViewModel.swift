@@ -27,7 +27,6 @@ final class BankAccountViewModel: ObservableObject {
                 let balance = account["balances"] as! NSMutableDictionary
                 let current = balance["current"] as! Double
                 self.netWorth += current
-                print(self.netWorth)
             }
         }
     }

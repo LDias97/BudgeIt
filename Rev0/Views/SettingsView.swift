@@ -39,7 +39,7 @@ struct SettingsView: View {
             .padding(.trailing, 30)
         }
         .ignoresSafeArea()
-        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 

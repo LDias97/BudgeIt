@@ -9,6 +9,8 @@ struct SignUpView: View {
     @State var password: String = ""
     @State var confirmPassword: String = ""
     @State var showLink = false
+    @State var showingAlert: Bool = false
+
     
     var body: some View {
         VStack(spacing: 20){

@@ -174,20 +174,19 @@ struct NetWorthCardView: View {
     var body: some View {
         ZStack(){
             Card(width: 375, height: 150)
+            if(bank.netWorth == 0.0){
+                Text("Good evening User!")
+                    .font(.custom("DIN Alternate Bold", size: 28))
+                    .foregroundColor(.green)
+            }
+            else{
             HStack(){
                 VStack(alignment: .leading, spacing: 15){
                     Text("Net Worth")
                         .font(.custom("DIN Alternate Bold", size: 20))
-                    if(bank.netWorth != 0.0){
                     Text("$\(bank.netWorth,specifier: "%.2f")")
                         .foregroundColor(green)
                         .font(.custom("DIN Alternate Bold", size: 35))
-                    }
-                    else{
-                        Text("$5,048.00")
-                            .foregroundColor(green)
-                            .font(.custom("DIN Alternate Bold", size: 35))
-                    }
                     viewModel.difference >= 0 ?
                         Text("+$\(abs(viewModel.difference),specifier: "%.2f") this month")
                         .foregroundColor(viewModel.difference > 0 ? green : red)
@@ -228,6 +227,7 @@ struct NetWorthCardView: View {
                     }
                 }
                 .padding(.trailing, 50)
+            }
             }
         }
         .padding(.top, 120)
