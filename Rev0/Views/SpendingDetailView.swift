@@ -52,6 +52,7 @@ enum categorySelector : Int {
 struct SpendingDetailView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
+    @ObservedObject var vm = SpendingViewModel()
     @State var auto: String = ""
     @State var food: String = ""
     @State var entertainment: String = ""
@@ -98,7 +99,7 @@ struct SpendingDetailView: View {
                             .animation(Animation.interactiveSpring())
                     Spacer()
                     SpendingTableView(selector: $selector)
-                        .padding(.top, 50)                    
+                        .padding(.top, 50)
                 }
                 .padding(.top, 50)
             }

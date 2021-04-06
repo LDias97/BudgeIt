@@ -91,6 +91,9 @@ extension PlaidAPI {
                     self.spending.append(transaction)
                     self.totalSpent += transaction.amount
                 }
+                print(transaction.amount)
+                print(transaction.name)
+                print("------------------")
                 self.transactions.append(transaction)
             }
             completion(self.transactions, self.spending, self.income)
