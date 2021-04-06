@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1179C95F06325AA775F546B9 /* Pods_Rev0.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 277609263290349C697C06A2 /* Pods_Rev0.framework */; };
 		B5258F7E26150472006EFF5C /* LinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5258F7D26150472006EFF5C /* LinkView.swift */; };
-		B559CBD62616156C001F8CEF /* BankAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B559CBD52616156C001F8CEF /* BankAccountViewModel.swift */; };
 		B55AC0E526005B1F003263D6 /* DIN Alternate Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B55AC0E426005B1F003263D6 /* DIN Alternate Bold.ttf */; };
 		B55AC0EE26008759003263D6 /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55AC0ED26008759003263D6 /* NotificationsView.swift */; };
 		B55AC0F126008765003263D6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55AC0F026008765003263D6 /* SettingsView.swift */; };
@@ -40,7 +39,6 @@
 		277609263290349C697C06A2 /* Pods_Rev0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rev0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85E10DC7E99006C3824D5C35 /* Pods-Rev0.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rev0.release.xcconfig"; path = "Target Support Files/Pods-Rev0/Pods-Rev0.release.xcconfig"; sourceTree = "<group>"; };
 		B5258F7D26150472006EFF5C /* LinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkView.swift; sourceTree = "<group>"; };
-		B559CBD52616156C001F8CEF /* BankAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountViewModel.swift; sourceTree = "<group>"; };
 		B55AC0E426005B1F003263D6 /* DIN Alternate Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "DIN Alternate Bold.ttf"; path = "../../../../../../../System/Library/Fonts/Supplemental/DIN Alternate Bold.ttf"; sourceTree = "<group>"; };
 		B55AC0ED26008759003263D6 /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		B55AC0F026008765003263D6 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -80,7 +78,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B559CBDB26161ADE001F8CEF /* Plaid */ = {
+		B559CBDB26161ADE001F8CEF /* Link */ = {
 			isa = PBXGroup;
 			children = (
 				B5B8579A2609804F0071CC47 /* LinkKitSwiftUISupport.swift */,
@@ -88,7 +86,7 @@
 				B59847DF2614F3BD00C32496 /* PlaidAPI.swift */,
 				B5258F7D26150472006EFF5C /* LinkView.swift */,
 			);
-			path = Plaid;
+			path = Link;
 			sourceTree = "<group>";
 		};
 		B559CBDD26161B23001F8CEF /* Models */ = {
@@ -96,7 +94,6 @@
 			children = (
 				B5CC2A6F26083E1700847A4B /* BudgetViewModel.swift */,
 				B5CC2A7026083E1700847A4B /* NetWorthViewModel.swift */,
-				B559CBD52616156C001F8CEF /* BankAccountViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -159,7 +156,7 @@
 				B559CBDF26161B50001F8CEF /* Navigation */,
 				B559CBDE26161B2A001F8CEF /* Views */,
 				B559CBDD26161B23001F8CEF /* Models */,
-				B559CBDB26161ADE001F8CEF /* Plaid */,
+				B559CBDB26161ADE001F8CEF /* Link */,
 				B5C6566E25DD311F00A9FABC /* Rev0App.swift */,
 				B56FB26E26044F78000A7FFA /* AppDelegate.swift */,
 				B5C6567225DD312000A9FABC /* Assets.xcassets */,
@@ -326,7 +323,6 @@
 				B5FF2CBC25E8A4A20032E577 /* SpendingDetailView.swift in Sources */,
 				B5FF2CB525E71C710032E577 /* SignUpView.swift in Sources */,
 				B5FF2CB825E71C990032E577 /* LogInView.swift in Sources */,
-				B559CBD62616156C001F8CEF /* BankAccountViewModel.swift in Sources */,
 				FF65818725F40F1F00D47939 /* IncomeDetailView.swift in Sources */,
 				B5CC2A7226083E1700847A4B /* BudgetViewModel.swift in Sources */,
 				B5CC2A7426083E1700847A4B /* NetWorthViewModel.swift in Sources */,

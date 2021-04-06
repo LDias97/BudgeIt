@@ -61,8 +61,8 @@ enum MonthSelector : Int {
 struct DashboardView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
-    @EnvironmentObject var bank : BankAccountViewModel
-    @ObservedObject var viewModel = BudgetViewModel()
+    @ObservedObject var budgetViewModel = BudgetViewModel()
+    @ObservedObject var netWorthViewModel = NetWorthViewModel()
     @State var showMenu = false
     @State var editBudgets = false
     
@@ -120,10 +120,10 @@ struct DashboardView: View {
                                 .padding(.top, 20)
                             }
                             .padding(.top, 20)
-                            NetWorthCardView()
+                            NetWorthCardView(viewModel: netWorthViewModel, loading: $netWorthViewModel.isLoading)
                         }
                         .padding(.top, 44)
-                        BudgetCardView(editBudgets: $editBudgets, limits: viewModel.limits)
+                        BudgetCardView(editBudgets: $editBudgets, limits: budgetViewModel.limits)
 //                            .onTapGesture {
 //                                viewRouter.currentPage = .page5;
 //                            }
@@ -168,13 +168,13 @@ struct DashboardView: View {
 }
 
 struct NetWorthCardView: View {
-    @ObservedObject var viewModel = NetWorthViewModel()
-    @EnvironmentObject var bank: BankAccountViewModel
+    @ObservedObject var viewModel: NetWorthViewModel
+    @Binding var loading: Bool
 
     var body: some View {
         ZStack(){
             Card(width: 375, height: 150)
-            if(bank.netWorth == 0.0){
+            if loading {
                 Text("Good evening User!")
                     .font(.custom("DIN Alternate Bold", size: 28))
                     .foregroundColor(.green)
@@ -184,7 +184,7 @@ struct NetWorthCardView: View {
                 VStack(alignment: .leading, spacing: 15){
                     Text("Net Worth")
                         .font(.custom("DIN Alternate Bold", size: 20))
-                    Text("$\(bank.netWorth,specifier: "%.2f")")
+                    Text("$\(viewModel.currentBalance,specifier: "%.2f")")
                         .foregroundColor(green)
                         .font(.custom("DIN Alternate Bold", size: 35))
                     viewModel.difference >= 0 ?
@@ -1114,7 +1114,6 @@ struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             DashboardView()
-                .environmentObject(BankAccountViewModel())
         }
     }
 }

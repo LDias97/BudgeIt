@@ -10,7 +10,6 @@ class ViewController: UIViewController {
     @IBOutlet var buttonContainerView: UIView!
     var linkHandler: Handler?
     var token: String?
-    var accessToken: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,14 +40,12 @@ extension ViewController {
     func createLinkTokenConfiguration() -> LinkTokenConfiguration {
         let linkToken = self.token!
         var linkConfiguration = LinkTokenConfiguration(token: linkToken) { success in
-//            print("public-token: \(success.publicToken) metadata: \(success.metadata)")
             self.setAccessToken(publicToken: success.publicToken)
         }
         linkConfiguration.onExit = { exit in
             if let error = exit.error {
                 print("exit with \(error)\n\(exit.metadata)")
             } else {
-//                print("exit with \(exit.metadata)")
                 self.dismiss(animated: true)
             }
         }
@@ -98,12 +95,10 @@ extension ViewController {
     }
     
     func setAccessToken(publicToken: String){
-
         getAccessToken(publicToken: publicToken) { (accessToken) in
                 guard let accessToken = accessToken , !accessToken.isEmpty else { return }
                 UserDefaults.standard.set(accessToken, forKey: "access_token")
             }
         }
-    
     
 }

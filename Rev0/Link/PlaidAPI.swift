@@ -1,14 +1,40 @@
 import Foundation
-import SwiftUI
+import Firebase
 import FirebaseFunctions
 
-final class BankAccountViewModel: ObservableObject {
-    
-    @Published var netWorth = 0.0
-    @Published var previousNetWorth = 0.0
+class PlaidAPI: ObservableObject {
+    @Published var hasLoaded = false
+    @Published var dismissed = false
+    @Published var vc: ViewController = ViewController()
     @Published var transactions: [Transaction]? = nil
+}
+
+extension PlaidAPI {
     
-    func getBalance(completion: @escaping ([NSMutableDictionary]) -> ()){
+    func getTokenFromCloud(completion: @escaping (String?) -> ()){
+        Functions.functions().httpsCallable("createPlaidLinkToken").call { (result, error) in
+            if let error = error {
+                debugPrint(error.localizedDescription)
+                return completion(nil)
+            }
+            guard let linkToken = result?.data as? String else {
+                return completion(nil)
+            }
+            completion(linkToken)
+        }
+    }
+    
+    func setToken(){
+        getTokenFromCloud { (linkToken) in
+            guard let linkToken = linkToken , !linkToken.isEmpty else { return }
+            DispatchQueue.main.async {
+                self.vc.setToken(token: linkToken)
+                self.hasLoaded = true
+            }
+        }
+    }
+    
+    func getBalance(completion: @escaping (Double) -> ()){
         let json: [String: Any] = [
             "accessToken": UserDefaults.standard.value(forKey: "access_token") as! String
         ]
@@ -16,18 +42,14 @@ final class BankAccountViewModel: ObservableObject {
             if let error = error {
                 debugPrint(error.localizedDescription)
             }
-            let accounts = result?.data
-            completion(accounts as! [NSMutableDictionary])
-        }
-    }
-    
-    func setBalance() {
-        getBalance { (data) in
-            for account in data {
+            let accounts = result?.data as! [NSMutableDictionary]
+            var netWorth = 0.0
+            for account in accounts {
                 let balance = account["balances"] as! NSMutableDictionary
                 let current = balance["current"] as! Double
-                self.netWorth += current
+                netWorth += current
             }
+            completion(netWorth)
         }
     }
     

@@ -93,7 +93,8 @@ struct SignUpView: View {
                         .cornerRadius(30.0)
                 }
                 VStack(spacing: 60){
-                    Button(action:{ signup(); self.showLink = true;  }) { Text("Sign Up").font(.body).foregroundColor(.white) }
+                    Button(action:{ signup(); self.showLink = true; UserDefaults.standard.set(0.0, forKey: "lastMonthBalance");})
+                        { Text("Sign Up").font(.body).foregroundColor(.white) }
                         .sheet(isPresented: $showLink){
                             LinkView()
                         }
