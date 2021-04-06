@@ -78,83 +78,83 @@ struct DashboardView: View {
             }
         
         GeometryReader { geometry in
-        ZStack(){
-            ScrollView{
-                ZStack(alignment:.top){
-                    Rectangle()
-                        .fill(Color(.systemGray6))
-                    Image("header")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .padding(.bottom, geometry.size.height+350)
-                        .frame(width: geometry.size.width, height: geometry.size.height)
-                    VStack(spacing: 30){
-                        ZStack(alignment:.top){
-                            VStack(){
-                                HStack(){
-                                    Button(action: { withAnimation(.default) {
-                                        self.showMenu.toggle(); }
-                                    } ) {
-                                        Image(systemName: "line.horizontal.3")
-                                            .imageScale(.large)
+            ZStack(){
+                ScrollView{
+                    ZStack(alignment:.top){
+                        Rectangle()
+                            .fill(Color(.systemGray6))
+                        Image("header")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .padding(.bottom, geometry.size.height+350)
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                        VStack(spacing: 30){
+                            ZStack(alignment:.top){
+                                VStack(){
+                                    HStack(){
+                                        Button(action: { withAnimation(.default) {
+                                            self.showMenu.toggle(); }
+                                        } ) {
+                                            Image(systemName: "line.horizontal.3")
+                                                .imageScale(.large)
+                                                .foregroundColor(Color(.white))
+                                        }
+                                        .padding(.leading, 30)
+                                        Spacer()
+                                        Button(action: { withAnimation(.default) {
+                                            self.showMenu.toggle(); }
+                                        } ) {
+                                            Image(systemName: "bell.badge")
+                                                .imageScale(.large)
+                                                .foregroundColor(Color(.white))
+                                        }
+                                        .padding(.trailing, 30)
+                                    }
+                                    HStack(){
+                                        Text("Dashboard")
+                                            .font(.custom("DIN Alternate Bold", size: 30))
                                             .foregroundColor(Color(.white))
+                                        Spacer()
                                     }
                                     .padding(.leading, 30)
-                                    Spacer()
-                                    Button(action: { withAnimation(.default) {
-                                        self.showMenu.toggle(); }
-                                    } ) {
-                                        Image(systemName: "bell.badge")
-                                            .imageScale(.large)
-                                            .foregroundColor(Color(.white))
-                                    }
-                                    .padding(.trailing, 30)
+                                    .padding(.top, 20)
                                 }
-                                HStack(){
-                                    Text("Dashboard")
-                                        .font(.custom("DIN Alternate Bold", size: 30))
-                                        .foregroundColor(Color(.white))
-                                    Spacer()
-                                }
-                                .padding(.leading, 30)
                                 .padding(.top, 20)
+                                NetWorthCardView(viewModel: netWorthViewModel, loading: $netWorthViewModel.isLoading)
                             }
-                            .padding(.top, 20)
-                            NetWorthCardView(viewModel: netWorthViewModel, loading: $netWorthViewModel.isLoading)
+                            .padding(.top, 44)
+                            BudgetCardView(editBudgets: $editBudgets, limits: budgetViewModel.limits)
+                            //                            .onTapGesture {
+                            //                                viewRouter.currentPage = .page5;
+                            //                            }
+                            BarChartDashView()
+                            SpendingCardView()
+                                .onTapGesture {
+                                    viewRouter.currentPage = .page4;
+                                }
+                            IncomeCardView()
+                                .foregroundColor(.black)
+                                .onTapGesture {
+                                    viewRouter.currentPage = .page6;
+                                }
+                                .padding(.bottom, 15)
                         }
-                        .padding(.top, 44)
-                        BudgetCardView(editBudgets: $editBudgets, limits: budgetViewModel.limits)
-//                            .onTapGesture {
-//                                viewRouter.currentPage = .page5;
-//                            }
-                        BarChartDashView()
-                        SpendingCardView()
-                            .onTapGesture {
-                                viewRouter.currentPage = .page4;
-                            }
-                        IncomeCardView()
-                            .foregroundColor(.black)
-                            .onTapGesture {
-                                viewRouter.currentPage = .page6;
-                            }
-                            .padding(.bottom, 15)
                     }
                 }
+                .background(
+                    Rectangle()
+                        .fill(Color(.systemGray6))
+                )
+                .ignoresSafeArea()
+                .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                HStack(){
+                    MenuView(showMenu: $showMenu)
+                        .offset(x: self.showMenu ? 0 : 0 - (UIScreen.main.bounds.width))
+                        .background(Color.primary.opacity(self.showMenu ? 0.6 : 0))
+                        .ignoresSafeArea()
+                    Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
+                }
             }
-            .background(
-                Rectangle()
-                    .fill(Color(.systemGray6))
-            )
-            .ignoresSafeArea()
-            .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            HStack(){
-                MenuView(showMenu: $showMenu)
-                    .offset(x: self.showMenu ? 0 : 0 - (UIScreen.main.bounds.width))
-                    .background(Color.primary.opacity(self.showMenu ? 0.6 : 0))
-                    .ignoresSafeArea()
-                Spacer(minLength: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/)
-            }
-        }
         }
         .gesture(drag)
         .gesture(DragGesture(minimumDistance: 0).onEnded({ (value) in
@@ -170,7 +170,7 @@ struct DashboardView: View {
 struct NetWorthCardView: View {
     @ObservedObject var viewModel: NetWorthViewModel
     @Binding var loading: Bool
-
+    
     var body: some View {
         ZStack(){
             Card(width: 375, height: 150)
@@ -180,54 +180,54 @@ struct NetWorthCardView: View {
                     .foregroundColor(.green)
             }
             else{
-            HStack(){
-                VStack(alignment: .leading, spacing: 15){
-                    Text("Net Worth")
-                        .font(.custom("DIN Alternate Bold", size: 20))
-                    Text("$\(viewModel.currentBalance,specifier: "%.2f")")
-                        .foregroundColor(green)
-                        .font(.custom("DIN Alternate Bold", size: 35))
-                    viewModel.difference >= 0 ?
-                        Text("+$\(abs(viewModel.difference),specifier: "%.2f") this month")
-                        .foregroundColor(viewModel.difference > 0 ? green : red)
-                        .font(.custom("DIN Alternate Bold", size: 14))
-                        :
-                        Text("-$\(abs(viewModel.difference),specifier: "%.2f") this month")
-                        .foregroundColor(viewModel.difference > 0 ? green : red)
-                        .font(.custom("DIN Alternate Bold", size: 14))
-                }
-                .padding(.leading, 50)
-                Spacer()
                 HStack(){
-                    VStack(){
-                        Spacer()
-                        Circle()
-                            .frame(width: 10, height: 10)
+                    VStack(alignment: .leading, spacing: 15){
+                        Text("Net Worth")
+                            .font(.custom("DIN Alternate Bold", size: 20))
+                        Text("$\(viewModel.currentBalance,specifier: "%.2f")")
                             .foregroundColor(green)
-                        Spacer()
-                        Circle()
-                            .frame(width: 10, height: 10)
-                            .foregroundColor(red)
-                        Spacer()
+                            .font(.custom("DIN Alternate Bold", size: 35))
+                        viewModel.difference >= 0 ?
+                            Text("+$\(abs(viewModel.difference),specifier: "%.2f") this month")
+                            .foregroundColor(viewModel.difference > 0 ? green : red)
+                            .font(.custom("DIN Alternate Bold", size: 14))
+                            :
+                            Text("-$\(abs(viewModel.difference),specifier: "%.2f") this month")
+                            .foregroundColor(viewModel.difference > 0 ? green : red)
+                            .font(.custom("DIN Alternate Bold", size: 14))
                     }
-                    VStack(){
-                        Spacer()
-                        Text("Earned")
-                            .foregroundColor(Color(.systemGray))
-                            .font(.custom("DIN Alternate Bold", size: 16))
-                        Text("$\(viewModel.earned,specifier: "%.2f")")
-                            .font(.custom("DIN Alternate Bold", size: 20))
-                        Spacer()
-                        Text("Spent")
-                            .foregroundColor(Color(.systemGray))
-                            .font(.custom("DIN Alternate Bold", size: 16))
-                        Text("$\(viewModel.spent,specifier: "%.2f")")
-                            .font(.custom("DIN Alternate Bold", size: 20))
-                        Spacer()
+                    .padding(.leading, 50)
+                    Spacer()
+                    HStack(){
+                        VStack(){
+                            Spacer()
+                            Circle()
+                                .frame(width: 10, height: 10)
+                                .foregroundColor(green)
+                            Spacer()
+                            Circle()
+                                .frame(width: 10, height: 10)
+                                .foregroundColor(red)
+                            Spacer()
+                        }
+                        VStack(){
+                            Spacer()
+                            Text("Earned")
+                                .foregroundColor(Color(.systemGray))
+                                .font(.custom("DIN Alternate Bold", size: 16))
+                            Text("$\(viewModel.earned,specifier: "%.2f")")
+                                .font(.custom("DIN Alternate Bold", size: 20))
+                            Spacer()
+                            Text("Spent")
+                                .foregroundColor(Color(.systemGray))
+                                .font(.custom("DIN Alternate Bold", size: 16))
+                            Text("$\(viewModel.spent,specifier: "%.2f")")
+                                .font(.custom("DIN Alternate Bold", size: 20))
+                            Spacer()
+                        }
                     }
+                    .padding(.trailing, 50)
                 }
-                .padding(.trailing, 50)
-            }
             }
         }
         .padding(.top, 120)
@@ -269,7 +269,7 @@ struct BudgetCardView : View {
                                         VStack(spacing: 5){
                                             HStack(){
                                                 Text("\(budget.category)")
-                                            
+                                                    
                                                     .font((Font.custom("DIN Alternate Bold", size: 14)))
                                                     .bold()
                                                 Spacer()
@@ -384,10 +384,8 @@ struct BarChartDashView: View {
                         ZStack{
                             Rectangle()
                                 .fill(wmy == 0 ?
-                                        
-                                        (LinearGradient(gradient: Gradient(colors: [ Color(.systemBlue),Color(.cyan)]), startPoint: .leading, endPoint: .trailing))
+                                        (LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
                                         :
-                                        
                                         (LinearGradient(gradient: Gradient(colors: [ Color(.systemGray5)]), startPoint: .trailing, endPoint: .leading)))
                                 .frame(width: 75, height: 40)
                                 .cornerRadius(30)
@@ -400,10 +398,8 @@ struct BarChartDashView: View {
                         ZStack{
                             Rectangle()
                                 .fill(wmy == 1 ?
-                                        
                                         (LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
                                         :
-                                        
                                         (LinearGradient(gradient: Gradient(colors: [ Color(.systemGray5)]), startPoint: .trailing, endPoint: .leading)))
                                 .frame(width: 75, height: 40)
                                 .cornerRadius(30)
@@ -416,10 +412,8 @@ struct BarChartDashView: View {
                         ZStack{
                             Rectangle()
                                 .fill(wmy == 2 ?
-                                        
-                                        (LinearGradient(gradient: Gradient(colors: [ Color(.systemPink),Color(.systemOrange)]), startPoint: .trailing, endPoint: .leading))
+                                        (LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
                                         :
-                                        
                                         (LinearGradient(gradient: Gradient(colors: [ Color(.systemGray5)]), startPoint: .trailing, endPoint: .leading)))
                                 .frame(width: 75, height: 40)
                                 .cornerRadius(30)
@@ -574,7 +568,6 @@ struct SpendingCardView : View {
                     Text("Spending")
                         .font(Font.custom("DIN Alternate Bold", size: 20))
                     Spacer()
-                    // SpendingDetailView Button Action
                     Button(action:{
                             viewRouter.currentPage = .page4;
                             print("SpendingDetailView clicked")} )
@@ -587,7 +580,6 @@ struct SpendingCardView : View {
                 }
                 .padding(.leading, 50)
                 .padding(.top, 20)
-                // Transaction 1 - "Auto and Transport Example"
                 HStack(){
                     HStack(){
                         Rectangle()
@@ -631,6 +623,12 @@ struct SpendingCardView : View {
                     .frame(height: 1)
                     .padding(.leading, 40)
                     .padding(.trailing, 40)
+                
+                
+                
+                
+                
+                
                 // Transaction 2 - "Food Example"
                 HStack(){
                     HStack(){

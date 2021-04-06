@@ -98,9 +98,7 @@ struct SpendingDetailView: View {
                             .animation(Animation.interactiveSpring())
                     Spacer()
                     SpendingTableView(selector: $selector)
-                        .padding(.top, 50)
-                    BarChartDashView()
-                    
+                        .padding(.top, 50)                    
                 }
                 .padding(.top, 50)
             }

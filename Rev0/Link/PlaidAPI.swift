@@ -6,7 +6,10 @@ class PlaidAPI: ObservableObject {
     @Published var hasLoaded = false
     @Published var dismissed = false
     @Published var vc: ViewController = ViewController()
-    @Published var transactions: [Transaction]? = nil
+    @Published var netWorth = 0.0
+    @Published var transactions: [Transaction] = []
+    @Published var spending: [Transaction] = []
+    @Published var income: [Transaction] = []
 }
 
 extension PlaidAPI {
@@ -49,18 +52,17 @@ extension PlaidAPI {
                 let current = balance["current"] as! Double
                 netWorth += current
             }
+            self.netWorth = netWorth
             completion(netWorth)
         }
     }
     
-    func getTransactions(completion: @escaping ([NSMutableDictionary]) -> ()){
+    func getTransactions(completion: @escaping ([Transaction],[Transaction], [Transaction]) -> ()){
         
         let currentDate = Date()
-        
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd"
         let endDate = dateFormatterGet.string(from: currentDate)
-        
         let startDate1 = Calendar.current.date(byAdding: .day, value: -30, to: currentDate)
         guard let startDate = startDate1 else {return}
         let startDateFormatted = dateFormatterGet.string(from: startDate)
@@ -75,18 +77,32 @@ extension PlaidAPI {
             if let error = error {
                 debugPrint(error.localizedDescription)
             }
-            let transactions = result?.data
-            completion(transactions as! [NSMutableDictionary])
+            let transactions = result?.data as! [NSMutableDictionary]
+            
+            for item in transactions {
+                let transaction = Transaction(category: item["category"] as! [String], name: item["name"] as! String, amount: item["amount"] as! Double, date: item["date"] as! String, pending: (item["pending"] != nil))
+                if ((item["amount"] as! Double) < 0) {
+                    self.income.append(transaction)
+                }
+                else {
+                    self.spending.append(transaction)
+                }
+                self.transactions.append(transaction)
+            }
+            completion(self.transactions, self.spending, self.income)
         }
     }
     
-    func setTransaction() {
-        getTransactions { (data) in
-            for item in data {
-                let transaction = item["amount"] as! Double
-                print(transaction)
-            }
-        }
+}
+
+extension PlaidAPI {
+    
+    struct Transaction {
+        let category: [String]?
+        let name: String
+        let amount: Double
+        let date: String
+        let pending: Bool
     }
     
 }
