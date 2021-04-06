@@ -10,6 +10,8 @@ class PlaidAPI: ObservableObject {
     @Published var transactions: [Transaction] = []
     @Published var spending: [Transaction] = []
     @Published var income: [Transaction] = []
+    @Published var totalSpent: Double = 0.0
+    @Published var totalEarned: Double = 0.0
 }
 
 extension PlaidAPI {
@@ -77,15 +79,17 @@ extension PlaidAPI {
             if let error = error {
                 debugPrint(error.localizedDescription)
             }
-            let transactions = result?.data as! [NSMutableDictionary]
+            let items = result?.data as! [NSMutableDictionary]
             
-            for item in transactions {
-                let transaction = Transaction(category: item["category"] as! [String], name: item["name"] as! String, amount: item["amount"] as! Double, date: item["date"] as! String, pending: (item["pending"] != nil))
+            for item in items {
+                let transaction = Transaction(category: (item["category"] as! [String]), name: item["name"] as! String, amount: item["amount"] as! Double, date: item["date"] as! String, pending: (item["pending"] != nil))
                 if ((item["amount"] as! Double) < 0) {
                     self.income.append(transaction)
+                    self.totalEarned += transaction.amount
                 }
                 else {
                     self.spending.append(transaction)
+                    self.totalSpent += transaction.amount
                 }
                 self.transactions.append(transaction)
             }
