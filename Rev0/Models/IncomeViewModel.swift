@@ -7,16 +7,9 @@ final class IncomeViewModel: ObservableObject {
     @Published var total: Double = 0.0
     @Published var isLoading: Bool = true
     
-    init(){
-//        PlaidAPI().getTransactions(){ (transactions, spending, income) in
-//            DispatchQueue.main.async {
-//                self.income = income
-//                for item in income {
-//                    self.total += item.amount
-//                }
-//                self.isLoading = false
-//            }
-//        }
+    init(userData: UserData){
+        self.total = userData.totalEarned * (-1)
+        self.income = userData.income
     }
     
 }

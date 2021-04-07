@@ -62,7 +62,7 @@ struct LogInView: View {
             VStack(spacing: 55){
                 Button(action:{  login(); }) { Text("Sign In").font(.body).foregroundColor(.white)
                     .alert(isPresented: $showingAlert) {
-                                Alert(title: Text("Login error"), message: Text("Incorrect email or password. Please try again."), dismissButton: .default(Text("Dismiss")))
+                                Alert(title: Text("Sign In Error"), message: Text("Incorrect email or password. \nPlease try again."), dismissButton: .default(Text("Dismiss")))
                             }
                 }.disabled(password.isEmpty || email.isEmpty)
                     Button(action:{print("Clicked Continue with Google")}) {Text("Continue with Google").font(.body).foregroundColor(.white) }.disabled(password.isEmpty || email.isEmpty)
