@@ -19,6 +19,7 @@
 		B59847E02614F3BD00C32496 /* PlaidAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59847DF2614F3BD00C32496 /* PlaidAPI.swift */; };
 		B59DA863261CD94500F0EA95 /* SpendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DA862261CD94500F0EA95 /* SpendingViewModel.swift */; };
 		B59DA866261CD94F00F0EA95 /* IncomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DA865261CD94F00F0EA95 /* IncomeViewModel.swift */; };
+		B59DA869261D38A300F0EA95 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DA868261D38A300F0EA95 /* UserData.swift */; };
 		B5B8579B2609804F0071CC47 /* LinkKitSwiftUISupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B8579A2609804F0071CC47 /* LinkKitSwiftUISupport.swift */; };
 		B5B8579E260980940071CC47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B8579D260980940071CC47 /* ViewController.swift */; };
 		B5C6566F25DD311F00A9FABC /* Rev0App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6566E25DD311F00A9FABC /* Rev0App.swift */; };
@@ -51,6 +52,7 @@
 		B59847DF2614F3BD00C32496 /* PlaidAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidAPI.swift; sourceTree = "<group>"; };
 		B59DA862261CD94500F0EA95 /* SpendingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingViewModel.swift; sourceTree = "<group>"; };
 		B59DA865261CD94F00F0EA95 /* IncomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeViewModel.swift; sourceTree = "<group>"; };
+		B59DA868261D38A300F0EA95 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		B5B8579A2609804F0071CC47 /* LinkKitSwiftUISupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkKitSwiftUISupport.swift; sourceTree = "<group>"; };
 		B5B8579D260980940071CC47 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B5C6566B25DD311F00A9FABC /* Rev0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rev0.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +102,7 @@
 				B5CC2A7026083E1700847A4B /* NetWorthViewModel.swift */,
 				B59DA862261CD94500F0EA95 /* SpendingViewModel.swift */,
 				B59DA865261CD94F00F0EA95 /* IncomeViewModel.swift */,
+				B59DA868261D38A300F0EA95 /* UserData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				B5FF2CC525E8BE1D0032E577 /* ViewRouter.swift in Sources */,
 				B5CC2A7326083E1700847A4B /* DashboardView.swift in Sources */,
 				FFF70FBD25EFD9190042D0F2 /* BudgetDetailView.swift in Sources */,
+				B59DA869261D38A300F0EA95 /* UserData.swift in Sources */,
 				B5B8579B2609804F0071CC47 /* LinkKitSwiftUISupport.swift in Sources */,
 				B5FF2CC225E8BDD60032E577 /* MotherView.swift in Sources */,
 				B5FF2CBC25E8A4A20032E577 /* SpendingDetailView.swift in Sources */,

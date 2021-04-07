@@ -5,13 +5,13 @@ import LinkKit
 struct LinkView: View {
     @ObservedObject var plaid = PlaidAPI()
     @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var userData: UserData
 
     var body: some View {
-        Group{
+        Group {
             if plaid.hasLoaded {
-                LinkController(configuration: .linkToken(plaid.vc.createLinkTokenConfiguration())).onDisappear(){
-                    viewRouter.currentPage = .page3
-                }
+                LinkController(configuration: .linkToken(plaid.vc.createLinkTokenConfiguration()))
+                    .onDisappear(){ userData.load(); viewRouter.currentPage = .page3 }
             }
             else {
                 Text("Loading Plaid")

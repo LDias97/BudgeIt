@@ -17,6 +17,7 @@ enum Page {
 struct MotherView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var userData: UserData
     
     var body: some View {
         switch viewRouter.currentPage{
@@ -49,6 +50,7 @@ struct MotherView: View {
 struct MotherView_Previews: PreviewProvider {
     static var previews: some View {
         MotherView().environmentObject(ViewRouter())
+                    .environmentObject(UserData())
     }
 }
 

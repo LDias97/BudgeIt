@@ -61,8 +61,8 @@ enum MonthSelector : Int {
 struct DashboardView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var userData: UserData
     @ObservedObject var budgetViewModel = BudgetViewModel()
-    @ObservedObject var netWorthViewModel = NetWorthViewModel()
     @State var showMenu = false
     @State var editBudgets = false
     
@@ -120,7 +120,7 @@ struct DashboardView: View {
                                     .padding(.top, 20)
                                 }
                                 .padding(.top, 20)
-                                NetWorthCardView(viewModel: netWorthViewModel, loading: $netWorthViewModel.isLoading)
+                                NetWorthCardView(viewModel: NetWorthViewModel(userData: userData))
                             }
                             .padding(.top, 44)
                             BudgetCardView(editBudgets: $editBudgets, limits: budgetViewModel.limits)
@@ -169,12 +169,11 @@ struct DashboardView: View {
 
 struct NetWorthCardView: View {
     @ObservedObject var viewModel: NetWorthViewModel
-    @Binding var loading: Bool
     
     var body: some View {
         ZStack(){
             Card(width: 375, height: 150)
-            if loading {
+            if viewModel.currentBalance == 0.0 {
                 Text("Good evening User!")
                     .font(.custom("DIN Alternate Bold", size: 28))
                     .foregroundColor(.green)

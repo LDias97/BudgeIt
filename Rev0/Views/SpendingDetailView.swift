@@ -46,9 +46,6 @@ enum categorySelector : Int {
     }
 }
 
-
-// Call all catergory views
-
 struct SpendingDetailView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
