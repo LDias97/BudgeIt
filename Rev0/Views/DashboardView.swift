@@ -130,12 +130,12 @@ struct DashboardView: View {
                             BarChartDashView()
                             SpendingCardView()
                                 .onTapGesture {
-                                    viewRouter.currentPage = .page4;
+                                    withAnimation{viewRouter.currentPage = .page4;}
                                 }
                             IncomeCardView()
                                 .foregroundColor(.black)
                                 .onTapGesture {
-                                    viewRouter.currentPage = .page6;
+                                    withAnimation{viewRouter.currentPage = .page6;}
                                 }
                                 .padding(.bottom, 15)
                         }
@@ -234,8 +234,8 @@ struct NetWorthCardView: View {
                 .padding(.top, 120)
             }
         }
-        .animation(.easeInOut)
         .rotation3DEffect(.degrees(degrees), axis: (x: 0, y: 1, z: 0))
+        .animation(.easeInOut)
     }
 }
 

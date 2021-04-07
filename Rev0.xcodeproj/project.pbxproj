@@ -20,6 +20,7 @@
 		B59DA863261CD94500F0EA95 /* SpendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DA862261CD94500F0EA95 /* SpendingViewModel.swift */; };
 		B59DA866261CD94F00F0EA95 /* IncomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DA865261CD94F00F0EA95 /* IncomeViewModel.swift */; };
 		B59DA869261D38A300F0EA95 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DA868261D38A300F0EA95 /* UserData.swift */; };
+		B59DA86C261E0C7B00F0EA95 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DA86B261E0C7B00F0EA95 /* Category.swift */; };
 		B5B8579B2609804F0071CC47 /* LinkKitSwiftUISupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B8579A2609804F0071CC47 /* LinkKitSwiftUISupport.swift */; };
 		B5B8579E260980940071CC47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B8579D260980940071CC47 /* ViewController.swift */; };
 		B5C6566F25DD311F00A9FABC /* Rev0App.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C6566E25DD311F00A9FABC /* Rev0App.swift */; };
@@ -53,6 +54,7 @@
 		B59DA862261CD94500F0EA95 /* SpendingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingViewModel.swift; sourceTree = "<group>"; };
 		B59DA865261CD94F00F0EA95 /* IncomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeViewModel.swift; sourceTree = "<group>"; };
 		B59DA868261D38A300F0EA95 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		B59DA86B261E0C7B00F0EA95 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		B5B8579A2609804F0071CC47 /* LinkKitSwiftUISupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkKitSwiftUISupport.swift; sourceTree = "<group>"; };
 		B5B8579D260980940071CC47 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B5C6566B25DD311F00A9FABC /* Rev0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rev0.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +105,7 @@
 				B59DA862261CD94500F0EA95 /* SpendingViewModel.swift */,
 				B59DA865261CD94F00F0EA95 /* IncomeViewModel.swift */,
 				B59DA868261D38A300F0EA95 /* UserData.swift */,
+				B59DA86B261E0C7B00F0EA95 /* Category.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				B5CC2A7426083E1700847A4B /* NetWorthViewModel.swift in Sources */,
 				B5258F7E26150472006EFF5C /* LinkView.swift in Sources */,
 				B55AC0F126008765003263D6 /* SettingsView.swift in Sources */,
+				B59DA86C261E0C7B00F0EA95 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

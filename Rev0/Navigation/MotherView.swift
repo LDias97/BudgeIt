@@ -26,7 +26,14 @@ struct MotherView: View {
         case .page2:
             LogInView()
         case .page3:
-            DashboardView()
+            if(userData.hasLoaded){
+                DashboardView()
+            }
+            else{
+                DashboardView().onAppear {
+                    userData.load();
+                }
+            }
         case .page4:
             SpendingDetailView()
         case .page5:

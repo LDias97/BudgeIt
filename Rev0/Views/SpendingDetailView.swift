@@ -31,7 +31,7 @@ enum categorySelector : Int {
         .bills: 0.7,
         .food : 1.0
     ]
-
+    
     var name: String {
         return categorySelector.names[self]!
     }
@@ -61,7 +61,7 @@ struct SpendingDetailView: View {
     @State var spentOnEntertainment = 10
     @State var spentOnBills = 50
     @State var spentOnFood = 20
-
+    
     
     var body: some View {
         ScrollView{
@@ -71,7 +71,8 @@ struct SpendingDetailView: View {
                     .ignoresSafeArea()
                 VStack(){
                     HStack(){
-                        Button(action: { viewRouter.currentPage = .page3; } ) {
+                        Button(action: {                                     withAnimation{viewRouter.currentPage = .page3;}
+                        } ) {
                             Image(systemName: "chevron.backward")
                                 .imageScale(.large)
                                 .foregroundColor(Color(.black))
@@ -91,9 +92,9 @@ struct SpendingDetailView: View {
                         }
                         .padding(.trailing, 15)
                     }
-                        SpendingPieView(selector: $selector)
-                            .padding(.top, 50)
-                            .animation(Animation.interactiveSpring())
+                    SpendingPieView(selector: $selector)
+                        .padding(.top, 50)
+                        .animation(Animation.interactiveSpring())
                     Spacer()
                     SpendingTableView(selector: $selector)
                         .padding(.top, 50)
@@ -112,7 +113,7 @@ struct SpendingDetailView: View {
 
 struct SpendingPieView : View {
     @Binding var selector: categorySelector
-
+    
     var body : some View {
         
         ZStack(){

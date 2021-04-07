@@ -31,7 +31,7 @@ enum incomeSelector : Int {
         .payment: 0.3,
         .salary: 1.0,
     ]
-
+    
     var name: String {
         return incomeSelector.names[self]!
     }
@@ -51,7 +51,7 @@ struct IncomeDetailView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @State var selector: incomeSelector = .payment
     @State var num = 0
-
+    
     var body: some View {
         ZStack(){
             Rectangle()
@@ -59,7 +59,8 @@ struct IncomeDetailView: View {
                 .ignoresSafeArea()
             VStack(){
                 HStack(){
-                    Button(action: { viewRouter.currentPage = .page3; } ) {
+                    Button(action: {                                     withAnimation{viewRouter.currentPage = .page3;}
+                    } ) {
                         Image(systemName: "chevron.backward")
                             .imageScale(.large)
                             .foregroundColor(Color(.black))
@@ -91,7 +92,7 @@ struct IncomeDetailView: View {
 
 struct IncomePieView : View {
     @Binding var selector: incomeSelector
-
+    
     var body : some View {
         ZStack(){
             Circle()

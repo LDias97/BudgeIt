@@ -17,6 +17,7 @@ class UserData: ObservableObject {
 extension UserData
 {
     func getBalance(){
+        self.hasLoaded = false;
         let json: [String: Any] = [
             "accessToken": UserDefaults.standard.value(forKey: "access_token") as! String
         ]
@@ -32,10 +33,12 @@ extension UserData
                 netWorth += current
             }
             self.netWorth = netWorth
+            self.hasLoaded = true;
         }
     }
     
     func getTransactions(){
+        self.hasLoaded = false;
         let currentDate = Date()
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd"
@@ -57,7 +60,6 @@ extension UserData
             }
             let items = result?.data as! [NSMutableDictionary]
             for item in items {
-                
                 let name = (item["merchant_name"] as! NSObject == NSNull()) ? item["name"] : item["merchant_name"]
                 let transaction = Transaction(category: (item["category"] as! [String]), name: name as! String, amount: item["amount"] as! Double, date: item["date"] as! String, pending: (item["pending"] != nil))
                 if ((item["amount"] as! Double) < 0) {
@@ -70,6 +72,7 @@ extension UserData
                 }
                 self.transactions.append(transaction)
             }
+            self.hasLoaded = true;
         }
     }
     
@@ -88,6 +91,13 @@ extension UserData {
         let amount: Double
         let date: String
         let pending: Bool
+    }
+    
+    enum Category : Int {
+        case payment
+        case salary
+        
+
     }
     
 }
