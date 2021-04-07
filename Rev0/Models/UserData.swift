@@ -8,8 +8,10 @@ class UserData: ObservableObject {
     @Published var totalSpent = 0.0
     @Published var totalEarned = 0.0
     @Published var transactions: [Transaction] = []
-    @Published var spending: [Dictionary<String, [Transaction]>] = []
-    @Published var income: [Dictionary<String, [Transaction]>] = []
+    @Published var spending: [Transaction] = []
+    @Published var income: [Transaction] = []
+//    @Published var spending: [Dictionary<String, [Transaction]>] = []
+//    @Published var income: [Dictionary<String, [Transaction]>] = []
 }
 
 extension UserData
@@ -57,9 +59,11 @@ extension UserData
             for item in items {
                 let transaction = Transaction(category: (item["category"] as! [String]), name: item["name"] as! String, amount: item["amount"] as! Double, date: item["date"] as! String, pending: (item["pending"] != nil))
                 if ((item["amount"] as! Double) < 0) {
+                    self.income.append(transaction)
                     self.totalEarned += transaction.amount
                 }
                 else {
+                    self.spending.append(transaction)
                     self.totalSpent += transaction.amount
                 }
                 self.transactions.append(transaction)
@@ -75,7 +79,8 @@ extension UserData
 
 extension UserData {
     
-    struct Transaction {
+    struct Transaction: Identifiable {
+        var id = UUID()
         let category: [String]?
         let name: String
         let amount: Double

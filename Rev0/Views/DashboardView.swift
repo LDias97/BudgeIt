@@ -558,6 +558,7 @@ struct BarChartDashView: View {
 struct SpendingCardView : View {
     
     @EnvironmentObject var viewRouter: ViewRouter
+    @EnvironmentObject var userData: UserData
     
     var body: some View {
         ZStack(alignment: .top){
@@ -579,176 +580,55 @@ struct SpendingCardView : View {
                 }
                 .padding(.leading, 50)
                 .padding(.top, 20)
-                HStack(){
-                    HStack(){
-                        Rectangle()
-                            .foregroundColor(Color(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/))
-                            .frame(width: 3, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            .cornerRadius(10.0)
-                        VStack(alignment: .leading, spacing:5){
-                            Text("Shell Gas")
-                                .font(Font.custom("DIN Alternate Bold", size: 14))
-                                .bold()
+                ScrollView {
+                    ForEach(userData.spending) { transaction in
+                        HStack(){
                             HStack(){
-                                Text("Bank of America")
-                                    .font(Font.custom("DIN Alternate Bold", size: 12))
-                                    .foregroundColor(.gray)
+                                Rectangle()
+                                    .foregroundColor(Color(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/))
+                                    .frame(width: 3, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                    .cornerRadius(10.0)
+                                VStack(alignment: .leading, spacing:5){
+                                    Text(transaction.name)
+                                        .font(Font.custom("DIN Alternate Bold", size: 14))
+                                        .bold()
+                                    HStack(){
+                                        Text("Bank of America")
+                                            .font(Font.custom("DIN Alternate Bold", size: 12))
+                                            .foregroundColor(.gray)
+                                    }
+                                }
+                                .padding(.leading, 5)
+                            }
+                            Spacer()
+                            VStack(spacing: 5){
+                                HStack(){
+                                    Spacer()
+                                    Text("$\(transaction.amount, specifier: "%.2f")")
+                                        .font(Font.custom("DIN Alternate Bold", size: 14))
+                                        .foregroundColor(red)
+                                        .bold()
+                                }
+                                HStack(){
+                                    Spacer()
+                                    transaction.pending ?
+                                        Text("\(transaction.date)")
+                                        .font(Font.custom("DIN Alternate Bold", size: 12))
+                                        .foregroundColor(.gray)
+                                        :
+                                        Text("Pending")
+                                        .font(Font.custom("DIN Alternate Bold", size: 12))
+                                        .foregroundColor(.gray)
+                                }
                             }
                         }
-                        .padding(.leading, 5)
-                    }
-                    Spacer()
-                    VStack(spacing: 5){
-                        HStack(){
-                            Spacer()
-                            Text("-$45.58")
-                                .font(Font.custom("DIN Alternate Bold", size: 14))
-                                .foregroundColor(red)
-                                .bold()
-                        }
-                        HStack(){
-                            Spacer()
-                            Text("Pending")
-                                .font(Font.custom("DIN Alternate Bold", size: 12))
-                                .foregroundColor(.gray)
-                        }
+                        .padding(.leading, 50)
+                        .padding(.trailing, 50)
+                        .padding(.top, 20)
+                        Divider()
                     }
                 }
-                .padding(.leading, 50)
-                .padding(.trailing, 50)
-                .padding(.top, 20)
-                Rectangle()
-                    .fill(Color(.systemGray6))
-                    .frame(height: 1)
-                    .padding(.leading, 40)
-                    .padding(.trailing, 40)
-                
-                
-                
-                
-                
-                
-                // Transaction 2 - "Food Example"
-                HStack(){
-                    HStack(){
-                        Rectangle()
-                            .foregroundColor(Color(.systemTeal))
-                            .frame(width: 3, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            .cornerRadius(10.0)
-                        VStack(alignment: .leading, spacing:5){
-                            Text("Chik-Fil-A")
-                                .font(Font.custom("DIN Alternate Bold", size: 14))
-                                .bold()
-                            HStack(){
-                                Text("Bank of America")
-                                    .font(Font.custom("DIN Alternate Bold", size: 12))
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                        .padding(.leading, 5)
-                    }
-                    VStack(spacing: 5){
-                        HStack(){
-                            Spacer()
-                            Text("-$23.75")
-                                .font(Font.custom("DIN Alternate Bold", size: 14))
-                                .foregroundColor(red)
-                                .bold()
-                        }
-                        HStack(){
-                            Spacer()
-                            Text("3/3/21")
-                                .font(Font.custom("DIN Alternate Bold", size: 12))
-                                .foregroundColor(.gray)
-                        }
-                    }
-                }
-                .padding(.leading, 50)
-                .padding(.trailing, 50)
-                Rectangle()
-                    .fill(Color(.systemGray6))
-                    .frame(height: 1)
-                    .padding(.leading, 40)
-                    .padding(.trailing, 40)
-                // Transaction 3 - "Entertainment Example"
-                HStack(){
-                    HStack(){
-                        Rectangle()
-                            .foregroundColor(Color(.systemPink))
-                            .frame(width: 3, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            .cornerRadius(10.0)
-                        VStack(alignment: .leading, spacing:5){
-                            Text("PS Plus")
-                                .font(Font.custom("DIN Alternate Bold", size: 14))
-                                .bold()
-                            HStack(){
-                                Text("Bank of America")
-                                    .font(Font.custom("DIN Alternate Bold", size: 12))
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                        .padding(.leading, 5)
-                    }
-                    VStack(spacing: 5){
-                        HStack(){
-                            Spacer()
-                            Text("-$59.99")
-                                .font(Font.custom("DIN Alternate Bold", size: 14))
-                                .foregroundColor(red)
-                                .bold()
-                        }
-                        HStack(){
-                            Spacer()
-                            Text("2/27/21")
-                                .font(Font.custom("DIN Alternate Bold", size: 12))
-                                .foregroundColor(.gray)
-                        }
-                    }
-                }
-                .padding(.leading, 50)
-                .padding(.trailing, 50)
-                Rectangle()
-                    .fill(Color(.systemGray6))
-                    .frame(height: 1)
-                    .padding(.leading, 40)
-                    .padding(.trailing, 40)
-                // Transaction 4 - "Bills Example"
-                HStack(){
-                    HStack(){
-                        Rectangle()
-                            .foregroundColor(Color(.systemOrange))
-                            .frame(width: 3, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                            .cornerRadius(10.0)
-                        VStack(alignment: .leading, spacing:5){
-                            Text("National Grid")
-                                .font(Font.custom("DIN Alternate Bold", size: 14))
-                                .bold()
-                            HStack(){
-                                Text("Rockland Trust")
-                                    .font(Font.custom("DIN Alternate Bold", size: 12))
-                                    .foregroundColor(.gray)
-                            }
-                        }
-                        .padding(.leading, 5)
-                    }
-                    VStack(spacing: 5){
-                        HStack(){
-                            Spacer()
-                            Text("-$1,200")
-                                .font(Font.custom("DIN Alternate Bold", size: 14))
-                                .foregroundColor(red)
-                                .bold()
-                        }
-                        HStack(){
-                            Spacer()
-                            Text("Pending")
-                                .font(Font.custom("DIN Alternate Bold", size: 12))
-                                .foregroundColor(.gray)
-                        }
-                    }
-                }
-                .padding(.leading, 50)
-                .padding(.trailing, 50)
+                .frame(width: 375, height: 300)
             }
         }
     }
