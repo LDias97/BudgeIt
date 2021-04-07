@@ -43,7 +43,6 @@ struct IncomeDetailView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var userData: UserData
     @State var selector: incomeSelector = .payment
-    @State var num = 0
     
     var body: some View {
         ZStack(){
@@ -166,6 +165,7 @@ struct IncomeTable : View {
     @State var color: Color
 
     var body : some View {
+        ScrollView{
         VStack() {
                 ForEach(userData.income) { transaction in
                     VStack(spacing: 10){
@@ -177,6 +177,7 @@ struct IncomeTable : View {
                             .padding(.trailing, 40)
                     }
                 }
+        }
         }
     }
 }
