@@ -622,13 +622,13 @@ struct SpendingCardView : View {
                                 }
                             }
                         }
-                        .padding(.leading, 50)
-                        .padding(.trailing, 50)
-                        .padding(.top, 20)
                         Divider()
                     }
+                    .padding(.leading, 30)
+                    .padding(.trailing, 30)
+                    .padding(.top, 20)
                 }
-                .frame(width: 375, height: 300)
+                .frame(width: 375, height: 250)
             }
         }
     }
