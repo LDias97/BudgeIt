@@ -598,7 +598,7 @@ struct GreetingCardView: View{
                             HStack(){
                                 HStack(){
                                     Rectangle()
-                                        .foregroundColor(Color(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/))
+                                        .foregroundColor(transaction.category!.color)
                                         .frame(width: 3, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                         .cornerRadius(10.0)
                                     VStack(alignment: .leading, spacing:5){

@@ -1,6 +1,7 @@
 import Foundation
 import Firebase
 import FirebaseFunctions
+import SwiftUI
 
 class UserData: ObservableObject {
     @Published var hasLoaded = false
@@ -61,12 +62,25 @@ extension UserData
             let items = result?.data as! [NSMutableDictionary]
             for item in items {
                 let name = (item["merchant_name"] as! NSObject == NSNull()) ? item["name"] : item["merchant_name"]
-                let transaction = Transaction(category: (item["category"] as! [String]), name: name as! String, amount: item["amount"] as! Double, date: item["date"] as! String, pending: (item["pending"] != nil))
+                var transaction = Transaction(categories: (item["category"] as! [String]), name: name as! String, amount: item["amount"] as! Double, date: item["date"] as! String, pending: (item["pending"] != nil))
                 if ((item["amount"] as! Double) < 0) {
                     self.income.append(transaction)
                     self.totalEarned += transaction.amount
                 }
                 else {
+                    for category in transaction.categories! {
+                        if category.contains("Healthcare"){ transaction.category = .Healthcare }
+                        else if category.contains("Recreation"){ transaction.category = .Recreation }
+                        else if category.contains("Shops"){ transaction.category = .Shopping }
+                        else if category.contains("Personal Care"){ transaction.category = .PersonalCare }
+                        else if category.contains("Home Improvement"){ transaction.category = .HomeImprovement }
+                        else if category.contains("Travel"){ transaction.category = .Travel }
+                        else if category.contains("Auto"){ transaction.category = .Auto }
+                        else if category.contains("Food"){ transaction.category = .Food }
+                    }
+                    if transaction.category == nil {
+                        transaction.category = .Miscellaneous 
+                    }
                     self.spending.append(transaction)
                     self.totalSpent += transaction.amount
                 }
@@ -86,18 +100,69 @@ extension UserData {
     
     struct Transaction: Identifiable {
         var id = UUID()
-        let category: [String]?
+        let categories: [String]?
+        var category: Category?
         let name: String
         let amount: Double
         let date: String
         let pending: Bool
-    }
-    
-    enum Category : Int {
-        case payment
-        case salary
         
+        func color() -> Color {
+            return category!.color
+        }
+    }
 
+    enum Category : Int {
+        case Food
+        case Healthcare
+        case Recreation
+        case Auto
+        case Bills
+        case Travel
+        case Shopping
+        case PersonalCare
+        case HomeImprovement
+        case Community
+        case Services
+        case Miscellaneous
+        
+        static let names: [Category: String] = [
+            .Food : "Food & Restaurants",
+            .Healthcare : "Healthcare",
+            .Recreation : "Entertainment",
+            .Auto : "Auto & Transport",
+            .Bills : "Bills",
+            .Travel : "Travel",
+            .Shopping : "Shopping",
+            .PersonalCare : "Personal Care",
+            .HomeImprovement : "Home Improvement",
+            .Community :"Community",
+            .Services : "Services",
+            .Miscellaneous : "Miscellaneous"
+        ]
+        
+        static let colors: [Category: Color] = [
+            .Food : Color(.systemTeal),
+            .Healthcare : Color(.blue),
+            .Recreation : Color(.systemPink),
+            .Auto : Color(.systemIndigo),
+            .Bills : Color(.cyan),
+            .Travel : Color(.orange),
+            .Shopping : Color(.systemYellow),
+            .PersonalCare : lightPurple,
+            .HomeImprovement : darkPurple,
+            .Community : Color(.magenta),
+            .Services : Color(.green),
+            .Miscellaneous : Color(.systemGray)
+        ]
+        
+        var name: String {
+            return Category.names[self]!
+        }
+        
+        var color: Color {
+            return Category.colors[self]!
+        }
     }
     
 }
