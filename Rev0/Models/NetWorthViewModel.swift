@@ -10,7 +10,8 @@ final class NetWorthViewModel: ObservableObject {
     
     init(userData: UserData){
         self.currentBalance = userData.netWorth
-        self.earned = userData.netWorth
+        self.earned = userData.totalEarned * (-1)
+        self.spent = userData.totalSpent
         self.difference = self.earned - self.spent
     }
     
