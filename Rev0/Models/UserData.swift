@@ -57,7 +57,9 @@ extension UserData
             }
             let items = result?.data as! [NSMutableDictionary]
             for item in items {
-                let transaction = Transaction(category: (item["category"] as! [String]), name: item["name"] as! String, amount: item["amount"] as! Double, date: item["date"] as! String, pending: (item["pending"] != nil))
+                
+                let name = (item["merchant_name"] as! NSObject == NSNull()) ? item["name"] : item["merchant_name"]
+                let transaction = Transaction(category: (item["category"] as! [String]), name: name as! String, amount: item["amount"] as! Double, date: item["date"] as! String, pending: (item["pending"] != nil))
                 if ((item["amount"] as! Double) < 0) {
                     self.income.append(transaction)
                     self.totalEarned += transaction.amount
