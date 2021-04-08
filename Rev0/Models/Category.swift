@@ -16,7 +16,6 @@ enum Category : Int {
     
 }
 
-
 //    contains "food"               -> .Food
 //    contains "healthcare"         -> .Healthcare
 //    contains "recreation"         -> .Recreation

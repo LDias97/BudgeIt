@@ -141,7 +141,7 @@ struct MonthlyInfoView: View {
                 ForEach(0..<12) { month in
                     ZStack(alignment: .top){
                         Rectangle()
-                            .fill(Color(.white))
+                            .fill(Color(.gray))
                             .frame(width: 375, height: 140)
                             .cornerRadius(30.0)
                             .id(month)
@@ -163,7 +163,6 @@ struct MonthlyInfoView: View {
                                         Text("Surplus:")
                                             .foregroundColor(.black)
                                             .padding(.bottom, 5)
-                                            //.padding(.leading, 30)
                                     }
                                 }
                                 Spacer()
