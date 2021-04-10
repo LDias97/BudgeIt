@@ -22,87 +22,29 @@ struct SignUpView: View {
                     .font(.largeTitle)
                     .bold()
             }
-            ZStack{
-                Rectangle()
-                    .fill(Color(.systemGray5))
-                    .frame(width: 370, height: 60)
-                    .cornerRadius(30.0)
-                HStack{
-                    Image(systemName: "person")
-                        .foregroundColor(Color(.systemGray2))
-                    TextField("Full Name", text: $fullname)
-                }
-                .padding(.leading, 15)
-            }
-            .padding(.top, 20)
-            .padding(.leading, 30)
-            .padding(.trailing, 30)
-            ZStack{
-                Rectangle()
-                    .fill(Color(.systemGray5))
-                    .frame(width: 370, height: 60)
-                    .cornerRadius(30.0)
-                HStack{
-                    Image(systemName: "envelope")
-                        .foregroundColor(Color(.systemGray2))
-                    TextField("Email", text: $email)
-                }
-                .padding(.leading, 15)
-            }
-            .padding(.leading, 30)
-            .padding(.trailing, 30)
-            ZStack{
-                Rectangle()
-                    .fill(Color(.systemGray5))
-                    .frame(width: 370, height: 60)
-                    .cornerRadius(30.0)
-                HStack{
-                    Image(systemName: "lock")
-                        .foregroundColor(Color(.systemGray2))
-                    SecureField("Password", text: $password)
-                }
-                .padding(.leading, 15)
-            }
-            .padding(.leading, 30)
-            .padding(.trailing, 30)
-            ZStack{
-                Rectangle()
-                    .fill(Color(.systemGray5))
-                    .frame(width: 370, height: 60)
-                    .cornerRadius(30.0)
-                HStack{
-                    Image(systemName: "lock.rotation")
-                        .foregroundColor(Color(.systemGray2))
-                    SecureField("Confirm Password", text: $confirmPassword)
-                }
-                .padding(.leading, 15)
-            }
-            .padding(.leading, 30)
-            .padding(.trailing, 30)
+            InputField(input: $fullname, placeholder: "Full Name", icon: "person")
+                .padding(.top, 20)
+            InputField(input: $email, placeholder: "Email", icon: "envelope")
+            SecureInputField(password: $password, placeholder: "Password", icon: "lock")
+            SecureInputField(password: $confirmPassword, placeholder: "Confirm Password", icon: "lock.rotation")
             
-            ZStack(){
-                VStack(spacing: 20){
-                    Rectangle()
-                        .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
-                        .frame(width: 370, height: 60)
-                        .cornerRadius(30.0)
-                    Rectangle()
-                        .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
-                        .frame(width: 370, height: 60)
-                        .cornerRadius(30.0)
-                }
-                VStack(spacing: 60){
+            VStack(spacing: 60){
+                ZStack(){
+                    AuthButtonBG()
                     Button(action:{ signup(); UserDefaults.standard.set(0.0, forKey: "lastMonthBalance"); UserDefaults.standard.set(false, forKey: "balanceRetrieved");})
                         { Text("Sign Up").font(.body).foregroundColor(.white)}
                         .disabled(password.isEmpty || email.isEmpty || confirmPassword.isEmpty || fullname.isEmpty)
                         .alert(isPresented: $showingAlert) {
-                        Alert(title: Text("Sign Up Error"), message: Text("Error creating account. \nPlease try again."), dismissButton: .default(Text("Dismiss")))
+                            Alert(title: Text("Sign Up Error"), message: Text("Error creating account. \nPlease try again."), dismissButton: .default(Text("Dismiss")))
                         }
                         .sheet(isPresented: $showLink){
                             LinkView()
                         }
-
+                }
+                ZStack{
+                    AuthButtonBG()
                     Button(action:{print("Clicked Continue with Google")}) { Text("Continue with Google").font(.body).foregroundColor(.white) }
+                    
                 }
             }
             Button(action:{ viewRouter.currentPage = .page2;}) { Text("Already have an account? Sign In").font(.body).foregroundColor(.blue) }

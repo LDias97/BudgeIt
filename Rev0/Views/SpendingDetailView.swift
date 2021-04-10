@@ -1,6 +1,7 @@
 import SwiftUI
 
-enum categorySelector : Int {
+enum categorySelector : Int, CaseIterable {
+    
     case Food
     case Healthcare
     case Recreation
@@ -13,7 +14,6 @@ enum categorySelector : Int {
     case Community
     case Services
     case Miscellaneous
-    
     
     static let names: [categorySelector: String] = [
         .Food : "Food & Restaurants",
@@ -29,28 +29,65 @@ enum categorySelector : Int {
         .Services : "Services",
         .Miscellaneous : "Miscellaneous"
     ]
-    
     static let percentages: [categorySelector: CGFloat] = [
-        .Auto: 0.3,
-        .Recreation: 0.2,
-        .Bills: 0.2,
-        .Food : 0.3
+        .Food: 0.1,
+        .Healthcare: 0.1,
+        .Recreation: 0.1,
+        .Auto : 0.1,
+        .Bills: 0.1,
+        .Travel: 0.1,
+        .Shopping: 0.1,
+        .PersonalCare : 0.1,
+        .HomeImprovement: 0.05,
+        .Community: 0.05,
+        .Services: 0.05,
+        .Miscellaneous: 0.05
     ]
-    
     static let start: [categorySelector: CGFloat] = [
-        .Auto: 0,
-        .Recreation: 0.3,
-        .Bills: 0.5,
-        .Food : 0.7
+        .Food: 0.0,
+        .Healthcare: 0.1,
+        .Recreation: 0.2,
+        .Auto : 0.3,
+        .Bills: 0.4,
+        .Travel: 0.5,
+        .Shopping: 0.6,
+        .PersonalCare : 0.7,
+        .HomeImprovement: 0.8,
+        .Community: 0.85,
+        .Services: 0.9,
+        .Miscellaneous: 0.95
     ]
-    
     static let end: [categorySelector: CGFloat] = [
-        .Auto: 0.3,
-        .Recreation: 0.5,
-        .Bills: 0.7,
-        .Food : 1.0
+        .Food: 0.1,
+        .Healthcare: 0.2,
+        .Recreation: 0.3,
+        .Auto : 0.4,
+        .Bills: 0.5,
+        .Travel: 0.6,
+        .Shopping: 0.7,
+        .PersonalCare : 0.8,
+        .HomeImprovement: 0.85,
+        .Community: 0.9,
+        .Services: 0.95,
+        .Miscellaneous: 1.0
     ]
-    
+    static let colors: [categorySelector: Color] = [
+        .Food : Color(.systemTeal),
+        .Healthcare : Color(.blue),
+        .Recreation : Color(.systemPink),
+        .Auto : Color(.systemIndigo),
+        .Bills : Color(.cyan),
+        .Travel : Color(.orange),
+        .Shopping : Color(.systemYellow),
+        .PersonalCare : lightPurple,
+        .HomeImprovement : darkPurple,
+        .Community : Color(.magenta),
+        .Services : Color(.green),
+        .Miscellaneous : Color(.systemGray)
+    ]
+    var color: Color {
+        return categorySelector.colors[self]!
+    }
     var name: String {
         return categorySelector.names[self]!
     }
@@ -69,34 +106,34 @@ struct SpendingDetailView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var userData: UserData
-    @State var selector: categorySelector = .Auto
+    @State var selector: categorySelector = .Food
     
     var body: some View {
-            ZStack(){
-                Rectangle()
-                    .fill(grey)
-                    .ignoresSafeArea()
-                VStack(){
-                    HStack(){
-                        backButton(page: .page3)
+        ZStack(){
+            Rectangle()
+                .fill(grey)
+                .ignoresSafeArea()
+            VStack(){
+                HStack(){
+                    BackButton(page: .page3)
                         .padding(.leading, 15)
-                        Spacer()
-                        Text("Spending")
-                            .font(Font.custom("DIN Alternate Bold", size: 24))
-                            .padding(.top)
-                        Spacer()
-                        ellipsisButton()
-                        .padding(.trailing, 15)
-                    }
-                    SpendingPieView(selector: $selector)
-                        .padding(.top, 50)
-                        .animation(Animation.interactiveSpring())
                     Spacer()
-                    SpendingTableView(selector: $selector)
-                        .padding(.top, 50)
+                    Text("Spending")
+                        .font(Font.custom("DIN Alternate Bold", size: 24))
+                        .padding(.top)
+                    Spacer()
+                    EllipsisButton()
+                        .padding(.trailing, 15)
                 }
-                .padding(.top, 50)
+                SpendingPieView(selector: $selector)
+                    .padding(.top, 50)
+                    .animation(Animation.interactiveSpring())
+                Spacer()
+                SpendingTableView(selector: $selector)
+                    .padding(.top, 50)
             }
+            .padding(.top, 50)
+        }
         .ignoresSafeArea()
         .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
     }
@@ -104,30 +141,19 @@ struct SpendingDetailView: View {
 
 struct SpendingPieView : View {
     @Binding var selector: categorySelector
+    @EnvironmentObject var userData: UserData
     
     var body : some View {
         ZStack(){
-            Circle()
-                .trim(from: categorySelector.Auto.start, to: categorySelector.Auto.end)
-                .stroke(Color(.systemTeal), lineWidth: selector.rawValue == 0 ? 50 : 30)
-                .frame(width: 200, height: 200)
-                .rotationEffect(.degrees(-90))
-            Circle()
-                .trim(from: categorySelector.Recreation.start, to: categorySelector.Recreation.end)
-                .stroke(Color(.systemYellow), lineWidth: selector.rawValue == 1 ? 50 : 30)
-                .frame(width: 200, height: 200)
-                .rotationEffect(.degrees(-90))
             
-            Circle()
-                .trim(from: categorySelector.Bills.start, to: categorySelector.Bills.end)
-                .stroke(Color(.systemPink), lineWidth: selector.rawValue == 2 ? 50 : 30)
-                .frame(width: 200, height: 200)
-                .rotationEffect(.degrees(-90))
-            Circle()
-                .trim(from: categorySelector.Food.start, to: categorySelector.Food.end)
-                .stroke(Color(.systemIndigo), lineWidth: selector.rawValue == 3 ? 50 : 30)
-                .frame(width: 200, height: 200)
-                .rotationEffect(.degrees(-90))
+            ForEach(categorySelector.allCases, id: \.self) { category in
+                Circle()
+                    .trim(from: category.start, to: category.end)
+                    .stroke(category.color, lineWidth: selector.rawValue == category.rawValue ? 50 : 30)
+                    .frame(width: 200, height: 200)
+                    .rotationEffect(.degrees(-90))
+            }
+            
             VStack(){
                 Text(String(format: "%.0f", selector.percentage*100) + "%")
                     .font(Font.custom("DIN Alternate Bold", size: 50))
@@ -151,17 +177,17 @@ struct SpendingTableView : View {
                 SelectorBar(selector: $selector)
                 Divider()
                 ScrollView{
-                VStack() {
+                    VStack() {
                         ForEach(userData.spending) { transaction in
                             if(transaction.category!.name == selector.name){
-                            VStack(spacing: 10){
-                                SpendingCell(name: transaction.name, amount: transaction.amount, pending: transaction.pending, date: transaction.date, color: transaction.category!.color)
-                                Rectangle()
-                                    .fill(Color(.systemGray6))
-                                    .frame(height: 1)
-                                    .padding(.leading, 40)
-                                    .padding(.trailing, 40)
-                            }
+                                VStack(spacing: 10){
+                                    SpendingCell(name: transaction.name, amount: transaction.amount, pending: transaction.pending, date: transaction.date, color: transaction.category!.color)
+                                    Rectangle()
+                                        .fill(Color(.systemGray6))
+                                        .frame(height: 1)
+                                        .padding(.leading, 40)
+                                        .padding(.trailing, 40)
+                                }
                             }
                         }
                     }
@@ -181,12 +207,20 @@ struct SelectorBar: View {
     var body : some View {
         HStack(){
             Button(action: {
-                num = (num == 3 ? num + 3 : num - 1)
-                switch(abs(num)%4){
-                case 0: selector = .Auto
-                case 1: selector = .Recreation
-                case 2: selector = .Bills
-                case 3: selector = .Food
+                num = (num == 0 ? num + 11 : num - 1)
+                switch(abs(num)%12){
+                case 0: selector = .Food
+                case 1: selector =  .Healthcare
+                case 2: selector =  .Recreation
+                case 3: selector =   .Auto
+                case 4: selector =   .Bills
+                case 5: selector =   .Travel
+                case 6: selector =   .Shopping
+                case 7: selector =   .PersonalCare
+                case 8: selector =   .HomeImprovement
+                case 9: selector =   .Community
+                case 10: selector =   .Services
+                case 11: selector =   .Miscellaneous
                 default: fatalError("cannot be here")
                 }
             } ) {
@@ -200,12 +234,20 @@ struct SelectorBar: View {
                 .font(Font.custom("DIN Alternate Bold", size: 22))
             Spacer()
             Button(action: {
-                num = (num == 3 ? num - 3 : num + 1)
-                switch(abs(num)%4){
-                case 0: selector = .Auto
-                case 1: selector = .Recreation
-                case 2: selector = .Bills
-                case 3: selector = .Food
+                num = (num == 11 ? num - 11 : num + 1)
+                switch(abs(num)%12){
+                case 0: selector = .Food
+                case 1: selector =  .Healthcare
+                case 2: selector =  .Recreation
+                case 3: selector =   .Auto
+                case 4: selector =   .Bills
+                case 5: selector =   .Travel
+                case 6: selector =   .Shopping
+                case 7: selector =   .PersonalCare
+                case 8: selector =   .HomeImprovement
+                case 9: selector =   .Community
+                case 10: selector =   .Services
+                case 11: selector =   .Miscellaneous
                 default: fatalError("cannot be here")
                 }
             } ) {
@@ -224,7 +266,7 @@ struct SpendingCell: View {
     @State var pending: Bool
     @State var date: String
     @State var color: Color
-        
+    
     var body : some View {
         HStack(){
             HStack(){

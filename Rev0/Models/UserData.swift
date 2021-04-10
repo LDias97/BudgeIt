@@ -11,8 +11,10 @@ class UserData: ObservableObject {
     @Published var transactions: [Transaction] = []
     @Published var spending: [Transaction] = []
     @Published var income: [Transaction] = []
-//    @Published var spending: [Dictionary<String, [Transaction]>] = []
-//    @Published var income: [Dictionary<String, [Transaction]>] = []
+    @Published var spendingByCategory: Dictionary<String, Double> = [String: Double]()
+    @Published var incomeByCategory: Dictionary<String, Double> = [String: Double]()
+    //    @Published var spending: [Dictionary<String, [Transaction]>] = []
+    //    @Published var income: [Dictionary<String, [Transaction]>] = []
 }
 
 extension UserData
@@ -69,17 +71,50 @@ extension UserData
                 }
                 else {
                     for category in transaction.categories! {
-                        if category.contains("Healthcare"){ transaction.category = .Healthcare }
-                        else if category.contains("Recreation"){ transaction.category = .Recreation }
-                        else if category.contains("Shops"){ transaction.category = .Shopping }
-                        else if category.contains("Personal Care"){ transaction.category = .PersonalCare }
-                        else if category.contains("Home Improvement"){ transaction.category = .HomeImprovement }
-                        else if category.contains("Travel"){ transaction.category = .Travel }
-                        else if category.contains("Auto"){ transaction.category = .Auto }
-                        else if category.contains("Food"){ transaction.category = .Food }
+                        var sum = transaction.amount
+                        if category.contains("Healthcare"){
+                            transaction.category = .Healthcare;
+                            sum += self.spendingByCategory["Healthcare"] ?? 0
+                            self.spendingByCategory.updateValue(_: sum, forKey: "Healthcare")
+                        }
+                        else if category.contains("Recreation"){
+                            transaction.category = .Recreation;
+                            sum += self.spendingByCategory["Recreation"] ?? 0
+                            self.spendingByCategory.updateValue(_: sum, forKey: "Recreation")
+                        }
+                        else if category.contains("Shops"){
+                            transaction.category = .Shopping;
+                            sum += self.spendingByCategory["Shops"] ?? 0
+                            self.spendingByCategory.updateValue(_: sum, forKey: "Shops")
+                        }
+                        else if category.contains("Personal Care"){
+                            transaction.category = .PersonalCare;
+                            sum += self.spendingByCategory["PersonalCare"] ?? 0
+                            self.spendingByCategory.updateValue(_: sum, forKey: "PersonalCare")
+                        }
+                        else if category.contains("Home Improvement"){
+                            transaction.category = .HomeImprovement;
+                            sum += self.spendingByCategory["HomeImprovement"] ?? 0
+                            self.spendingByCategory.updateValue(_: sum, forKey: "HomeImprovement")
+                        }
+                        else if category.contains("Travel"){
+                            transaction.category = .Travel;
+                            sum += self.spendingByCategory["Travel"] ?? 0
+                            self.spendingByCategory.updateValue(_: sum, forKey: "Travel")
+                        }
+                        else if category.contains("Auto"){
+                            transaction.category = .Auto;
+                            sum += self.spendingByCategory["Auto"] ?? 0
+                            self.spendingByCategory.updateValue(_: sum, forKey: "Auto")
+                        }
+                        else if category.contains("Food"){
+                            transaction.category = .Food;
+                            sum += self.spendingByCategory["Food"] ?? 0
+                            self.spendingByCategory.updateValue(_: sum, forKey: "Food")
+                        }
                     }
                     if transaction.category == nil {
-                        transaction.category = .Miscellaneous 
+                        transaction.category = .Miscellaneous
                     }
                     self.spending.append(transaction)
                     self.totalSpent += transaction.amount
@@ -111,7 +146,7 @@ extension UserData {
             return category!.color
         }
     }
-
+    
     enum Category : Int {
         case Food
         case Healthcare

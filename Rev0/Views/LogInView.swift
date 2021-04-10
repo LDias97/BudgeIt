@@ -10,61 +10,36 @@ struct LogInView: View {
     var body: some View {
         VStack(spacing: 20){
             VStack(){
-            Image("b")
-                .resizable()
-                .frame(width:175, height:175)
-                .padding(.top, 30)
-            Text("Sign In")
-                .font(.largeTitle)
-                .bold()
+                Image("b")
+                    .resizable()
+                    .frame(width:175, height:175)
+                    .padding(.top, 30)
+                Text("Sign In")
+                    .font(.largeTitle)
+                    .bold()
             }
-            ZStack{
-                Rectangle()
-                    .fill(Color(.systemGray5))
-                    .frame(width: 370, height: 60)
-                    .cornerRadius(30.0)
-                HStack{
-                    Image(systemName: "envelope")
-                        .foregroundColor(Color(.systemGray2))
-                    TextField("Email", text: $email)
-                }
-                .padding(.leading, 15)
-            }
-            .padding(.top, 35)
-            .padding(.leading, 30)
-            .padding(.trailing, 30)
-            ZStack{
-                Rectangle()
-                    .fill(Color(.systemGray5))
-                    .frame(width: 370, height: 60)
-                    .cornerRadius(30.0)
-                HStack{
-                    Image(systemName: "lock")
-                        .foregroundColor(Color(.systemGray2))
-                    SecureField("Password", text: $password)
-                }
-                .padding(.leading, 15)
-            }
-            .padding(.leading, 30)
-            .padding(.trailing, 30)
+            
+            InputField(input: $email, placeholder: "Email", icon: "envelope")
+                .padding(.top, 35)
+            SecureInputField(password: $password, placeholder: "Password", icon: "lock")
             
             ZStack(){
                 VStack(spacing: 15){
-                Rectangle()
-                    .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
-                    .frame(width: 370, height: 60)
-                    .cornerRadius(30.0)
-                Rectangle()
-                    .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
-                    .frame(width: 370, height: 60)
-                    .cornerRadius(30.0)
+                    Rectangle()
+                        .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
+                        .frame(width: 370, height: 60)
+                        .cornerRadius(30.0)
+                    Rectangle()
+                        .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
+                        .frame(width: 370, height: 60)
+                        .cornerRadius(30.0)
                 }
-            VStack(spacing: 55){
-                Button(action:{  login(); }) { Text("Sign In").font(.body).foregroundColor(.white)
-                    .alert(isPresented: $showingAlert) {
-                                Alert(title: Text("Sign In Error"), message: Text("Incorrect email or password. \nPlease try again."), dismissButton: .default(Text("Dismiss")))
-                            }
-                }.disabled(password.isEmpty || email.isEmpty)
+                VStack(spacing: 55){
+                    Button(action:{  login(); }) { Text("Sign In").font(.body).foregroundColor(.white)
+                        .alert(isPresented: $showingAlert) {
+                            Alert(title: Text("Sign In Error"), message: Text("Incorrect email or password. \nPlease try again."), dismissButton: .default(Text("Dismiss")))
+                        }
+                    }.disabled(password.isEmpty || email.isEmpty)
                     Button(action:{print("Clicked Continue with Google")}) {Text("Continue with Google").font(.body).foregroundColor(.white) }.disabled(password.isEmpty || email.isEmpty)
                 }
             }

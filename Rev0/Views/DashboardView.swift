@@ -1,7 +1,6 @@
 import SwiftUI
 import Firebase
 
-
 enum MonthSelector : Int {
     case Jan
     case Feb
@@ -59,10 +58,10 @@ struct DashboardView: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var userData: UserData
     @ObservedObject var budgetViewModel = BudgetViewModel()
-    //@ObservedObject var barChartViewModel = BarChartViewModel()
     @State var showMenu = false
     @State var editBudgets = false
-    @State var viewCharts = false
+    @State var  viewCharts = false
+
     
     var body: some View {
         
@@ -178,55 +177,55 @@ struct NetWorthCardView: View {
             }
             else{
                 ZStack(){
-                Card(width: 375, height: 150)
-                HStack(){
-                    VStack(alignment: .leading, spacing: 15){
-                        Text("Net Worth")
-                            .font(.custom("DIN Alternate Bold", size: 20))
-                        Text("$\(viewModel.currentBalance,specifier: "%.2f")")
-                            .foregroundColor(green)
-                            .font(.custom("DIN Alternate Bold", size: 35))
-                        viewModel.difference >= 0 ?
-                            Text("+$\(abs(viewModel.difference),specifier: "%.2f") this month")
-                            .foregroundColor(viewModel.difference > 0 ? green : red)
-                            .font(.custom("DIN Alternate Bold", size: 14))
-                            :
-                            Text("-$\(abs(viewModel.difference),specifier: "%.2f") this month")
-                            .foregroundColor(viewModel.difference > 0 ? green : red)
-                            .font(.custom("DIN Alternate Bold", size: 14))
-                    }
-                    .padding(.leading, 50)
-                    Spacer()
+                    Card(width: 375, height: 150)
                     HStack(){
-                        VStack(){
-                            Spacer()
-                            Circle()
-                                .frame(width: 10, height: 10)
+                        VStack(alignment: .leading, spacing: 15){
+                            Text("Net Worth")
+                                .font(.custom("DIN Alternate Bold", size: 20))
+                            Text("$\(viewModel.currentBalance,specifier: "%.2f")")
                                 .foregroundColor(green)
-                            Spacer()
-                            Circle()
-                                .frame(width: 10, height: 10)
-                                .foregroundColor(red)
-                            Spacer()
+                                .font(.custom("DIN Alternate Bold", size: 35))
+                            viewModel.difference >= 0 ?
+                                Text("+$\(abs(viewModel.difference),specifier: "%.2f") this month")
+                                .foregroundColor(viewModel.difference > 0 ? green : red)
+                                .font(.custom("DIN Alternate Bold", size: 14))
+                                :
+                                Text("-$\(abs(viewModel.difference),specifier: "%.2f") this month")
+                                .foregroundColor(viewModel.difference > 0 ? green : red)
+                                .font(.custom("DIN Alternate Bold", size: 14))
                         }
-                        VStack(){
-                            Spacer()
-                            Text("Earned")
-                                .foregroundColor(Color(.systemGray))
-                                .font(.custom("DIN Alternate Bold", size: 16))
-                            Text("$\(viewModel.earned,specifier: "%.2f")")
-                                .font(.custom("DIN Alternate Bold", size: 20))
-                            Spacer()
-                            Text("Spent")
-                                .foregroundColor(Color(.systemGray))
-                                .font(.custom("DIN Alternate Bold", size: 16))
-                            Text("$\(viewModel.spent,specifier: "%.2f")")
-                                .font(.custom("DIN Alternate Bold", size: 20))
-                            Spacer()
+                        .padding(.leading, 50)
+                        Spacer()
+                        HStack(){
+                            VStack(){
+                                Spacer()
+                                Circle()
+                                    .frame(width: 10, height: 10)
+                                    .foregroundColor(green)
+                                Spacer()
+                                Circle()
+                                    .frame(width: 10, height: 10)
+                                    .foregroundColor(red)
+                                Spacer()
+                            }
+                            VStack(){
+                                Spacer()
+                                Text("Earned")
+                                    .foregroundColor(Color(.systemGray))
+                                    .font(.custom("DIN Alternate Bold", size: 16))
+                                Text("$\(viewModel.earned,specifier: "%.2f")")
+                                    .font(.custom("DIN Alternate Bold", size: 20))
+                                Spacer()
+                                Text("Spent")
+                                    .foregroundColor(Color(.systemGray))
+                                    .font(.custom("DIN Alternate Bold", size: 16))
+                                Text("$\(viewModel.spent,specifier: "%.2f")")
+                                    .font(.custom("DIN Alternate Bold", size: 20))
+                                Spacer()
+                            }
                         }
+                        .padding(.trailing, 50)
                     }
-                    .padding(.trailing, 50)
-                }
                 }
                 .onAppear(){ withAnimation { self.degrees += 180;} }
                 .padding(.top, 120)
@@ -248,7 +247,7 @@ struct GreetingCardView: View{
         }
     }
 }
-    
+
 struct BudgetCardView : View {
     @ObservedObject var viewModel = BudgetViewModel()
     @Binding var editBudgets: Bool
@@ -383,14 +382,13 @@ struct BudgetCardView : View {
         .animation(.easeInOut)
     }
 }
-    
+
 struct BarChartDashView: View {
     @State var selectedMonth: Int = 0
-//    var incomeValue: Double = 0.0
-//    var spendingValue: Double = 0.0
-//    var difference: Double = 0.0 // income - spending, cast to string
-//    var id: Int = 0
-
+    //    var incomeValue: Double = 0.0
+    //    var spendingValue: Double = 0.0
+    //    var difference: Double = 0.0 // income - spending, cast to string
+    //    var id: Int = 0
     @Binding var viewCharts: Bool
     @State var degrees: Double = 180
     
@@ -450,7 +448,192 @@ struct BarChartDashView: View {
         .animation(.easeInOut)
     }
 }
-                    
+
+struct CategoryCharts: View {
+    
+    @State var i = 0
+    @State var j = 3
+    @State var wmy = 1
+    //@Binding var viewCharts: Bool
+    @State var degrees: Double = 180
+    
+    var body: some View {
+        VStack(){
+            HStack(spacing: 15){
+                Button(action: {wmy = 0;}){
+                    ZStack{
+                        Rectangle()
+                            .fill(wmy == 0 ?
+                                    (LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
+                                    :
+                                    (LinearGradient(gradient: Gradient(colors: [ Color(.systemGray5)]), startPoint: .trailing, endPoint: .leading)))
+                            .frame(width: 75, height: 40)
+                            .cornerRadius(30)
+                        Text("Week")
+                            .foregroundColor(wmy == 0 ? Color(.white) : Color(.systemGray2))
+                            .font((Font.custom("DIN Alternate Bold", size: 14)))
+                    }
+                }
+                Button(action: {wmy = 1;}){
+                    ZStack{
+                        Rectangle()
+                            .fill(wmy == 1 ?
+                                    (LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
+                                    :
+                                    (LinearGradient(gradient: Gradient(colors: [ Color(.systemGray5)]), startPoint: .trailing, endPoint: .leading)))
+                            .frame(width: 75, height: 40)
+                            .cornerRadius(30)
+                        Text("Month")
+                            .foregroundColor(wmy == 1 ? Color(.white) : Color(.systemGray2))
+                            .font((Font.custom("DIN Alternate Bold", size: 14)))
+                    }
+                }
+                Button(action: {wmy = 2;}){
+                    ZStack{
+                        Rectangle()
+                            .fill(wmy == 2 ?
+                                    (LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
+                                    :
+                                    (LinearGradient(gradient: Gradient(colors: [ Color(.systemGray5)]), startPoint: .trailing, endPoint: .leading)))
+                            .frame(width: 75, height: 40)
+                            .cornerRadius(30)
+                        Text("Year")
+                            .foregroundColor(wmy == 2 ? Color(.white) : Color(.systemGray2))
+                            .font((Font.custom("DIN Alternate Bold", size: 14)))
+                    }
+                }
+            }
+            Spacer()
+            HStack(spacing: 40){
+                Button(action: { print("Back clicked");}){
+                    Image(systemName: "chevron.backward")
+                        .foregroundColor(Color(.systemGray))
+                }
+                VStack(){
+                    Spacer()
+                    ZStack(alignment: .bottom){
+                        HStack(alignment: .bottom, spacing: 5){
+                            Rectangle()
+                                .frame(width: 7, height: 100)
+                                .foregroundColor(Color(.systemGray5))
+                            Rectangle()
+                                .frame(width: 7, height:130)
+                                .foregroundColor(Color(.systemGray5))
+                            Rectangle()
+                                .frame(width: 7, height: 50)
+                                .foregroundColor(Color(.systemGray5))
+                            Rectangle()
+                                .frame(width: 7, height: 70)
+                                .foregroundColor(Color(.systemGray5))
+                        }
+                        HStack(alignment: .bottom, spacing: 5){
+                            Rectangle()
+                                .frame(width: 7, height: 60)
+                                .foregroundColor(Color(.blue))
+                            Rectangle()
+                                .frame(width: 7, height: 60)
+                                .foregroundColor(Color(.systemTeal))
+                            Rectangle()
+                                .frame(width: 7, height: 30)
+                                .foregroundColor(Color(.systemPink))
+                            Rectangle()
+                                .frame(width: 7, height: 50)
+                                .foregroundColor(Color(.systemOrange))
+                        }
+                    }
+                    .padding(.bottom, 10)
+                    Text("Mar")
+                        .font((Font.custom("DIN Alternate Bold", size: 16)))
+                }
+                VStack(){
+                    Spacer()
+                    ZStack(alignment: .bottom){
+                        HStack(alignment: .bottom, spacing: 5){
+                            Rectangle()
+                                .frame(width: 7, height: 80)
+                                .foregroundColor(Color(.systemGray5))
+                            Rectangle()
+                                .frame(width: 7, height: 100)
+                                .foregroundColor(Color(.systemGray5))
+                            Rectangle()
+                                .frame(width: 7, height: 120)
+                                .foregroundColor(Color(.systemGray5))
+                            Rectangle()
+                                .frame(width: 7, height: 90)
+                                .foregroundColor(Color(.systemGray5))
+                        }
+                        HStack(alignment: .bottom, spacing: 5){
+                            Rectangle()
+                                .frame(width: 7, height: 70)
+                                .foregroundColor(Color(.blue))
+                            Rectangle()
+                                .frame(width: 7, height: 60)
+                                .foregroundColor(Color(.systemTeal))
+                            Rectangle()
+                                .frame(width: 7, height: 110)
+                                .foregroundColor(Color(.systemPink))
+                            Rectangle()
+                                .frame(width: 7, height: 40)
+                                .foregroundColor(Color(.systemOrange))
+                        }
+                    }
+                    .padding(.bottom, 10)
+                    Text("Apr")
+                        .font((Font.custom("DIN Alternate Bold", size: 16)))
+                }
+                VStack(){
+                    Spacer()
+                    ZStack(alignment: .bottom){
+                        HStack(alignment: .bottom, spacing: 5){
+                            Rectangle()
+                                .frame(width: 7, height: 100)
+                                .foregroundColor(Color(.systemGray5))
+                            Rectangle()
+                                .frame(width: 7, height: 120)
+                                .foregroundColor(Color(.systemGray5))
+                            Rectangle()
+                                .frame(width: 7, height: 90)
+                                .foregroundColor(Color(.systemGray5))
+                            Rectangle()
+                                .frame(width: 7, height: 100)
+                                .foregroundColor(Color(.systemGray5))
+                        }
+                        HStack(alignment: .bottom, spacing: 5){
+                            Rectangle()
+                                .frame(width: 7, height: 85)
+                                .foregroundColor(Color(.blue))
+                            Rectangle()
+                                .frame(width: 7, height: 70)
+                                .foregroundColor(Color(.systemTeal))
+                            Rectangle()
+                                .frame(width: 7, height: 45)
+                                .foregroundColor(Color(.systemPink))
+                            Rectangle()
+                                .frame(width: 7, height: 80)
+                                .foregroundColor(Color(.systemOrange))
+                        }
+                    }
+                    .padding(.bottom, 10)
+                    Text("May")
+                        .font((Font.custom("DIN Alternate Bold", size: 16)))
+                }
+                Button(action: { print("forward clicked");}){
+                    Image(systemName: "chevron.forward")
+                        .foregroundColor(Color(.systemGray))
+                }
+        
+            }
+            .padding(.bottom, 20)
+            Spacer()
+            Text("2021")
+                .font((Font.custom("DIN Alternate Bold", size: 24)))
+        }
+        .padding(.top, 30)
+        .padding(.leading, 20)
+        .padding(.trailing, 20)
+        .padding(.bottom, 20)
+    }
+}
 
 struct SpendingCardView : View {
     
@@ -482,7 +665,7 @@ struct SpendingCardView : View {
                         HStack(){
                             HStack(){
                                 Rectangle()
-                                    .foregroundColor(Color(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/))
+                                    .foregroundColor(transaction.category!.color)
                                     .frame(width: 3, height: 20, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                                     .cornerRadius(10.0)
                                 VStack(alignment: .leading, spacing:5){
@@ -771,197 +954,10 @@ struct ProgressCircle: View {
     
 }
 
-struct CategoryCharts: View {
-    
-    @State var i = 0
-    @State var j = 3
-    @State var wmy = 1
-    //@Binding var viewCharts: Bool
-    @State var degrees: Double = 180
-    
-    var body: some View {
-        VStack(){
-            HStack(spacing: 15){
-                Button(action: {wmy = 0;}){
-                    ZStack{
-                        Rectangle()
-                            .fill(wmy == 0 ?
-                                    (LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
-                                    :
-                                    (LinearGradient(gradient: Gradient(colors: [ Color(.systemGray5)]), startPoint: .trailing, endPoint: .leading)))
-                            .frame(width: 75, height: 40)
-                            .cornerRadius(30)
-                        Text("Week")
-                            .foregroundColor(wmy == 0 ? Color(.white) : Color(.systemGray2))
-                            .font((Font.custom("DIN Alternate Bold", size: 14)))
-                    }
-                }
-                Button(action: {wmy = 1;}){
-                    ZStack{
-                        Rectangle()
-                            .fill(wmy == 1 ?
-                                    (LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
-                                    :
-                                    (LinearGradient(gradient: Gradient(colors: [ Color(.systemGray5)]), startPoint: .trailing, endPoint: .leading)))
-                            .frame(width: 75, height: 40)
-                            .cornerRadius(30)
-                        Text("Month")
-                            .foregroundColor(wmy == 1 ? Color(.white) : Color(.systemGray2))
-                            .font((Font.custom("DIN Alternate Bold", size: 14)))
-                    }
-                }
-                Button(action: {wmy = 2;}){
-                    ZStack{
-                        Rectangle()
-                            .fill(wmy == 2 ?
-                                    (LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
-                                    :
-                                    (LinearGradient(gradient: Gradient(colors: [ Color(.systemGray5)]), startPoint: .trailing, endPoint: .leading)))
-                            .frame(width: 75, height: 40)
-                            .cornerRadius(30)
-                        Text("Year")
-                            .foregroundColor(wmy == 2 ? Color(.white) : Color(.systemGray2))
-                            .font((Font.custom("DIN Alternate Bold", size: 14)))
-                    }
-                }
-            }
-            Spacer()
-            HStack(spacing: 40){
-                Button(action: { print("Back clicked");}){
-                    Image(systemName: "chevron.backward")
-                        .foregroundColor(Color(.systemGray))
-                }
-                VStack(){
-                    Spacer()
-                    ZStack(alignment: .bottom){
-                        HStack(alignment: .bottom, spacing: 5){
-                            Rectangle()
-                                .frame(width: 7, height: 100)
-                                .foregroundColor(Color(.systemGray5))
-                            Rectangle()
-                                .frame(width: 7, height:130)
-                                .foregroundColor(Color(.systemGray5))
-                            Rectangle()
-                                .frame(width: 7, height: 50)
-                                .foregroundColor(Color(.systemGray5))
-                            Rectangle()
-                                .frame(width: 7, height: 70)
-                                .foregroundColor(Color(.systemGray5))
-                        }
-                        HStack(alignment: .bottom, spacing: 5){
-                            Rectangle()
-                                .frame(width: 7, height: 60)
-                                .foregroundColor(Color(.blue))
-                            Rectangle()
-                                .frame(width: 7, height: 60)
-                                .foregroundColor(Color(.systemTeal))
-                            Rectangle()
-                                .frame(width: 7, height: 30)
-                                .foregroundColor(Color(.systemPink))
-                            Rectangle()
-                                .frame(width: 7, height: 50)
-                                .foregroundColor(Color(.systemOrange))
-                        }
-                    }
-                    .padding(.bottom, 10)
-                    Text("Mar")
-                        .font((Font.custom("DIN Alternate Bold", size: 16)))
-                }
-                VStack(){
-                    Spacer()
-                    ZStack(alignment: .bottom){
-                        HStack(alignment: .bottom, spacing: 5){
-                            Rectangle()
-                                .frame(width: 7, height: 80)
-                                .foregroundColor(Color(.systemGray5))
-                            Rectangle()
-                                .frame(width: 7, height: 100)
-                                .foregroundColor(Color(.systemGray5))
-                            Rectangle()
-                                .frame(width: 7, height: 120)
-                                .foregroundColor(Color(.systemGray5))
-                            Rectangle()
-                                .frame(width: 7, height: 90)
-                                .foregroundColor(Color(.systemGray5))
-                        }
-                        HStack(alignment: .bottom, spacing: 5){
-                            Rectangle()
-                                .frame(width: 7, height: 70)
-                                .foregroundColor(Color(.blue))
-                            Rectangle()
-                                .frame(width: 7, height: 60)
-                                .foregroundColor(Color(.systemTeal))
-                            Rectangle()
-                                .frame(width: 7, height: 110)
-                                .foregroundColor(Color(.systemPink))
-                            Rectangle()
-                                .frame(width: 7, height: 40)
-                                .foregroundColor(Color(.systemOrange))
-                        }
-                    }
-                    .padding(.bottom, 10)
-                    Text("Apr")
-                        .font((Font.custom("DIN Alternate Bold", size: 16)))
-                }
-                VStack(){
-                    Spacer()
-                    ZStack(alignment: .bottom){
-                        HStack(alignment: .bottom, spacing: 5){
-                            Rectangle()
-                                .frame(width: 7, height: 100)
-                                .foregroundColor(Color(.systemGray5))
-                            Rectangle()
-                                .frame(width: 7, height: 120)
-                                .foregroundColor(Color(.systemGray5))
-                            Rectangle()
-                                .frame(width: 7, height: 90)
-                                .foregroundColor(Color(.systemGray5))
-                            Rectangle()
-                                .frame(width: 7, height: 100)
-                                .foregroundColor(Color(.systemGray5))
-                        }
-                        HStack(alignment: .bottom, spacing: 5){
-                            Rectangle()
-                                .frame(width: 7, height: 85)
-                                .foregroundColor(Color(.blue))
-                            Rectangle()
-                                .frame(width: 7, height: 70)
-                                .foregroundColor(Color(.systemTeal))
-                            Rectangle()
-                                .frame(width: 7, height: 45)
-                                .foregroundColor(Color(.systemPink))
-                            Rectangle()
-                                .frame(width: 7, height: 80)
-                                .foregroundColor(Color(.systemOrange))
-                        }
-                    }
-                    .padding(.bottom, 10)
-                    Text("May")
-                        .font((Font.custom("DIN Alternate Bold", size: 16)))
-                }
-                Button(action: { print("forward clicked");}){
-                    Image(systemName: "chevron.forward")
-                        .foregroundColor(Color(.systemGray))
-                }
-        
-            }
-            .padding(.bottom, 20)
-            Spacer()
-            Text("2021")
-                .font((Font.custom("DIN Alternate Bold", size: 24)))
-        }
-        .padding(.top, 30)
-        .padding(.leading, 20)
-        .padding(.trailing, 20)
-        .padding(.bottom, 20)
-    }
-}
-
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            //DashboardView()
-            CategoryCharts()
+            DashboardView()
         }
     }
 }

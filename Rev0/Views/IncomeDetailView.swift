@@ -51,14 +51,14 @@ struct IncomeDetailView: View {
                 .ignoresSafeArea()
             VStack(){
                 HStack(){
-                    backButton(page: .page3)
+                    BackButton(page: .page3)
                         .padding(.leading, 15)
                     Spacer()
                     Text("Income")
                         .font(Font.custom("DIN Alternate Bold", size: 24))
                     Spacer()
-                    ellipsisButton()
-                    .padding(.trailing, 15)
+                    EllipsisButton()
+                        .padding(.trailing, 15)
                 }
                 IncomePieView(selector: $selector)
                     .padding(.top, 30)
@@ -121,11 +121,9 @@ struct IncomeTableView : View {
                     }
                     .padding(.leading, 15)
                     Spacer()
-                    // Category Text
                     Text(selector.name)
                         .font(Font.custom("DIN Alternate Bold", size: 22))
                     Spacer()
-                    // forward arrow
                     Button(action: {
                         num = (num == 1 ? num - 1 : num + 1)
                         switch(abs(num)%2){
@@ -163,10 +161,10 @@ struct IncomeTable : View {
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var userData: UserData
     @State var color: Color
-
+    
     var body : some View {
         ScrollView{
-        VStack() {
+            VStack() {
                 ForEach(userData.income) { transaction in
                     VStack(spacing: 10){
                         IncomeCell(name: transaction.name, amount: transaction.amount, pending: transaction.pending, date: transaction.date, color: color)
@@ -177,7 +175,7 @@ struct IncomeTable : View {
                             .padding(.trailing, 40)
                     }
                 }
-        }
+            }
         }
     }
 }
@@ -188,7 +186,7 @@ struct IncomeCell: View {
     @State var pending: Bool
     @State var date: String
     @State var color: Color
-        
+    
     var body : some View {
         HStack(){
             HStack(){
