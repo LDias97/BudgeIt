@@ -5,6 +5,15 @@ struct NotificationsView: View {
     @State var isEnabled1: Bool = false
     @State var isEnabled2: Bool = false
     @State var isEnabled3: Bool = false
+    @State var isEnabled4: Bool = false
+    @State var isEnabled5: Bool = false
+    @State var isEnabled6: Bool = false
+    @State var isEnabled7: Bool = false
+    @State var isEnabled8: Bool = false
+    @State var isEnabled9: Bool = false
+    @State var isEnabled10: Bool = false
+
+
     @EnvironmentObject var viewRouter: ViewRouter
     
     var body: some View {
@@ -29,9 +38,9 @@ struct NotificationsView: View {
                 VStack(){
                     BudgetsGroup(isEnabled: $isEnabled1)
                     Separator()
-                    SpendingGroup(isEnabled: $isEnabled1)
+                    SpendingGroup(isEnabled: $isEnabled2)
                     Separator()
-                    IncomeGroup(isEnabled: $isEnabled1)
+                    IncomeGroup(isEnabled: $isEnabled3)
                 }
                 Spacer()
             }

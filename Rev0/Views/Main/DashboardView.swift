@@ -61,7 +61,7 @@ struct DashboardView: View {
     @State var showMenu = false
     @State var editBudgets = false
     @State var  viewCharts = false
-
+    
     
     var body: some View {
         
@@ -402,7 +402,7 @@ struct BarChartDashView: View {
                             Text("Financial Summary")
                                 .font(Font.custom("DIN Alternate Bold", size: 20))
                             Spacer()
-                            Button(action: {self.viewCharts = true;
+                            Button(action: { self.viewCharts = true;
                                     withAnimation { self.degrees += 180;} }) {
                                 Image(systemName: "chevron.forward")
                                     .imageScale(.medium)
@@ -621,7 +621,7 @@ struct CategoryCharts: View {
                     Image(systemName: "chevron.forward")
                         .foregroundColor(Color(.systemGray))
                 }
-        
+                
             }
             .padding(.bottom, 20)
             Spacer()

@@ -10,6 +10,7 @@ class ViewController: UIViewController {
     @IBOutlet var buttonContainerView: UIView!
     var linkHandler: Handler?
     var token: String?
+    var didSetUp: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +89,7 @@ extension ViewController {
                 return completion(nil)
             }
             guard let accesstoken = result?.data as? String else {
+                self.didSetUp = true
                 return completion(nil)
             }
             completion(accesstoken)

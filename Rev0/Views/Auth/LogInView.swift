@@ -23,29 +23,24 @@ struct LogInView: View {
                 .padding(.top, 35)
             SecureInputField(password: $password, placeholder: "Password", icon: "lock")
             
-            ZStack(){
-                VStack(spacing: 15){
-                    Rectangle()
-                        .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
-                        .frame(width: 370, height: 60)
-                        .cornerRadius(30.0)
-                    Rectangle()
-                        .fill(LinearGradient(gradient: Gradient(colors: [ darkPurple,Color(.blue)]), startPoint: .trailing, endPoint: .leading))
-                        .frame(width: 370, height: 60)
-                        .cornerRadius(30.0)
-                }
-                VStack(spacing: 55){
+            VStack(spacing: 15){
+                ZStack(){
+                    AuthButtonBG()
                     Button(action:{  login(); }) { Text("Sign In").font(.body).foregroundColor(.white)
                         .alert(isPresented: $showingAlert) {
                             Alert(title: Text("Sign In Error"), message: Text("Incorrect email or password. \nPlease try again."), dismissButton: .default(Text("Dismiss")))
                         }
                     }.disabled(password.isEmpty || email.isEmpty)
+                }
+                ZStack(){
+                    AuthButtonBG()
                     Button(action:{print("Clicked Continue with Google")}) {Text("Continue with Google").font(.body).foregroundColor(.white) }.disabled(password.isEmpty || email.isEmpty)
                 }
             }
             Button(action:{ viewRouter.currentPage = .page1; }) { Text("Don't have an account? Sign Up").font(.body).foregroundColor(.blue)}
                 .padding(.top, 25)
             Spacer()
+            
         }
     }
     

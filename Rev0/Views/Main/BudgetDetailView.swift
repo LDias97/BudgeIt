@@ -139,14 +139,6 @@ struct MonthlyInfoView: View {
         ScrollView(.horizontal){
             HStack{
                 ForEach(0..<12) { month in
-                    ZStack(alignment: .top){
-                        Rectangle()
-                            .fill(Color(.gray))
-                            .frame(width: 375, height: 140)
-                            .cornerRadius(30.0)
-                            .id(month)
-                            .padding(.leading, 10)
-                            .padding(.trailing, 10)
                         VStack {
                             HStack{
                                 VStack {
@@ -197,7 +189,7 @@ struct MonthlyInfoView: View {
             }
         }
     }
-}
+
 
 struct BudgetOptionsView: View {
     

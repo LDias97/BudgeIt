@@ -28,7 +28,7 @@ struct SignUpView: View {
             SecureInputField(password: $password, placeholder: "Password", icon: "lock")
             SecureInputField(password: $confirmPassword, placeholder: "Confirm Password", icon: "lock.rotation")
             
-            VStack(spacing: 60){
+            VStack(spacing: 15){
                 ZStack(){
                     AuthButtonBG()
                     Button(action:{ signup(); UserDefaults.standard.set(0.0, forKey: "lastMonthBalance"); UserDefaults.standard.set(false, forKey: "balanceRetrieved");})

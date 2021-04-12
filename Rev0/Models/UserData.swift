@@ -125,6 +125,41 @@ extension UserData
         }
     }
     
+    func getBalanceByDate(date: String) {
+        
+        let currentDate = Date()
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        let endDate = dateFormatterGet.string(from: currentDate)
+        
+        let json: [String: Any] = [
+            "access_token": UserDefaults.standard.value(forKey: "access_token") as! String,
+            "start_date": date,
+            "end_date": endDate
+        ]
+        
+        Functions.functions().httpsCallable("getTransactions").call(json) { (result, error) in
+            if let error = error {
+                debugPrint(error.localizedDescription)
+            }
+            let items = result?.data as! [NSMutableDictionary]
+            var spent = 0.0
+            var earned = 0.0
+            var balance = 0.0
+            for item in items {
+                let name = (item["merchant_name"] as! NSObject == NSNull()) ? item["name"] : item["merchant_name"]
+                let transaction = Transaction(categories: (item["category"] as! [String]), name: name as! String, amount: item["amount"] as! Double, date: item["date"] as! String, pending: (item["pending"] != nil))
+                if ((item["amount"] as! Double) < 0) {
+                    spent += transaction.amount
+                }
+                else {
+                    earned += transaction.amount
+                }
+            }
+            balance = self.netWorth + spent + earned
+        }
+    }
+    
     func load(){
         getBalance()
         getTransactions()

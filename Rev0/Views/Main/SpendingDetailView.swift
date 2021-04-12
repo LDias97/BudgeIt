@@ -113,7 +113,7 @@ struct SpendingDetailView: View {
             Rectangle()
                 .fill(grey)
                 .ignoresSafeArea()
-            VStack(){
+            VStack() {
                 HStack(){
                     BackButton(page: .page3)
                         .padding(.leading, 15)
