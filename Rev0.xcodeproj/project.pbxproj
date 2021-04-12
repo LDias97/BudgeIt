@@ -16,6 +16,13 @@
 		B55AC0F726008795003263D6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55AC0F626008795003263D6 /* ProfileView.swift */; };
 		B56FB26026044D7F000A7FFA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B56FB25F26044D7F000A7FFA /* GoogleService-Info.plist */; };
 		B56FB26F26044F78000A7FFA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56FB26E26044F78000A7FFA /* AppDelegate.swift */; };
+		B57549E22624BD5400683FC3 /* GenericViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57549E12624BD5400683FC3 /* GenericViews.swift */; };
+		B57549E82624BFB600683FC3 /* SpendingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57549E72624BFB600683FC3 /* SpendingCardView.swift */; };
+		B57549EB2624BFE200683FC3 /* IncomeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57549EA2624BFE200683FC3 /* IncomeCardView.swift */; };
+		B57549EE2624C03300683FC3 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57549ED2624C03300683FC3 /* MenuView.swift */; };
+		B57549F12624C09B00683FC3 /* BudgetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57549F02624C09B00683FC3 /* BudgetCardView.swift */; };
+		B57549F52624C12300683FC3 /* NetWorthCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57549F42624C12300683FC3 /* NetWorthCardView.swift */; };
+		B57549FC2624C65500683FC3 /* CashFlowCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57549FB2624C65500683FC3 /* CashFlowCardView.swift */; };
 		B59847E02614F3BD00C32496 /* PlaidAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59847DF2614F3BD00C32496 /* PlaidAPI.swift */; };
 		B59DA863261CD94500F0EA95 /* SpendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DA862261CD94500F0EA95 /* SpendingViewModel.swift */; };
 		B59DA866261CD94F00F0EA95 /* IncomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DA865261CD94F00F0EA95 /* IncomeViewModel.swift */; };
@@ -50,6 +57,13 @@
 		B55AC0F626008795003263D6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		B56FB25F26044D7F000A7FFA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B56FB26E26044F78000A7FFA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B57549E12624BD5400683FC3 /* GenericViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericViews.swift; sourceTree = "<group>"; };
+		B57549E72624BFB600683FC3 /* SpendingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingCardView.swift; sourceTree = "<group>"; };
+		B57549EA2624BFE200683FC3 /* IncomeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeCardView.swift; sourceTree = "<group>"; };
+		B57549ED2624C03300683FC3 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		B57549F02624C09B00683FC3 /* BudgetCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCardView.swift; sourceTree = "<group>"; };
+		B57549F42624C12300683FC3 /* NetWorthCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorthCardView.swift; sourceTree = "<group>"; };
+		B57549FB2624C65500683FC3 /* CashFlowCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFlowCardView.swift; sourceTree = "<group>"; };
 		B59847DF2614F3BD00C32496 /* PlaidAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidAPI.swift; sourceTree = "<group>"; };
 		B59DA862261CD94500F0EA95 /* SpendingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingViewModel.swift; sourceTree = "<group>"; };
 		B59DA865261CD94F00F0EA95 /* IncomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeViewModel.swift; sourceTree = "<group>"; };
@@ -89,10 +103,11 @@
 		B559CBDB26161ADE001F8CEF /* Link */ = {
 			isa = PBXGroup;
 			children = (
-				B5B8579A2609804F0071CC47 /* LinkKitSwiftUISupport.swift */,
-				B5B8579D260980940071CC47 /* ViewController.swift */,
-				B59847DF2614F3BD00C32496 /* PlaidAPI.swift */,
 				B5258F7D26150472006EFF5C /* LinkView.swift */,
+				B59847DF2614F3BD00C32496 /* PlaidAPI.swift */,
+				B5B8579D260980940071CC47 /* ViewController.swift */,
+				B5B8579A2609804F0071CC47 /* LinkKitSwiftUISupport.swift */,
+				B59DA868261D38A300F0EA95 /* UserData.swift */,
 			);
 			path = Link;
 			sourceTree = "<group>";
@@ -104,7 +119,6 @@
 				B5CC2A7026083E1700847A4B /* NetWorthViewModel.swift */,
 				B59DA862261CD94500F0EA95 /* SpendingViewModel.swift */,
 				B59DA865261CD94F00F0EA95 /* IncomeViewModel.swift */,
-				B59DA868261D38A300F0EA95 /* UserData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -148,6 +162,7 @@
 		B57549DD2624B90300683FC3 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				B57549ED2624C03300683FC3 /* MenuView.swift */,
 				B55AC0ED26008759003263D6 /* NotificationsView.swift */,
 				B55AC0F626008795003263D6 /* ProfileView.swift */,
 				B55AC0F32600876C003263D6 /* HelpView.swift */,
@@ -159,12 +174,66 @@
 		B57549DE2624B91D00683FC3 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				B5CC2A7126083E1700847A4B /* DashboardView.swift */,
-				B5FF2CBB25E8A4A20032E577 /* SpendingDetailView.swift */,
-				FFF70FBC25EFD9190042D0F2 /* BudgetDetailView.swift */,
-				FF65818625F40F1F00D47939 /* IncomeDetailView.swift */,
+				B57549F32624C10900683FC3 /* Dashboard */,
+				B57549E62624BF3A00683FC3 /* Budgets */,
+				B57549FA2624C63900683FC3 /* Cash Flow */,
+				B57549E52624BF1F00683FC3 /* Income */,
+				B57549E42624BF1900683FC3 /* Spending */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		B57549E02624BD2A00683FC3 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				B59DA86E261E2EF000F0EA95 /* Constants.swift */,
+				B57549E12624BD5400683FC3 /* GenericViews.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		B57549E42624BF1900683FC3 /* Spending */ = {
+			isa = PBXGroup;
+			children = (
+				B5FF2CBB25E8A4A20032E577 /* SpendingDetailView.swift */,
+				B57549E72624BFB600683FC3 /* SpendingCardView.swift */,
+			);
+			path = Spending;
+			sourceTree = "<group>";
+		};
+		B57549E52624BF1F00683FC3 /* Income */ = {
+			isa = PBXGroup;
+			children = (
+				FF65818625F40F1F00D47939 /* IncomeDetailView.swift */,
+				B57549EA2624BFE200683FC3 /* IncomeCardView.swift */,
+			);
+			path = Income;
+			sourceTree = "<group>";
+		};
+		B57549E62624BF3A00683FC3 /* Budgets */ = {
+			isa = PBXGroup;
+			children = (
+				FFF70FBC25EFD9190042D0F2 /* BudgetDetailView.swift */,
+				B57549F02624C09B00683FC3 /* BudgetCardView.swift */,
+			);
+			path = Budgets;
+			sourceTree = "<group>";
+		};
+		B57549F32624C10900683FC3 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				B5CC2A7126083E1700847A4B /* DashboardView.swift */,
+				B57549F42624C12300683FC3 /* NetWorthCardView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		B57549FA2624C63900683FC3 /* Cash Flow */ = {
+			isa = PBXGroup;
+			children = (
+				B57549FB2624C65500683FC3 /* CashFlowCardView.swift */,
+			);
+			path = "Cash Flow";
 			sourceTree = "<group>";
 		};
 		B5C6566225DD311F00A9FABC = {
@@ -192,7 +261,7 @@
 				B559CBDE26161B2A001F8CEF /* Views */,
 				B559CBDD26161B23001F8CEF /* Models */,
 				B559CBDB26161ADE001F8CEF /* Link */,
-				B59DA86E261E2EF000F0EA95 /* Constants.swift */,
+				B57549E02624BD2A00683FC3 /* Misc */,
 				B5C6566E25DD311F00A9FABC /* Rev0App.swift */,
 				B56FB26E26044F78000A7FFA /* AppDelegate.swift */,
 				B5C6567225DD312000A9FABC /* Assets.xcassets */,
@@ -348,6 +417,8 @@
 				B59847E02614F3BD00C32496 /* PlaidAPI.swift in Sources */,
 				B5C6566F25DD311F00A9FABC /* Rev0App.swift in Sources */,
 				B59DA863261CD94500F0EA95 /* SpendingViewModel.swift in Sources */,
+				B57549E22624BD5400683FC3 /* GenericViews.swift in Sources */,
+				B57549F12624C09B00683FC3 /* BudgetCardView.swift in Sources */,
 				B59DA866261CD94F00F0EA95 /* IncomeViewModel.swift in Sources */,
 				B55AC0F726008795003263D6 /* ProfileView.swift in Sources */,
 				B55AC0F42600876C003263D6 /* HelpView.swift in Sources */,
@@ -357,17 +428,22 @@
 				B5FF2CC525E8BE1D0032E577 /* ViewRouter.swift in Sources */,
 				B5CC2A7326083E1700847A4B /* DashboardView.swift in Sources */,
 				FFF70FBD25EFD9190042D0F2 /* BudgetDetailView.swift in Sources */,
+				B57549EB2624BFE200683FC3 /* IncomeCardView.swift in Sources */,
 				B59DA869261D38A300F0EA95 /* UserData.swift in Sources */,
+				B57549FC2624C65500683FC3 /* CashFlowCardView.swift in Sources */,
 				B5B8579B2609804F0071CC47 /* LinkKitSwiftUISupport.swift in Sources */,
 				B5FF2CC225E8BDD60032E577 /* MotherView.swift in Sources */,
 				B5FF2CBC25E8A4A20032E577 /* SpendingDetailView.swift in Sources */,
 				B5FF2CB525E71C710032E577 /* SignUpView.swift in Sources */,
 				B5FF2CB825E71C990032E577 /* LogInView.swift in Sources */,
+				B57549EE2624C03300683FC3 /* MenuView.swift in Sources */,
+				B57549E82624BFB600683FC3 /* SpendingCardView.swift in Sources */,
 				FF65818725F40F1F00D47939 /* IncomeDetailView.swift in Sources */,
 				B5CC2A7226083E1700847A4B /* BudgetViewModel.swift in Sources */,
 				B5CC2A7426083E1700847A4B /* NetWorthViewModel.swift in Sources */,
 				B5258F7E26150472006EFF5C /* LinkView.swift in Sources */,
 				B55AC0F126008765003263D6 /* SettingsView.swift in Sources */,
+				B57549F52624C12300683FC3 /* NetWorthCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

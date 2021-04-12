@@ -43,17 +43,22 @@ extension UserData
     func getTransactions(){
         self.hasLoaded = false;
         let currentDate = Date()
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let calendar = Calendar.current
+
         
-        let endDate = dateFormatterGet.string(from: currentDate)
-        let startDate1 = Calendar.current.date(byAdding: .day, value: -30, to: currentDate)
-        guard let startDate = startDate1 else {return}
-        let startDateFormatted = dateFormatterGet.string(from: startDate)
+        let components = calendar.dateComponents(_: [.year, .month], from: currentDate)
+        let startOfMonth = calendar.date(from: components)
+
+        let startDate = dateFormatter.string(from: startOfMonth!)
+        let endDate = dateFormatter.string(from: currentDate)
+
         
+//        Calendar.current.date(byAdding: .day, value: -30, to: currentDate)
         let json: [String: Any] = [
             "access_token": UserDefaults.standard.value(forKey: "access_token") as! String,
-            "start_date": startDateFormatted,
+            "start_date": startDate,
             "end_date": endDate
         ]
         
@@ -145,7 +150,7 @@ extension UserData
             let items = result?.data as! [NSMutableDictionary]
             var spent = 0.0
             var earned = 0.0
-            var balance = 0.0
+//            var balance = 0.0
             for item in items {
                 let name = (item["merchant_name"] as! NSObject == NSNull()) ? item["name"] : item["merchant_name"]
                 let transaction = Transaction(categories: (item["category"] as! [String]), name: name as! String, amount: item["amount"] as! Double, date: item["date"] as! String, pending: (item["pending"] != nil))
@@ -156,7 +161,7 @@ extension UserData
                     earned += transaction.amount
                 }
             }
-            balance = self.netWorth + spent + earned
+//            balance = self.netWorth + spent + earned
         }
     }
     

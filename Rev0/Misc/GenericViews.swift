@@ -1,12 +1,6 @@
 import Foundation
 import SwiftUI
 
-let grey = Color(red: 240/255, green: 240/255, blue: 240/255)
-let darkPurple = Color(red: 96/255, green: 96/255, blue: 235/255)
-let lightPurple = Color(red: 177/255, green: 127/255, blue: 248/255)
-let red = Color(red: 220/255, green: 104/255, blue: 101/255)
-let green = Color(red: 87/255, green: 210/255, blue: 150/255)
-
 struct BackButton: View {
     @EnvironmentObject var viewRouter: ViewRouter
     @State var page: Page
@@ -89,3 +83,45 @@ struct AuthButtonBG: View {
     }
 }
 
+struct Card: View {
+    @State var width: CGFloat = 0
+    @State var height: CGFloat = 0
+    
+    var body : some View {
+        RoundedRectangle(cornerRadius: 20, style: .continuous)
+            .fill(Color.white)
+            .frame(width: width, height: height)
+            .shadow(color: Color.gray.opacity(0.25), radius: 5, x: 0, y: 0)
+    }
+    
+}
+
+struct Divider: View {
+    var body : some View {
+        Rectangle()
+            .fill(Color(.systemGray6))
+            .frame(height: 1)
+    }
+}
+
+struct ProgressCircle: View {
+    @State var percentage: CGFloat
+    @State var color: Color
+    @State var iconName: String
+    
+    var body : some View {
+        ZStack(){
+            Circle()
+                .stroke(Color(.systemGray6), lineWidth: 3)
+                .frame(width: 40, height:40)
+            Circle()
+                .trim(from: 0, to: percentage)
+                .stroke(color, lineWidth: 3)
+                .frame(width: 40, height:40)
+                .rotationEffect(.degrees(-90))
+            Image(systemName: iconName)
+                .foregroundColor(Color(.systemGray3))
+        }
+    }
+    
+}

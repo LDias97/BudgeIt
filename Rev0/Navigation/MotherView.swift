@@ -18,6 +18,7 @@ struct MotherView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var userData: UserData
+    @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
         switch viewRouter.currentPage{

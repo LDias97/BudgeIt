@@ -89,9 +89,9 @@ extension ViewController {
                 return completion(nil)
             }
             guard let accesstoken = result?.data as? String else {
-                self.didSetUp = true
                 return completion(nil)
             }
+            self.didSetUp = true
             completion(accesstoken)
         }
     }

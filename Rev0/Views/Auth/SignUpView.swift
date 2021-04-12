@@ -10,6 +10,8 @@ struct SignUpView: View {
     @State var confirmPassword: String = ""
     @State var showLink = false
     @State var showingAlert: Bool = false
+    @State var alertMessage: String?
+
     
     var body: some View {
         VStack(spacing: 20){
@@ -31,11 +33,11 @@ struct SignUpView: View {
             VStack(spacing: 15){
                 ZStack(){
                     AuthButtonBG()
-                    Button(action:{ signup(); UserDefaults.standard.set(0.0, forKey: "lastMonthBalance"); UserDefaults.standard.set(false, forKey: "balanceRetrieved");})
+                    Button(action:{ signup(); })
                         { Text("Sign Up").font(.body).foregroundColor(.white)}
                         .disabled(password.isEmpty || email.isEmpty || confirmPassword.isEmpty || fullname.isEmpty)
                         .alert(isPresented: $showingAlert) {
-                            Alert(title: Text("Sign Up Error"), message: Text("Error creating account. \nPlease try again."), dismissButton: .default(Text("Dismiss")))
+                            Alert(title: Text("Sign Up Error"), message: Text(alertMessage ?? "Error signing up. Please Try again."), dismissButton: .default(Text("Dismiss")))
                         }
                         .sheet(isPresented: $showLink){
                             LinkView()
@@ -52,19 +54,19 @@ struct SignUpView: View {
     }
     
     func signup() {
+        if(password != confirmPassword){
+            self.showingAlert = true;
+            self.alertMessage = "Passwords don't match, please try again.";
+        }
+        else {
         Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if error != nil {
                 print(error?.localizedDescription ?? "")
                 self.showingAlert = true;
+                self.alertMessage = error?.localizedDescription ?? "Error signing up. Please Try again.";
             } else {
-                if(password == confirmPassword){
                     self.showLink = true;
                     UserDefaults.standard.set(true, forKey: "logged_in")
-                    print("sign up = success")
-                }
-                else{
-                    self.showingAlert = true;
-                    print("Passwords don't match, please try again.")
                 }
             }
         }
