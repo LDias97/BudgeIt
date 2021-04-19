@@ -1,17 +1,18 @@
 import SwiftUI
 
 struct BudgetCardView : View {
-    @ObservedObject var viewModel = BudgetViewModel()
+    @StateObject var viewModel: BudgetViewModel
     @Binding var editBudgets: Bool
     @State var degrees: Double = 180
-    @State var limits: [CGFloat]
+    @State var selectedCategory: Int = 0
+    @State var showPicker: Bool = false
     
     var body: some View {
         
         ZStack(alignment: .top){
             if !editBudgets {
                 ZStack{
-                    Card(width: 375, height: 350)
+                    Card(width: 375, height: 375)
                     VStack(spacing: 15){
                         HStack(){
                             Text("Budgets")
@@ -24,6 +25,7 @@ struct BudgetCardView : View {
                                     .foregroundColor(Color(.black))
                             }
                         }
+                        .padding(.top, 20)
                         .padding(.leading, 50)
                         .padding(.trailing, 40)
                         VStack(){
@@ -62,17 +64,16 @@ struct BudgetCardView : View {
                                             }
                                         }
                                     }
-                                    if(budget != viewModel.budgets[viewModel.budgets.count-1]){
-                                        Divider()
-                                            .padding(.top, 5)
-                                            .padding(.bottom, 5)
-                                    }
+                                    Divider()
+                                        .padding(.top, 5)
+                                        .padding(.bottom, 5)
                                 }
                             }
                             .padding(.leading, 40)
                             .padding(.trailing, 40)
                         }
                         .padding(.top, 20)
+                        Spacer()
                     }
                 }
                 .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
@@ -80,13 +81,13 @@ struct BudgetCardView : View {
             
             else {
                 ZStack(alignment: .top){
-                    Card(width: 375, height: 350)
+                    Card(width: 375, height: 390)
                     VStack(spacing: 10){
                         HStack(){
                             Text("Edit Budgets")
                                 .font((Font.custom("DIN Alternate Bold", size: 20)))
                             Spacer()
-                            Button(action: { viewModel.updateLimits(limits: limits); self.editBudgets = false;
+                            Button(action: { viewModel.update(); self.editBudgets = false;
                                     withAnimation { self.degrees -= 180;} }) {
                                 Image(systemName: "checkmark")
                                     .imageScale(.medium)
@@ -110,18 +111,32 @@ struct BudgetCardView : View {
                                         Text("\(viewModel.budgets[index].category)")
                                             .font((Font.custom("DIN Alternate Bold", size: 14)))
                                         Spacer()
-                                        TextField("$\(viewModel.budgets[index].limit, specifier: "%.2f")", value: $limits[index], formatter: NumberFormatter())
+                                        TextField("$\(viewModel.budgets[index].limit, specifier: "%.2f")", value: $viewModel.budgets[index].limit, formatter: NumberFormatter())
                                             .textFieldStyle(RoundedBorderTextFieldStyle())
                                             .fixedSize()
                                             .multilineTextAlignment(.trailing)
                                     }
-                                    if(viewModel.budgets[index] != viewModel.budgets[viewModel.budgets.count-1]){
-                                        Divider()
-                                            .padding(.top, 5)
-                                            .padding(.bottom, 5)
-                                    }
+                                    Divider()
+                                        .padding(.top, 5)
+                                        .padding(.bottom, 5)
                                 }
                             }
+                            Spacer()
+                            HStack{
+                                Button(action: { viewModel.update(); }) {
+                                    Image(systemName: "minus")
+                                        .imageScale(.large)
+                                        .foregroundColor(Color(.black))
+                                }
+                                Spacer()
+                                Button(action: { viewModel.update(); showPicker = true; }) {
+                                    Image(systemName: "plus")
+                                        .imageScale(.large)
+                                        .foregroundColor(Color(.black))
+                                }
+                            }
+                            .padding(.bottom, 5)
+                            Spacer()
                         }
                         .padding(.leading, 40)
                         .padding(.trailing, 40)
@@ -132,5 +147,32 @@ struct BudgetCardView : View {
         }
         .rotation3DEffect(.degrees(degrees), axis: (x: 0, y: 1, z: 0))
         .animation(.easeInOut)
+    }
+}
+
+struct PickerWheel: View {
+    @State var selected: Int = 0
+    @Binding var showPicker: Bool
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .bottom){
+                Card(width: geometry.size.width, height: geometry.size.height/2)
+                VStack{
+                    HStack{
+                        Spacer()
+                        Button(action: { showPicker = false }){
+                            Text("Done")
+                        }
+                    }
+                    Picker("", selection: $selected){
+                        ForEach(UserData.Category.allCases, id: \.self){ category in
+                            Text(category.name)
+                            
+                        }
+                    }
+                }
+            }
+        }
     }
 }

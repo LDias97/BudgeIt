@@ -4,7 +4,6 @@ import FirebaseFunctions
 
 class PlaidAPI: ObservableObject {
     @Published var hasLoaded = false
-    @Published var dismissed = false
     @Published var vc: ViewController = ViewController()
 }
 

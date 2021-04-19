@@ -6,7 +6,7 @@ struct LinkView: View {
     @ObservedObject var plaid = PlaidAPI()
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var userData: UserData
-
+    
     var body: some View {
         Group {
             if plaid.hasLoaded {

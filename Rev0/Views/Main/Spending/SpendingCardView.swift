@@ -49,7 +49,7 @@ struct SpendingCardView : View {
                             VStack(spacing: 5){
                                 HStack(){
                                     Spacer()
-                                    Text("$\(transaction.amount, specifier: "%.2f")")
+                                    Text("-$\(transaction.amount, specifier: "%.2f")")
                                         .font(Font.custom("DIN Alternate Bold", size: 14))
                                         .foregroundColor(red)
                                         .bold()
