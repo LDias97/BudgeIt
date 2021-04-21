@@ -7,8 +7,7 @@ struct DashboardView: View {
     @EnvironmentObject var userData: UserData
     @State var showMenu = false
     @State var editBudgets = false
-    @State var  viewCharts = false
-    
+    @State var  viewCharts = false    
     
     var body: some View {
         
