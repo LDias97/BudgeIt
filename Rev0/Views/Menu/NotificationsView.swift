@@ -36,11 +36,11 @@ struct NotificationsView: View {
                 .padding(.top, 70)
                 Spacer()
                 VStack(){
-                    BudgetsGroup(isEnabled: $isEnabled1)
+                    BudgetsGroup(isEnabled1: $isEnabled1, isEnabled2: $isEnabled2, isEnabled3: $isEnabled3)
                     Separator()
-                    SpendingGroup(isEnabled: $isEnabled2)
+                    SpendingGroup(isEnabled1: $isEnabled4, isEnabled2: $isEnabled5, isEnabled3: $isEnabled6)
                     Separator()
-                    IncomeGroup(isEnabled: $isEnabled3)
+                    IncomeGroup(isEnabled1: $isEnabled7, isEnabled2: $isEnabled8, isEnabled3: $isEnabled9)
                 }
                 Spacer()
             }
@@ -61,8 +61,16 @@ struct Separator: View {
     }
 }
 
+
+
 struct BudgetsGroup: View {
-    @Binding var isEnabled: Bool
+    @Binding var isEnabled1: Bool
+    @Binding var isEnabled2: Bool
+    @Binding var isEnabled3: Bool
+    @State private var showingAlert = false
+    
+//    func present(_ viewControllerToPresent: UIViewController), animated flag: Bool, completion: (() -> Void)? = nil)
+    
     var body : some View {
         HStack{
             Text("Budgets")
@@ -70,13 +78,16 @@ struct BudgetsGroup: View {
                 .bold()
             Spacer()
         }
-        Toggle("50%", isOn: $isEnabled)
-        Toggle("90%", isOn: $isEnabled)
-        Toggle("100%", isOn: $isEnabled)
+        Toggle("50%", isOn: $isEnabled1)
+        Toggle("90%", isOn: $isEnabled2)
+        Toggle("100%", isOn: $isEnabled3)
     }
 }
+
 struct SpendingGroup: View {
-    @Binding var isEnabled: Bool
+    @Binding var isEnabled1: Bool
+    @Binding var isEnabled2: Bool
+    @Binding var isEnabled3: Bool
     var body : some View {
         HStack{
             Text("Spending")
@@ -84,13 +95,16 @@ struct SpendingGroup: View {
                 .bold()
             Spacer()
         }
-        Toggle("Transactions over $100", isOn: $isEnabled)
-        Toggle("Transactions over $500", isOn: $isEnabled)
-        Toggle("Transactions over $1000", isOn: $isEnabled)
+        Toggle("Transactions over $100", isOn: $isEnabled1)
+        Toggle("Transactions over $500", isOn: $isEnabled2)
+        Toggle("Transactions over $1000", isOn: $isEnabled3)
     }
 }
 struct IncomeGroup: View {
-    @Binding var isEnabled: Bool
+    @Binding var isEnabled1: Bool
+    @Binding var isEnabled2: Bool
+    @Binding var isEnabled3: Bool
+    
     var body : some View {
         HStack{
             Text("Income")
@@ -98,9 +112,9 @@ struct IncomeGroup: View {
                 .bold()
             Spacer()
         }
-        Toggle("Deposits over $100", isOn: $isEnabled)
-        Toggle("Deposits over $500", isOn: $isEnabled)
-        Toggle("Deposits over $1000", isOn: $isEnabled)
+        Toggle("Deposits over $100", isOn: $isEnabled1)
+        Toggle("Deposits over $500", isOn: $isEnabled2)
+        Toggle("Deposits over $1000", isOn: $isEnabled3)
     }
 }
 

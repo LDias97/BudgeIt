@@ -1,5 +1,6 @@
 import SwiftUI
 import Firebase
+import FirebaseAuth
 
 struct LogInView: View {
     @EnvironmentObject var viewRouter: ViewRouter

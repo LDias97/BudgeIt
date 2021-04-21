@@ -5,6 +5,7 @@ struct BudgetCardView : View {
     @Binding var editBudgets: Bool
     @State var degrees: Double = 180
     @State var limits: [CGFloat]
+    @State private var selectedShow = false
     
     var body: some View {
         

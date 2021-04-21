@@ -5,6 +5,7 @@ final class BudgetViewModel: ObservableObject, Identifiable {
     
     @Published var budgets: [Budget]
     @Published var limits: [CGFloat]
+    @State var enabled: Bool = false
     
     init(){
         budgets = [Budget(category: "Auto & Transport", limit: 1200, spent: 500, percentage: 500/1200, color: Color(.blue), iconName: "car.fill"),
@@ -20,6 +21,13 @@ final class BudgetViewModel: ObservableObject, Identifiable {
         }
     }
     
+    func sendAlerts(limits: [CGFloat]){
+            for i in 0..<limits.count {
+                if budgets[i].spent >= 1200 {
+                    Alert(title: Text("Important Message"), message: Text("Test"), dismissButton: .default(Text("Ok")))
+            }
+        }
+    }
     
     struct Budget: Hashable, Identifiable {
         var id = UUID()
@@ -34,6 +42,10 @@ final class BudgetViewModel: ObservableObject, Identifiable {
             self.limit = limit
             self.percentage = self.spent / self.limit
         }
+        
+//        mutating func sendAlerts(limit: CGFloat) {
+//            self.spent = limit
+//        }
     }
     
 }

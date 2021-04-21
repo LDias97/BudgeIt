@@ -61,6 +61,7 @@ struct BudgetDetailView: View {
 
 struct BarChartView: View {
     @Binding var selectedMonth: Int
+    @EnvironmentObject var userData: UserData
     
     let months: [String] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     
@@ -78,7 +79,8 @@ struct BarChartView: View {
                                     Rectangle()
                                         .fill(Color.green)
                                         .frame(width: 40, height: 75)
-                                        .ignoresSafeArea()
+                                        //.ignoresSafeArea()
+                                        .padding(.bottom)
                                     }
                                     // Inner ForEach loop for blue bar
                                     ForEach(0..<1) { spending in
@@ -86,16 +88,28 @@ struct BarChartView: View {
                                             Rectangle()
                                                 .fill(Color.blue)
                                                 .frame(width: 40, height: 100)
-                                                .ignoresSafeArea()
+                                                //.ignoresSafeArea()
                                         }
                                     }
                                 }
                                 .padding(20) // Distance between each month
-                                .padding(.top, 50)
+                                //.padding(.top, 50)
                                 Button(months[income]){ // Month labels (X-Axis)
                                     value.scrollTo(income)
                                 }
                                     .foregroundColor(.black)
+                            }
+                        }
+                    }
+                    
+                    VStack {
+                        ForEach(0..<5) { line in
+                            VStack{
+                                Path() { path in
+                                    //path.move(to: CGPoint(x:20, y: 20))
+                                    path.addLine(to: CGPoint(x: 300, y:20))
+                                }
+                                .stroke(Color.gray, lineWidth: 10)
                             }
                         }
                     }
@@ -117,21 +131,21 @@ struct MonthlyInfoView: View {
     var id: Int = 0
     
     @Binding var selectedMonth: Int
-
+    @EnvironmentObject var userData: UserData
+   // @ObservedObject var viewModel = CashFlowViewModel()
     
     var body : some View {
         ScrollView(.horizontal){
             HStack{
-                ForEach(0..<12) { month in
+                ForEach(0..<12){ month in
                         VStack {
                             HStack{
                                 VStack {
                                     Text(months[month] + " 2021")
                                         .foregroundColor(.black)
                                         .padding(.leading, 30)
-                                        .font(.largeTitle)
-                                    
-                                    if difference < 0 {
+                                        .font(.title)
+                                    if userData.monthlyDifference < 0 {
                                         Text("Shortfall:")
                                             .foregroundColor(.black)
                                             .padding(.bottom, 5)
@@ -145,23 +159,24 @@ struct MonthlyInfoView: View {
                                 VStack{
                                     Text("Income")
                                         .padding(.trailing, 30)
-                                    Text("$1200.00")
+                                    Text("$\(userData.monthlyIncome, specifier: "%.2f")")
+                                        .font(.custom("DIN Alternate Bold", size: 20))
                                         .padding(.trailing, 30)
                                         .foregroundColor(Color(.systemGreen))
                                 }
                             }
                             HStack{
-                                Text("$700.00") // Change to Text(difference)
-                                    .padding(.leading, 50)
+                                Text("$\(userData.monthlyDifference, specifier: "%.2f")")
                                     .font(.title3)
                                     .foregroundColor(Color(.systemGreen)) // Should be red if shortfall
                                 Spacer()
                                 VStack{
                                     Text("Spending")
                                         .padding(.trailing, 30)
-                                    Text("$500.00")
+                                    Text("$\(userData.monthlySpending, specifier: "%.2f")")
+                                        .font(.custom("DIN Alternate Bold", size: 20))
                                         .padding(.trailing, 30)
-                                        .foregroundColor(Color(.red))
+                                        .foregroundColor(.red)
                                 }
                             }
                         }
@@ -284,6 +299,7 @@ struct BudgetOptionsView: View {
     }
 }
 
+
 struct BudgetDetailView_Previews: PreviewProvider {
     static var previews: some View {
         BudgetDetailView()
@@ -328,3 +344,33 @@ struct BudgetDetailView_Previews: PreviewProvider {
 //
 //Toggle("BudgeIt Tips", isOn: $budgetTipsAlert)
 //    .padding(20)
+
+
+//switch months {
+//case "Jan":
+//    userData.getBalanceByMonth(startYear: 2020, startMonth: 1, startDay: 1)
+//case "Feb":
+//    userData.getBalanceByMonth(startYear: 2020, startMonth: 2, startDay: 1)
+//case "Mar":
+//    userData.getBalanceByMonth(startYear: 2020, startMonth: 3, startDay: 1)
+//case "Apr":
+//    userData.getBalanceByMonth(startYear: 2020, startMonth: 4, startDay: 1)
+//case "May":
+//    userData.getBalanceByMonth(startYear: 2020, startMonth: 5, startDay: 1)
+//case "Jun":
+//    userData.getBalanceByMonth(startYear: 2020, startMonth: 6, startDay: 1)
+//case "Jul":
+//    userData.getBalanceByMonth(startYear: 2020, startMonth: 7, startDay: 1)
+//case "Aug":
+//    userData.getBalanceByMonth(startYear: 2020, startMonth: 8, startDay: 1)
+//case "Sep":
+//    userData.getBalanceByMonth(startYear: 2020, startMonth: 9, startDay: 1)
+//case "Oct":
+//    userData.getBalanceByMonth(startYear: 2020, startMonth: 10, startDay: 1)
+//case "Nov":
+//    userData.getBalanceByMonth(startYear: 2020, startMonth: 11, startDay: 1)
+//case "Dec":
+//    userData.getBalanceByMonth(startYear: 2020, startMonth: 12, startDay: 1)
+//default:
+//    userData.getBalanceByMonth(startYear: 2021, startMonth: 4, startDay: 1)
+//}

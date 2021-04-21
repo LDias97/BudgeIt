@@ -8,6 +8,11 @@ class UserData: ObservableObject {
     @Published var netWorth = 0.0
     @Published var totalSpent = 0.0
     @Published var totalEarned = 0.0
+    
+    @Published var monthlyIncome = 0.0
+    @Published var monthlySpending = 0.0
+    @Published var monthlyDifference = 0.0
+    
     @Published var transactions: [Transaction] = []
     @Published var spending: [Transaction] = []
     @Published var income: [Transaction] = []
@@ -130,16 +135,40 @@ extension UserData
         }
     }
     
-    func getBalanceByDate(date: String) {
+    func getBalanceByMonth() { // startYear: Int, startMonth: Int, startDay: Int) {
         
+        let dateFormatter = DateFormatter()
         let currentDate = Date()
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy-MM-dd"
-        let endDate = dateFormatterGet.string(from: currentDate)
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let calendar = Calendar.current
+        
+
+        // First day of the month
+        var components = calendar.dateComponents(_: [.year, .month], from: currentDate)
+//        components.month = startMonth
+//        components.day = startDay
+//        components.year = startYear
+        let startOfMonth = calendar.date(from: components)!
+
+        // Last day of the month
+        var comps2 = DateComponents()
+//        comps2.month = 0
+//        comps2.day = 30
+//        comps2.year = 0
+        comps2.month = 0
+        comps2.day = 31
+        let endOfMonth = calendar.date(byAdding: comps2, to: startOfMonth)
+        
+        let startDate = dateFormatter.string(from: startOfMonth)
+        let endDate = dateFormatter.string(from: endOfMonth!)
+        
+        print(startDate)
+        print(endDate)
+        
         
         let json: [String: Any] = [
             "access_token": UserDefaults.standard.value(forKey: "access_token") as! String,
-            "start_date": date,
+            "start_date": startDate,
             "end_date": endDate
         ]
         
@@ -148,26 +177,27 @@ extension UserData
                 debugPrint(error.localizedDescription)
             }
             let items = result?.data as! [NSMutableDictionary]
-            var spent = 0.0
-            var earned = 0.0
-//            var balance = 0.0
             for item in items {
                 let name = (item["merchant_name"] as! NSObject == NSNull()) ? item["name"] : item["merchant_name"]
                 let transaction = Transaction(categories: (item["category"] as! [String]), name: name as! String, amount: item["amount"] as! Double, date: item["date"] as! String, pending: (item["pending"] != nil))
                 if ((item["amount"] as! Double) < 0) {
-                    spent += transaction.amount
+                    self.monthlySpending -= transaction.amount
                 }
                 else {
-                    earned += transaction.amount
+                    self.monthlyIncome += transaction.amount
                 }
             }
-//            balance = self.netWorth + spent + earned
+            self.monthlyDifference =  self.monthlyIncome -  self.monthlySpending
+            print(self.monthlyDifference)
+            print(self.monthlyIncome)
+            print(self.monthlySpending)
         }
     }
     
     func load(){
         getBalance()
         getTransactions()
+        //getBalanceByMonth()
     }
 }
 

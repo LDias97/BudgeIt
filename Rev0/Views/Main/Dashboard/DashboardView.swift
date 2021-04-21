@@ -110,6 +110,7 @@ struct DashboardView: View {
 }
 
 struct DashboardView_Previews: PreviewProvider {
+    @State var  viewCharts = false
     static var previews: some View {
         Group {
             DashboardView()
