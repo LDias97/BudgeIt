@@ -109,7 +109,6 @@
 				B59847DF2614F3BD00C32496 /* PlaidAPI.swift */,
 				B5B8579D260980940071CC47 /* ViewController.swift */,
 				B5B8579A2609804F0071CC47 /* LinkKitSwiftUISupport.swift */,
-				B59DA868261D38A300F0EA95 /* UserData.swift */,
 			);
 			path = Link;
 			sourceTree = "<group>";
@@ -117,6 +116,7 @@
 		B559CBDD26161B23001F8CEF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B59DA868261D38A300F0EA95 /* UserData.swift */,
 				B5CC2A6F26083E1700847A4B /* BudgetViewModel.swift */,
 				B5CC2A7026083E1700847A4B /* NetWorthViewModel.swift */,
 				B59DA862261CD94500F0EA95 /* SpendingViewModel.swift */,

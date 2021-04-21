@@ -12,7 +12,7 @@ struct SignUpView: View {
     @State var showLink = false
     @State var showingAlert: Bool = false
     @State var alertMessage: String?
-
+    
     
     var body: some View {
         VStack(spacing: 20){
@@ -34,7 +34,7 @@ struct SignUpView: View {
             VStack(spacing: 15){
                 ZStack(){
                     AuthButtonBG()
-                    Button(action:{ signup(); })
+                    Button(action:{ signup(); viewRouter.currentPage = .page3})
                         { Text("Sign Up").font(.body).foregroundColor(.white)}
                         .disabled(password.isEmpty || email.isEmpty || confirmPassword.isEmpty || fullname.isEmpty)
                         .alert(isPresented: $showingAlert) {
@@ -60,12 +60,13 @@ struct SignUpView: View {
             self.alertMessage = "Passwords don't match, please try again.";
         }
         else {
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            if error != nil {
-                print(error?.localizedDescription ?? "")
-                self.showingAlert = true;
-                self.alertMessage = error?.localizedDescription ?? "Error signing up. Please Try again.";
-            } else {
+            UserDefaults.standard.setValue(fullname, forKey: "name")
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                if error != nil {
+                    print(error?.localizedDescription ?? "")
+                    self.alertMessage = error?.localizedDescription ?? "Error signing up. Please Try again.";
+                    self.showingAlert = true;
+                } else {
                     self.showLink = true;
                     UserDefaults.standard.set(true, forKey: "logged_in")
                 }

@@ -123,5 +123,20 @@ struct ProgressCircle: View {
                 .foregroundColor(Color(.systemGray3))
         }
     }
+}
+
+struct Slice: View {
+    @State var offset: CGFloat
+    @State var percentage: CGFloat
+    @State var color: Color
+    @State var isSelected: Bool
+    
+    var body : some View {
+        Circle()
+            .trim(from: offset, to: offset + percentage)
+            .stroke(color, lineWidth: isSelected ? 50 : 30)
+            .frame(width: 200, height: 200)
+            .rotationEffect(.degrees(-90))
+    }
     
 }

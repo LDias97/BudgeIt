@@ -3,31 +3,36 @@ import SwiftUI
 
 final class BudgetViewModel: ObservableObject, Identifiable {
     
-    @Published var budgets: [Budget]
-    @Published var limits: [CGFloat]
-    @State var enabled: Bool = false
+    @Published var budgets: [Budget] = []
     
-    init(){
-        budgets = [Budget(category: "Auto & Transport", limit: 1200, spent: 500, percentage: 500/1200, color: Color(.blue), iconName: "car.fill"),
-                   Budget(category: "Food & Restaurants", limit: 1200, spent: 500, percentage: 500/1200, color: Color(.systemTeal), iconName: "cart.fill"),
-                   Budget(category: "Entertainment", limit: 1200, spent: 500,  percentage: 500/1200, color: Color(.systemPink), iconName: "gamecontroller.fill"),
-                   Budget(category: "Bills", limit: 1200, spent: 500, percentage: 500/1200, color: Color(.systemOrange), iconName: "house.fill")]
-        limits = [1200.00,1200.00,1200.00,1200.00]
+    init(userData: UserData){
+        load(userData: userData)
     }
     
-    func updateLimits(limits: [CGFloat]){
-        for i in 0..<limits.count {
-            budgets[i].limit = limits[i]
+    func update(){
+        for i in 0..<budgets.count {
+            budgets[i].updateLimit()
+            UserDefaults.standard.setValue(budgets[i].limit, forKey: budgets[i].category)
         }
     }
     
-    func sendAlerts(limits: [CGFloat]){
-            for i in 0..<limits.count {
-                if budgets[i].spent >= 1200 {
-                    Alert(title: Text("Important Message"), message: Text("Test"), dismissButton: .default(Text("Ok")))
+    func load(userData: UserData) {
+        
+        for category in UserData.Category.allCases {
+            guard let limit = UserDefaults.standard.value(forKey: category.name) else {
+                continue
             }
+            let spent = CGFloat(userData.spendingByCategory[category.key] ?? 0)
+            budgets.append(Budget(category: category.name, limit: limit as! CGFloat, spent: spent, percentage: spent / (limit as! CGFloat), color: category.color, iconName: category.iconName))
+        }
+        if budgets.count == 0 {
+            budgets = [Budget(category: "Travel", limit: 1200, spent: 500, percentage: 500/1200, color: Color(.blue), iconName: "airplane"),
+                       Budget(category: "Food & Restaurants", limit: 1200, spent: 500, percentage: 500/1200, color: Color(.systemTeal), iconName: "cart.fill"),
+                       Budget(category: "Recreation", limit: 1200, spent: 500,  percentage: 500/1200, color: Color(.systemPink), iconName: "gamecontroller.fill"),
+                       Budget(category: "Credit Card", limit: 1200, spent: 500, percentage: 500/1200, color: Color(.systemOrange), iconName: "creditcard.fill")]
         }
     }
+    
     
     struct Budget: Hashable, Identifiable {
         var id = UUID()
@@ -38,14 +43,9 @@ final class BudgetViewModel: ObservableObject, Identifiable {
         var color: Color
         var iconName: String
         
-        mutating func updateLimit(limit: CGFloat){
-            self.limit = limit
+        mutating func updateLimit(){
             self.percentage = self.spent / self.limit
         }
-        
-//        mutating func sendAlerts(limit: CGFloat) {
-//            self.spent = limit
-//        }
     }
     
 }
