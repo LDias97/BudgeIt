@@ -177,11 +177,11 @@
 		B57549DE2624B91D00683FC3 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				B57549E42624BF1900683FC3 /* Spending */,
 				B57549F32624C10900683FC3 /* Dashboard */,
 				B57549E62624BF3A00683FC3 /* Budgets */,
 				B57549FA2624C63900683FC3 /* Cash Flow */,
 				B57549E52624BF1F00683FC3 /* Income */,
-				B57549E42624BF1900683FC3 /* Spending */,
 			);
 			path = Main;
 			sourceTree = "<group>";

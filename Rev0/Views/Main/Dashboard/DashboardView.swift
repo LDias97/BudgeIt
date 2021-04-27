@@ -9,6 +9,8 @@ struct DashboardView: View {
     @State var editBudgets = false
     @State var  viewCharts = false
     
+    @State var showAlerts = false
+    
     
     var body: some View {
         
@@ -67,7 +69,7 @@ struct DashboardView: View {
                                 NetWorthCardView(viewModel: NetWorthViewModel(userData: userData))
                             }
                             .padding(.top, 44)
-                            BudgetCardView(viewModel: BudgetViewModel(userData: userData), editBudgets: $editBudgets)
+                            BudgetCardView(viewModel: BudgetViewModel(userData: userData), editBudgets: $editBudgets, showingAlert: $showAlerts)
                             SpendingCardView()
                                 .onTapGesture {
                                     withAnimation{viewRouter.currentPage = .page4;}

@@ -145,7 +145,7 @@ struct MonthlyInfoView: View {
                                         .foregroundColor(.black)
                                         .padding(.leading, 30)
                                         .font(.title)
-                                    if userData.monthlyDifference < 0 {
+                                    if difference < 0 {
                                         Text("Shortfall:")
                                             .foregroundColor(.black)
                                             .padding(.bottom, 5)
@@ -159,21 +159,21 @@ struct MonthlyInfoView: View {
                                 VStack{
                                     Text("Income")
                                         .padding(.trailing, 30)
-                                    Text("$\(userData.monthlyIncome, specifier: "%.2f")")
+                                    Text("1200")
                                         .font(.custom("DIN Alternate Bold", size: 20))
                                         .padding(.trailing, 30)
                                         .foregroundColor(Color(.systemGreen))
                                 }
                             }
                             HStack{
-                                Text("$\(userData.monthlyDifference, specifier: "%.2f")")
+                                Text("1200")
                                     .font(.title3)
                                     .foregroundColor(Color(.systemGreen)) // Should be red if shortfall
                                 Spacer()
                                 VStack{
                                     Text("Spending")
                                         .padding(.trailing, 30)
-                                    Text("$\(userData.monthlySpending, specifier: "%.2f")")
+                                    Text("$1200")
                                         .font(.custom("DIN Alternate Bold", size: 20))
                                         .padding(.trailing, 30)
                                         .foregroundColor(.red)

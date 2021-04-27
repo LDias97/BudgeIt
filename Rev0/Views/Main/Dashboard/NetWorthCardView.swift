@@ -79,9 +79,9 @@ struct GreetingCardView: View {
     var body: some View {
         ZStack(){
             Card(width: 375, height: 150)
-            Text("Good \(timeOfDay) \(UserDefaults.standard.value(forKey: "name") as! String)!")
-                .font(.custom("DIN Alternate Bold", size: 28))
-                .foregroundColor(.green)
+//            Text("Good \(timeOfDay) \(UserDefaults.standard.value(forKey: "name") as! String)!")
+//                .font(.custom("DIN Alternate Bold", size: 28))
+//                .foregroundColor(.green)
         }
     }
 }

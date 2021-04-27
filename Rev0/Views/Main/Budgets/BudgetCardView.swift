@@ -7,6 +7,8 @@ struct BudgetCardView : View {
     @State var selectedCategory: Int = 0
     @State var showPicker: Bool = false
     
+    @Binding var showingAlert: Bool
+    
     var body: some View {
         
         ZStack(alignment: .top){
@@ -87,7 +89,7 @@ struct BudgetCardView : View {
                             Text("Edit Budgets")
                                 .font((Font.custom("DIN Alternate Bold", size: 20)))
                             Spacer()
-                            Button(action: { viewModel.update(); self.editBudgets = false;
+                            Button(action: {viewModel.update(); self.editBudgets = false;
                                     withAnimation { self.degrees -= 180;} }) {
                                 Image(systemName: "checkmark")
                                     .imageScale(.medium)
@@ -111,10 +113,17 @@ struct BudgetCardView : View {
                                         Text("\(viewModel.budgets[index].category)")
                                             .font((Font.custom("DIN Alternate Bold", size: 14)))
                                         Spacer()
-                                        TextField("$\(viewModel.budgets[index].limit, specifier: "%.2f")", value: $viewModel.budgets[index].limit, formatter: NumberFormatter())
+                                        TextField("$\(viewModel.budgets[index].limit, specifier: "%.2f")", value: $viewModel.budgets[index].limit, formatter: NumberFormatter(), onEditingChanged: {_ in
+                                            if (viewModel.budgets[index].spent >= viewModel.budgets[index].limit) {
+                                                self.showingAlert = true
+                                            }
+                                        })
                                             .textFieldStyle(RoundedBorderTextFieldStyle())
                                             .fixedSize()
                                             .multilineTextAlignment(.trailing)
+                                            .alert(isPresented: $showingAlert) {
+                                                Alert(title: Text("Budget Exceeded"), message: Text("\(viewModel.budgets[index].category)" + " budget exceeded"))
+                                            }
                                     }
                                     Divider()
                                         .padding(.top, 5)

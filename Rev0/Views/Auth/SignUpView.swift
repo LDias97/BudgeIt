@@ -34,7 +34,7 @@ struct SignUpView: View {
             VStack(spacing: 15){
                 ZStack(){
                     AuthButtonBG()
-                    Button(action:{ signup(); viewRouter.currentPage = .page3})
+                    Button(action:{ signup(); }) // viewRouter.currentPage = .page3})
                         { Text("Sign Up").font(.body).foregroundColor(.white)}
                         .disabled(password.isEmpty || email.isEmpty || confirmPassword.isEmpty || fullname.isEmpty)
                         .alert(isPresented: $showingAlert) {
