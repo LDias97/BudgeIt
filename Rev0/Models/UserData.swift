@@ -60,6 +60,9 @@ extension UserData
                 debugPrint(error.localizedDescription)
             }
             let items = result?.data as! [NSMutableDictionary]
+            self.spending.removeAll()
+            self.income.removeAll()
+            self.transactions.removeAll()
             for item in items {
                 let name = (item["merchant_name"] as! NSObject == NSNull()) ? item["name"] : item["merchant_name"]
                 var transaction = Transaction(categories: (item["category"] as! [String]), name: name as! String, amount: item["amount"] as! Double, date: item["date"] as! String, pending: (item["pending"] != nil))
@@ -134,11 +137,10 @@ extension UserData
                             self.spendingByCategory.updateValue(_: sum, forKey: "Credit Card")
                             found = true
                         }
-                        else if category.contains("Transfer"){
+                        else if category.contains("Transfer") {
                             transfer = true
                         }
                         }
-
                     }
                     if !found && !transfer {
                         transaction.category = .Miscellaneous
@@ -228,19 +230,19 @@ extension UserData {
         ]
         
         static let colors: [Category: Color] = [
-            .Food : teal,
-            .Healthcare : indigo,
-            .Recreation : Color(.systemPink),
-            .Auto : blue,
-            .Bills : Color(.systemOrange),
+            .Food : red,
+            .Healthcare : orange,
+            .Recreation : yellow,
+            .Auto : green,
+            .Bills : blue,
             .Travel : magenta,
-            .Shopping : yellow,
+            .Shopping : pink,
             .PersonalCare : lightPurple,
             .HomeImprovement : darkPurple,
-            .Community : magenta,
-            .Services : green,
-            .Miscellaneous : Color(.systemGray),
-            .CC : darkPurple,
+            .Community : indigo,
+            .Services : teal,
+            .Miscellaneous : teal,
+            .CC : lightPurple
         ]
         
         static let iconNames: [Category: String] = [

@@ -15,42 +15,59 @@ struct SignUpView: View {
     
     var body: some View {
         VStack(spacing: 20){
-            VStack(){
-                Image("b")
-                    .resizable()
-                    .frame(width:175, height:175)
-                    .padding(.top,30)
-                Text("Sign Up")
-                    .font(.largeTitle)
-                    .bold()
-            }
-            InputField(input: $fullname, placeholder: "Full Name", icon: "person")
-                .padding(.top, 20)
+            Image("b")
+                .resizable()
+                .frame(width: 150, height: 150)
+                .padding(.top, 130)
+            
             InputField(input: $email, placeholder: "Email", icon: "envelope")
             SecureInputField(password: $password, placeholder: "Password", icon: "lock")
-            SecureInputField(password: $confirmPassword, placeholder: "Confirm Password", icon: "lock.rotation")
+                .padding(.top, 10)
+            SecureInputField(password: $confirmPassword, placeholder: "Confirm Password", icon: "lock")
+                .padding(.top, 10)
+
             
-            VStack(spacing: 15){
-                ZStack(){
-                    AuthButtonBG()
-                    Button(action:{ signup()})
-                        { Text("Sign Up").font(.body).foregroundColor(.white)}
-                        .disabled(password.isEmpty || email.isEmpty || confirmPassword.isEmpty || fullname.isEmpty)
-                        .alert(isPresented: $showingAlert) {
-                            Alert(title: Text("Sign Up Error"), message: Text(alertMessage ?? "Error signing up. Please Try again."), dismissButton: .default(Text("Dismiss")))
-                        }
-                        .sheet(isPresented: $showLink){
-                            LinkView()
-                        }
+            VStack {
+                Button(action: { withAnimation { viewRouter.currentPage = .page2 } }) { Text("Already have an account? Sign In").font(.custom("DIN Alternate Bold", size: 16)).foregroundColor(blue)}
+                    .padding(.top, 10)
+                Spacer()
+                VStack(){
+                    Text("Continue With")
+                        .font(.custom("DIN Alternate Bold", size: 18))
+                    HStack(alignment: .center, spacing: 20){
+                        Image("google")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                        Image("apple")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 50, height: 50)
+                        Image("fb")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                    }
                 }
-                ZStack{
-                    AuthButtonBG()
-                    Button(action:{print("Clicked Continue with Google")}) { Text("Continue with Google").font(.body).foregroundColor(.white) }
-                    
-                }
+                Spacer()
             }
-            Button(action:{ viewRouter.currentPage = .page2;}) { Text("Already have an account? Sign In").font(.body).foregroundColor(.blue) }
+            
+            ZStack(){
+                AuthButtonBG()
+                    .shadow(color: .white, radius: 1)
+                Button(action:{ signup()})
+                    { Text("Sign Up").font(.body).foregroundColor(.white)}
+                    .disabled(password.isEmpty || email.isEmpty || confirmPassword.isEmpty)
+                    .alert(isPresented: $showingAlert) {
+                        Alert(title: Text("Sign Up Error"), message: Text(alertMessage ?? "Error signing up. Please Try again."), dismissButton: .default(Text("Dismiss")))
+                    }
+                    .sheet(isPresented: $showLink){
+                        LinkView()
+                            .onDisappear(perform: { withAnimation { viewRouter.currentPage = .page3 } } )
+                    }
+            }
+            .padding(.bottom, 70)
         }
+        .background(Image("AuthBG").resizable())
+        .ignoresSafeArea()
     }
     
     func signup() {
@@ -67,7 +84,7 @@ struct SignUpView: View {
                     self.showingAlert = true;
                 } else {
                     self.showLink = true;
-//                    UserDefaults.standard.set(true, forKey: "logged_in")
+                    UserDefaults.standard.set(true, forKey: "logged_in")
                 }
             }
         }

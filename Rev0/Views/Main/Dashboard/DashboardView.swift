@@ -7,7 +7,9 @@ struct DashboardView: View {
     @EnvironmentObject var userData: UserData
     @State var showMenu = false
     @State var editBudgets = false
-    @State var  viewCharts = false    
+    @State var viewCharts = false
+    @State var showAlert = false
+
     
     var body: some View {
         
@@ -30,7 +32,7 @@ struct DashboardView: View {
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .padding(.bottom, geometry.size.height+350)
-                            .frame(width: geometry.size.width, height: geometry.size.height)
+                            .frame(width: geometry.size.width+1, height: geometry.size.height)
                         VStack(spacing: 30){
                             ZStack(alignment:.top){
                                 VStack(){
@@ -66,7 +68,7 @@ struct DashboardView: View {
                                 NetWorthCardView(viewModel: NetWorthViewModel(userData: userData))
                             }
                             .padding(.top, 44)
-                            BudgetCardView(viewModel: BudgetViewModel(userData: userData), editBudgets: $editBudgets)
+                            BudgetCardView(viewModel: BudgetViewModel(userData: userData), showingAlert: $showAlert)
                             SpendingCardView()
                                 .onTapGesture {
                                     withAnimation{viewRouter.currentPage = .page4;}

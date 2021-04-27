@@ -11,15 +11,18 @@ enum Page {
     case page8 // Profile
     case page9 // Settings
     case page10 // Help
-    case page11 // Bank Accounts
+    case page11 // LinkView
+    case page12 // LaunchScreen
+    case page13 // OnBoarding
 }
 
 struct MotherView: View {
     
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var userData: UserData
-    @Environment(\.scenePhase) var scenePhase
     @State var showLink: Bool = false
+    @State var loading: Bool = true
+    
     
     var body: some View {
         switch viewRouter.currentPage{
@@ -52,14 +55,26 @@ struct MotherView: View {
             HelpView()
         case .page11:
             LinkView()
+        case .page12:
+            Emblem()
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                        withAnimation() {
+                            viewRouter.currentPage = (UserDefaults.standard.value(forKey: "logged_in") ?? false) as! Bool ? .page13 : .page13
+                        }
+                    }
+                }
+        case .page13:
+            WelcomeView()
         }
     }
+    
 }
 
 struct MotherView_Previews: PreviewProvider {
     static var previews: some View {
         MotherView().environmentObject(ViewRouter())
-                    .environmentObject(UserData())
+            .environmentObject(UserData())
     }
 }
 

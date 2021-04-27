@@ -29,19 +29,19 @@ final class SpendingViewModel: ObservableObject {
             
             var color: Color?
             switch(category.key){
-            case("Food"): color = Color(.systemTeal)
-            case("Healthcare"): color = Color(.blue)
-            case("Recreation"): color = Color(.systemYellow)
-            case("Auto"): color = Color(.systemIndigo)
-            case("Bills"): color = Color(.cyan)
-            case("Travel"): color = Color(.magenta)
-            case("Shopping"): color = Color(.systemPink)
+            case("Food"): color = red
+            case("Healthcare"): color = orange
+            case("Recreation"): color = yellow
+            case("Auto"): color = green
+            case("Bills"): color = blue
+            case("Travel"): color = magenta
+            case("Shops"): color = pink
             case("PersonalCare"): color = lightPurple
             case("HomeImprovement"): color = darkPurple
-            case("Community"): color = Color(.green)
-            case("Services"): color = Color(.green)
-            case("Credit Card"): color = darkPurple
-            default: color = Color(.systemGray)
+            case("Community"): color = indigo
+            case("Services"): color = teal
+            case("Credit Card"): color = lightPurple
+            default: color = teal
             }
             
             let percent = CGFloat(category.value / self.totalSpent)

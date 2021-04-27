@@ -6,8 +6,8 @@ struct NetWorthCardView: View {
     @State var degrees: Double = 180
     
     var body: some View {
-        ZStack{
-            if !userData.hasLoaded || viewModel.currentBalance == 0{
+        ZStack {
+            if !userData.hasLoaded || viewModel.currentBalance == 0 {
                 GreetingCardView()
                     .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
                     .padding(.top, 120)
@@ -64,7 +64,7 @@ struct NetWorthCardView: View {
                         .padding(.trailing, 50)
                     }
                 }
-                .onAppear(){ withAnimation { self.degrees += 180;} }
+                .onAppear(){ withAnimation { self.degrees += 180 ;} }
                 .padding(.top, 120)
             }
         }
@@ -80,8 +80,9 @@ struct GreetingCardView: View {
         ZStack(){
             Card(width: 375, height: 150)
 //            Text("Good \(timeOfDay) \(UserDefaults.standard.value(forKey: "name") as! String)!")
-//                .font(.custom("DIN Alternate Bold", size: 28))
-//                .foregroundColor(.green)
+            Text("Good \(timeOfDay) Ben!")
+                .font(.custom("DIN Alternate Bold", size: 28))
+                .foregroundColor(.green)
         }
     }
 }

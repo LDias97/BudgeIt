@@ -4,14 +4,21 @@ import SwiftUI
 let grey = Color(red: 240/255, green: 240/255, blue: 240/255)
 let darkPurple = Color(red: 96/255, green: 96/255, blue: 235/255)
 let lightPurple = Color(red: 177/255, green: 127/255, blue: 248/255)
+let magenta = Color(.magenta)
+let pink = Color(.systemPink)
 let red = Color(red: 220/255, green: 104/255, blue: 101/255)
+let orange = Color(.systemOrange)
+let yellow = Color(.systemYellow)
 let green = Color(red: 87/255, green: 210/255, blue: 150/255)
+let green2 = Color(red: 20/255, green: 210/255, blue: 150/255)
+let cyan = Color(.cyan)
 let teal = Color(.systemTeal)
 let blue = Color(.blue)
-let yellow = Color(.systemYellow)
 let indigo = Color(.systemIndigo)
-let cyan = Color(.cyan)
-let magenta = Color(.magenta)
+
+let Colors = [darkPurple, lightPurple, magenta, pink, red, orange, yellow, green, cyan, teal, blue, indigo]
+
+
 
 
 enum MonthSelector : Int {
@@ -27,8 +34,6 @@ enum MonthSelector : Int {
     case Oct
     case Nov
     case Dec
-    
-    
     
     static let abreviatedNames: [MonthSelector: String] = [
         .Jan: "Jan",

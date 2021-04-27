@@ -1,6 +1,5 @@
 import SwiftUI
 import Firebase
-import FirebaseAuth
 
 struct LogInView: View {
     @EnvironmentObject var viewRouter: ViewRouter
@@ -10,39 +9,52 @@ struct LogInView: View {
     
     var body: some View {
         VStack(spacing: 20){
-            VStack(){
+            VStack(spacing: 5){
                 Image("b")
                     .resizable()
-                    .frame(width:175, height:175)
-                    .padding(.top, 30)
-                Text("Sign In")
-                    .font(.largeTitle)
-                    .bold()
+                    .frame(width: 150, height: 150)
+                    .padding(.top, 130)
             }
             
             InputField(input: $email, placeholder: "Email", icon: "envelope")
-                .padding(.top, 35)
             SecureInputField(password: $password, placeholder: "Password", icon: "lock")
-            
-            VStack(spacing: 15){
-                ZStack(){
-                    AuthButtonBG()
-                    Button(action:{  login(); }) { Text("Sign In").font(.body).foregroundColor(.white)
-                        .alert(isPresented: $showingAlert) {
-                            Alert(title: Text("Sign In Error"), message: Text("Incorrect email or password. \nPlease try again."), dismissButton: .default(Text("Dismiss")))
-                        }
-                    }.disabled(password.isEmpty || email.isEmpty)
+                .padding(.top, 10)
+            VStack {
+                Button(action: { withAnimation { viewRouter.currentPage = .page1 } }) { Text("Don't have an account? Sign Up").font(.custom("DIN Alternate Bold", size: 16)).foregroundColor(blue)}
+                    .padding(.top, 10)
+                Spacer()
+                VStack(){
+                    Text("Continue With")
+                        .font(.custom("DIN Alternate Bold", size: 18))
+                    HStack(alignment: .center, spacing: 20){
+                        Image("google")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                        Image("apple")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 50, height: 50)
+                        Image("fb")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                    }
                 }
-                ZStack(){
-                    AuthButtonBG()
-                    Button(action:{print("Clicked Continue with Google")}) {Text("Continue with Google").font(.body).foregroundColor(.white) }.disabled(password.isEmpty || email.isEmpty)
-                }
+                Spacer()
             }
-            Button(action:{ viewRouter.currentPage = .page1; }) { Text("Don't have an account? Sign Up").font(.body).foregroundColor(.blue)}
-                .padding(.top, 25)
+            ZStack(){
+                AuthButtonBG()
+                    .shadow(color: .white, radius: 1)
+                Button(action:{  login(); }) { Text("Sign In").font(.body).foregroundColor(.white)
+                    .alert(isPresented: $showingAlert) {
+                        Alert(title: Text("Sign In Error"), message: Text("Incorrect email or password. \nPlease try again."), dismissButton: .default(Text("Dismiss")))
+                    }
+                }.disabled(password.isEmpty || email.isEmpty)
+            }
+            .padding(.bottom, 42)
             Spacer()
-            
         }
+        .background(Image("AuthBG").resizable())
+        .ignoresSafeArea()
     }
     
     func login() {
@@ -52,7 +64,7 @@ struct LogInView: View {
                 showingAlert = true
             } else {
                 UserDefaults.standard.set(true, forKey: "logged_in")
-                viewRouter.currentPage = .page3
+                withAnimation { viewRouter.currentPage = .page3 }
             }
         }
     }

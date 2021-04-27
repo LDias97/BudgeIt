@@ -5,7 +5,7 @@ import UserNotifications
 
 final class BudgetViewModel: ObservableObject, Identifiable {
     
-    @Published var budgets: [Budget] = []
+    @Published var budgets: [Budget] = [Budget]()
     @Published var exceedBudget: Bool = false
     var value: UIAlertController = UIAlertController()
     //var alertController: UIAlertController?
@@ -19,6 +19,22 @@ final class BudgetViewModel: ObservableObject, Identifiable {
         for i in 0..<budgets.count {
             budgets[i].updateLimit()
             UserDefaults.standard.setValue(budgets[i].limit, forKey: budgets[i].category)
+        }
+    }
+    
+    func addBudget(category: UserData.Category){
+        budgets.append(Budget(category: category.name, limit: 0, spent: 0, percentage: 0, color: category.color, iconName: category.iconName))
+
+    }
+    
+    
+    func remove(budget: Budget){
+        for index in self.budgets.indices {
+            if (budgets[index].category == budget.category) {
+                budgets.remove(at: index)
+                UserDefaults.standard.removeObject(forKey: budget.category);
+                return
+            }
         }
     }
     
@@ -56,8 +72,8 @@ final class BudgetViewModel: ObservableObject, Identifiable {
     }
     
     
-    struct Budget: Hashable, Identifiable {
-        var id = UUID()
+    
+    struct Budget: Hashable {
         var category: String
         var limit: CGFloat
         var spent: CGFloat

@@ -23,6 +23,7 @@
 		B57549F12624C09B00683FC3 /* BudgetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57549F02624C09B00683FC3 /* BudgetCardView.swift */; };
 		B57549F52624C12300683FC3 /* NetWorthCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57549F42624C12300683FC3 /* NetWorthCardView.swift */; };
 		B57549FC2624C65500683FC3 /* CashFlowCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57549FB2624C65500683FC3 /* CashFlowCardView.swift */; };
+		B5873DBF2637BF0E0047AACA /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5873DBE2637BF0E0047AACA /* WelcomeView.swift */; };
 		B59847E02614F3BD00C32496 /* PlaidAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59847DF2614F3BD00C32496 /* PlaidAPI.swift */; };
 		B59DA863261CD94500F0EA95 /* SpendingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DA862261CD94500F0EA95 /* SpendingViewModel.swift */; };
 		B59DA866261CD94F00F0EA95 /* IncomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59DA865261CD94F00F0EA95 /* IncomeViewModel.swift */; };
@@ -65,6 +66,7 @@
 		B57549F02624C09B00683FC3 /* BudgetCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCardView.swift; sourceTree = "<group>"; };
 		B57549F42624C12300683FC3 /* NetWorthCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorthCardView.swift; sourceTree = "<group>"; };
 		B57549FB2624C65500683FC3 /* CashFlowCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashFlowCardView.swift; sourceTree = "<group>"; };
+		B5873DBE2637BF0E0047AACA /* WelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		B59847DF2614F3BD00C32496 /* PlaidAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaidAPI.swift; sourceTree = "<group>"; };
 		B59DA862261CD94500F0EA95 /* SpendingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingViewModel.swift; sourceTree = "<group>"; };
 		B59DA865261CD94F00F0EA95 /* IncomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeViewModel.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		B559CBDE26161B2A001F8CEF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B5873DBD2637BF0E0047AACA /* Onboarding */,
 				B57549DC2624B8EE00683FC3 /* Auth */,
 				B57549DE2624B91D00683FC3 /* Main */,
 				B57549DD2624B90300683FC3 /* Menu */,
@@ -177,11 +180,11 @@
 		B57549DE2624B91D00683FC3 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				B57549E42624BF1900683FC3 /* Spending */,
 				B57549F32624C10900683FC3 /* Dashboard */,
 				B57549E62624BF3A00683FC3 /* Budgets */,
-				B57549FA2624C63900683FC3 /* Cash Flow */,
 				B57549E52624BF1F00683FC3 /* Income */,
+				B57549E42624BF1900683FC3 /* Spending */,
+				B57549FA2624C63900683FC3 /* Cash Flow */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -237,6 +240,14 @@
 				B57549FB2624C65500683FC3 /* CashFlowCardView.swift */,
 			);
 			path = "Cash Flow";
+			sourceTree = "<group>";
+		};
+		B5873DBD2637BF0E0047AACA /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				B5873DBE2637BF0E0047AACA /* WelcomeView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		B5C6566225DD311F00A9FABC = {
@@ -444,6 +455,7 @@
 				B57549E82624BFB600683FC3 /* SpendingCardView.swift in Sources */,
 				FF65818725F40F1F00D47939 /* IncomeDetailView.swift in Sources */,
 				B5CC2A7226083E1700847A4B /* BudgetViewModel.swift in Sources */,
+				B5873DBF2637BF0E0047AACA /* WelcomeView.swift in Sources */,
 				B5CC2A7426083E1700847A4B /* NetWorthViewModel.swift in Sources */,
 				B5258F7E26150472006EFF5C /* LinkView.swift in Sources */,
 				B55AC0F126008765003263D6 /* SettingsView.swift in Sources */,

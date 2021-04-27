@@ -6,7 +6,7 @@ struct LinkView: View {
     @ObservedObject var plaid = PlaidAPI()
     @EnvironmentObject var viewRouter: ViewRouter
     @EnvironmentObject var userData: UserData
-
+    
     var body: some View {
         Group {
             if plaid.hasLoaded {
@@ -17,10 +17,9 @@ struct LinkView: View {
         }
         .onDisappear(){
             if (plaid.vc.didSetUp){
-                userData.load()
                 viewRouter.currentPage = .page3
             }
         }
     }
-
+    
 }

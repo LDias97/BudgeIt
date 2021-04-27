@@ -31,8 +31,6 @@
 	<dict>
 		<key>UIColorName</key>
 		<string>white</string>
-		<key>UIImageName</key>
-		<string>b</string>
 		<key>UIImageRespectsSafeAreaInsets</key>
 		<true/>
 	</dict>
