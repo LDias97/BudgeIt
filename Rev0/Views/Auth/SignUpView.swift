@@ -1,6 +1,5 @@
 import SwiftUI
 import Firebase
-import FirebaseAuth
 
 struct SignUpView: View {
     
@@ -34,7 +33,7 @@ struct SignUpView: View {
             VStack(spacing: 15){
                 ZStack(){
                     AuthButtonBG()
-                    Button(action:{ signup(); }) // viewRouter.currentPage = .page3})
+                    Button(action:{ signup()})
                         { Text("Sign Up").font(.body).foregroundColor(.white)}
                         .disabled(password.isEmpty || email.isEmpty || confirmPassword.isEmpty || fullname.isEmpty)
                         .alert(isPresented: $showingAlert) {
@@ -68,7 +67,7 @@ struct SignUpView: View {
                     self.showingAlert = true;
                 } else {
                     self.showLink = true;
-                    UserDefaults.standard.set(true, forKey: "logged_in")
+//                    UserDefaults.standard.set(true, forKey: "logged_in")
                 }
             }
         }

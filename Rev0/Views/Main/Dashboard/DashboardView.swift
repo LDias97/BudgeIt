@@ -7,10 +7,7 @@ struct DashboardView: View {
     @EnvironmentObject var userData: UserData
     @State var showMenu = false
     @State var editBudgets = false
-    @State var  viewCharts = false
-    
-    @State var showAlerts = false
-    
+    @State var  viewCharts = false    
     
     var body: some View {
         
@@ -69,7 +66,7 @@ struct DashboardView: View {
                                 NetWorthCardView(viewModel: NetWorthViewModel(userData: userData))
                             }
                             .padding(.top, 44)
-                            BudgetCardView(viewModel: BudgetViewModel(userData: userData), editBudgets: $editBudgets, showingAlert: $showAlerts)
+                            BudgetCardView(viewModel: BudgetViewModel(userData: userData), editBudgets: $editBudgets)
                             SpendingCardView()
                                 .onTapGesture {
                                     withAnimation{viewRouter.currentPage = .page4;}
@@ -111,7 +108,6 @@ struct DashboardView: View {
 }
 
 struct DashboardView_Previews: PreviewProvider {
-    @State var  viewCharts = false
     static var previews: some View {
         Group {
             DashboardView()

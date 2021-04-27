@@ -23,6 +23,13 @@ struct ProfileView: View {
                     Spacer()
                 }
                 .padding(.top, 70)
+                
+                HStack{
+                Text("Name")
+                    .padding(.top, 100)
+                    Spacer()
+                }
+                
             }
             .padding(.leading, 30)
             .padding(.trailing, 30)

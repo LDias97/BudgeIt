@@ -156,32 +156,36 @@ struct BudgetCardView : View {
         }
         .rotation3DEffect(.degrees(degrees), axis: (x: 0, y: 1, z: 0))
         .animation(.easeInOut)
+//        .overlay(PickerWheel(showPicker: $showPicker))
     }
-}
-
-struct PickerWheel: View {
-    @State var selected: Int = 0
-    @Binding var showPicker: Bool
     
-    var body: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .bottom){
-                Card(width: geometry.size.width, height: geometry.size.height/2)
-                VStack{
-                    HStack{
-                        Spacer()
-                        Button(action: { showPicker = false }){
-                            Text("Done")
-                        }
+    
+    struct PickerWheel: View {
+        @State var selected: Int = 0
+        @Binding var showPicker: Bool
+        
+        var body: some View {
+            VStack(spacing: 15){
+                HStack{
+                    Button(action: { showPicker = false }){
+                        Text("Cancel")
                     }
-                    Picker("", selection: $selected){
-                        ForEach(UserData.Category.allCases, id: \.self){ category in
-                            Text(category.name)
-                            
-                        }
+                    Spacer()
+                    Button(action: { showPicker = false }){
+                        Text("Done")
+                    }
+                }
+                .padding(.leading, 15)
+                .padding(.trailing, 15)
+                Divider()
+                Picker("", selection: $selected){
+                    ForEach(UserData.Category.allCases, id: \.self){ category in
+                        Text(category.name)
                     }
                 }
             }
+            .padding(.top, 15)
+            .background(Color(.white))
         }
     }
 }
