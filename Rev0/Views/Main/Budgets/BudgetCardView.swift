@@ -2,13 +2,13 @@ import SwiftUI
 
 struct BudgetCardView : View {
     @StateObject var viewModel: BudgetViewModel
+    @EnvironmentObject var userData: UserData
     @State private var editBudgets: Bool = false
     @State var degrees: Double = 180
     @State private var addClicked: Bool = false
     @State private var deleteClicked: Bool = false
     @State private var minusClicked: Bool = false
     @State private var plusToX: Bool = false
-    @State private var cancelDegrees: Double = 0
     @State private var showPicker: Bool = false
     @Binding var showingAlert: Bool
     
@@ -33,7 +33,15 @@ struct BudgetCardView : View {
                         .padding(.leading, 50)
                         .padding(.trailing, 40)
                         VStack(){
-                            ForEach(viewModel.budgets, id: \.self) { budget in
+                            if(viewModel.budgets.isEmpty){
+                                Button(action: { self.editBudgets = true;
+                                        withAnimation { self.degrees += 180;} }){
+                                    Text("Add a Budget")
+                                }
+                                .padding(.bottom)
+                                
+                            }
+                            ForEach(viewModel.budgets) { budget in
                                 VStack(){
                                     HStack{
                                         ProgressCircle(percentage: budget.percentage, color: budget.color, iconName: budget.iconName)
@@ -97,14 +105,14 @@ struct BudgetCardView : View {
                                     .imageScale(.medium)
                                     .foregroundColor(Color(.black))
                             }
-
+                            
                         }
                         .padding(.top, 20)
                         .padding(.leading, 50)
                         .padding(.trailing, 40)
                         VStack(){
                             if(viewModel.budgets.count != 0){
-                                ForEach(viewModel.budgets, id: \.self) { budget in
+                                ForEach(viewModel.budgets) { budget in
                                     VStack{
                                         Spacer()
                                         HStack(){
@@ -136,22 +144,22 @@ struct BudgetCardView : View {
                                                       formatter: NumberFormatter())
                                                 .fixedSize()
                                                 .multilineTextAlignment(.trailing)
-//                                                .alert(isPresented: $showingAlert) {
-//                                                    Alert(title: Text("Budget Exceeded"), message: Text("\(viewModel.budgets[index].category)" + " budget exceeded"))
-//                                                }
+                                                .alert(isPresented: $showingAlert) {
+                                                    Alert(title: Text("Budget Exceeded"), message: Text("\(self.viewModel.budgets[self.viewModel.budgets.firstIndex(of: budget)!].category)" + " budget exceeded"))
+                                                }
                                                 .foregroundColor(Color(.systemGray2))
                                         }
-                                    Divider()
+                                        Divider()
                                     }
                                 }
                             }
                             else{
-                                NewRow(viewModel: viewModel, showPicker: $showPicker)
+                                NewRow(viewModel: viewModel, showPicker: $showPicker, addClicked: $addClicked)
                             }
                             
                             Spacer()
                             if addClicked {
-                                NewRow(viewModel: viewModel, showPicker: $showPicker)
+                                NewRow(viewModel: viewModel, showPicker: $showPicker, addClicked: $addClicked)
                             }
                             Spacer()
                             HStack{
@@ -162,21 +170,26 @@ struct BudgetCardView : View {
                                     //                                    }
                                     //                                    .disabled(!plusToX)
                                     Button(action: { deleteClicked = !deleteClicked;  }) {
-                                        Image(systemName: "minus")
-                                            .imageScale(.large)
-                                            .foregroundColor(plusToX ? Color(.clear) : Color(.black))
-                                            .background(Rectangle().foregroundColor(.clear).scaledToFill())
+                                        if(deleteClicked){
+                                            Text("Done")
+                                        }
+                                        else{
+                                            Image(systemName: "minus")
+                                                .imageScale(.large)
+                                                .foregroundColor(addClicked ? Color(.clear) : Color(.black))
+                                                .background(Rectangle().foregroundColor(.clear).scaledToFill())
+                                        }
                                     }
-                                    .disabled(plusToX)
+                                    .disabled(addClicked)
                                     
                                 }
                                 Spacer()
-                                Button(action: { addClicked = !addClicked; plusToX = !plusToX; cancelDegrees = plusToX ? 45 : 0; }) {
+                                Button(action: { addClicked = !addClicked; deleteClicked = false;}) {
                                     Image(systemName: "plus")
                                         .imageScale(.large)
                                         .foregroundColor(Color(.black))
                                         .background(Rectangle().foregroundColor(.clear).scaledToFill())
-                                        .rotationEffect(Angle.init(degrees: cancelDegrees))
+                                        .rotationEffect(Angle.init(degrees: addClicked ? 45 : 0))
                                 }
                             }
                             .padding(.bottom, 5)
@@ -195,28 +208,13 @@ struct BudgetCardView : View {
         .animation(.easeInOut)
     }
 }
-    
-    
-struct PickerWheel: View {
-    @Binding var selected: Int
-    @Binding var showPicker: Bool
-    
-    var body: some View {
-        VStack(spacing: 15){
-            Picker("", selection: $selected){
-                ForEach(UserData.Category.allCases, id: \.self){ category in
-                    Text(category.name)
-                }
-            }
-        }
-    }
-}
 
 struct  NewRow: View {
     
     @StateObject var viewModel: BudgetViewModel
-    @State var selected: Int = 0
+    @State private var selected: Int = 1
     @Binding var showPicker: Bool
+    @Binding var addClicked: Bool
     
     var body: some View {
         VStack{
@@ -244,13 +242,14 @@ struct  NewRow: View {
                     VStack{
                         HStack{
                             Spacer()
-                            Button(action: { viewModel.addBudget(category: UserData.Category(rawValue: selected)!) } ) {
+                            Button(action: { viewModel.addBudget(category: UserData.Category(rawValue: selected)!); self.showPicker = false; self.addClicked = !addClicked; } ) {
                                 Text("Add")
                             }
                         }
+                        .padding(.bottom)
                         Picker("", selection: $selected){
                             ForEach(UserData.Category.allCases, id: \.self){ category in
-                                Text(category.name)
+                                Text(category.name).tag(category.rawValue)
                             }
                         }
                         .frame(width: 150, height: 175)
@@ -261,4 +260,46 @@ struct  NewRow: View {
         }
         .padding(.bottom, 5)
     }
+}
+
+struct DefaultRow: View {
+    
+    var body: some View {
+        VStack{
+            Spacer()
+            HStack(){
+                ZStack{
+                    Circle()
+                        .stroke(Color(.white), lineWidth: 3)
+                        .frame(width: 40, height:40)
+                    Image(systemName: "dollarsign.circle")
+                        .foregroundColor(Color(.systemGray2))
+                }
+                Rectangle()
+                    .frame(width: 150, height: 5, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .foregroundColor(Color(.systemGray2))
+                Spacer()
+                Rectangle()
+                    .frame(width: 80, height: 5, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .foregroundColor(Color(.systemGray2))
+                
+            }
+            Divider()
+        }
+    }
+}
+
+struct DefaultBudgetCard : View {
+    
+    
+    var body: some View {
+        
+        VStack(){
+            ForEach(0..<4) { num in
+                DefaultRow()
+            }
+            
+        }
+    }
+    
 }

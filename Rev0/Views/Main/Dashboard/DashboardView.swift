@@ -7,7 +7,7 @@ struct DashboardView: View {
     @EnvironmentObject var userData: UserData
     @State var showMenu = false
     @State var editBudgets = false
-    @State var viewCharts = false
+    @State var viewCharts = true
     @State var showAlert = false
 
     
@@ -78,8 +78,8 @@ struct DashboardView: View {
                                 .onTapGesture {
                                     withAnimation{viewRouter.currentPage = .page6;}
                                 }
-                                .padding(.bottom, 35)
                             BarChartDashView(viewCharts: $viewCharts)
+                                .padding(.bottom, 35)
                         }
                     }
                 }

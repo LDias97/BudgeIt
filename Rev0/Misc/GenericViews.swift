@@ -31,7 +31,9 @@ struct InputField: View {
     var body : some View {
         VStack(){
             HStack{
-                Text(placeholder).font(.custom("DIN Alternate Bold", size: 14))
+                Text(placeholder)
+                    .font(.custom("DIN Alternate Bold", size: 14))
+                    .foregroundColor(Color(.systemGray2))
                 Spacer()
             }
             HStack{
@@ -40,6 +42,7 @@ struct InputField: View {
             }
             Rectangle()
                 .frame(height: 1)
+                .foregroundColor(Color(.systemGray2))
         }
         .padding(.leading, 60)
         .padding(.trailing, 60)
@@ -54,7 +57,9 @@ struct SecureInputField: View {
     var body : some View {
         VStack(){
             HStack{
-                Text(placeholder).font(.custom("DIN Alternate Bold", size: 14))
+                Text(placeholder)
+                    .font(.custom("DIN Alternate Bold", size: 14))
+                    .foregroundColor(Color(.systemGray2))
                 Spacer()
             }
             HStack{
@@ -63,6 +68,7 @@ struct SecureInputField: View {
             }
             Rectangle()
                 .frame(height: 1)
+                .foregroundColor(Color(.systemGray2))
         }
         .padding(.leading, 60)
         .padding(.trailing, 60)

@@ -145,8 +145,8 @@ struct IncomeTableView : View {
                     IncomeTable(color: Color(.systemGreen))
                 }
                 Spacer()
-                Text("Total This Month: $6150.00")
-                    .font(Font.custom("DIN Alternate Bold", size: 20))
+//                Text("Total This Month: $6150.00")
+//                    .font(Font.custom("DIN Alternate Bold", size: 20))
             }
             .padding(.leading, 20)
             .padding(.trailing, 20)

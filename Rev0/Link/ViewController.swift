@@ -47,6 +47,7 @@ extension ViewController {
             if let error = exit.error {
                 print("exit with \(error)\n\(exit.metadata)")
             } else {
+                self.didSetUp = true
                 self.dismiss(animated: true)
             }
         }
@@ -91,7 +92,6 @@ extension ViewController {
             guard let accesstoken = result?.data as? String else {
                 return completion(nil)
             }
-            self.didSetUp = true
             completion(accesstoken)
         }
     }

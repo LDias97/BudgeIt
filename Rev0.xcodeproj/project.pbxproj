@@ -74,7 +74,7 @@
 		B59DA86E261E2EF000F0EA95 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B5B8579A2609804F0071CC47 /* LinkKitSwiftUISupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkKitSwiftUISupport.swift; sourceTree = "<group>"; };
 		B5B8579D260980940071CC47 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B5C6566B25DD311F00A9FABC /* Rev0.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rev0.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5C6566B25DD311F00A9FABC /* BudgeIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgeIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C6566E25DD311F00A9FABC /* Rev0App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rev0App.swift; sourceTree = "<group>"; };
 		B5C6567225DD312000A9FABC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B5C6567525DD312000A9FABC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -263,7 +263,7 @@
 		B5C6566C25DD311F00A9FABC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B5C6566B25DD311F00A9FABC /* Rev0.app */,
+				B5C6566B25DD311F00A9FABC /* BudgeIt.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -315,9 +315,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B5C6566A25DD311F00A9FABC /* Rev0 */ = {
+		B5C6566A25DD311F00A9FABC /* BudgeIt */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B5C6567A25DD312000A9FABC /* Build configuration list for PBXNativeTarget "Rev0" */;
+			buildConfigurationList = B5C6567A25DD312000A9FABC /* Build configuration list for PBXNativeTarget "BudgeIt" */;
 			buildPhases = (
 				C57AD9B063C37034B6CA470E /* [CP] Check Pods Manifest.lock */,
 				B5C6566725DD311F00A9FABC /* Sources */,
@@ -329,9 +329,9 @@
 			);
 			dependencies = (
 			);
-			name = Rev0;
+			name = BudgeIt;
 			productName = Rev0;
-			productReference = B5C6566B25DD311F00A9FABC /* Rev0.app */;
+			productReference = B5C6566B25DD311F00A9FABC /* BudgeIt.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -361,7 +361,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B5C6566A25DD311F00A9FABC /* Rev0 */,
+				B5C6566A25DD311F00A9FABC /* BudgeIt */,
 			);
 		};
 /* End PBXProject section */
@@ -644,7 +644,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B5C6567A25DD312000A9FABC /* Build configuration list for PBXNativeTarget "Rev0" */ = {
+		B5C6567A25DD312000A9FABC /* Build configuration list for PBXNativeTarget "BudgeIt" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B5C6567B25DD312000A9FABC /* Debug */,

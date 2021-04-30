@@ -7,7 +7,7 @@ struct BarChartDashView: View {
     //    var difference: Double = 0.0 // income - spending, cast to string
     //    var id: Int = 0
     @Binding var viewCharts: Bool
-    @State var degrees: Double = 180
+    @State var degrees: Double = 0
     
     var body : some View {
         ZStack() {
@@ -41,15 +41,15 @@ struct BarChartDashView: View {
                     Card(width: 375, height: 450)
                     VStack(spacing: 10) {
                         HStack(){
+                            Text("Categories")
+                                .font(Font.custom("DIN Alternate Bold", size: 20))
+                            Spacer()
                             Button(action: {self.viewCharts = false;
                                     withAnimation { self.degrees -= 180;} }) {
-                                Image(systemName: "chevron.backward")
+                                Image(systemName: "chevron.forward")
                                     .imageScale(.medium)
                                     .foregroundColor(Color(.black))
                             }
-                            Spacer()
-                            Text("Categories")
-                                .font(Font.custom("DIN Alternate Bold", size: 20))
                         }
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
@@ -128,8 +128,7 @@ struct CategoryCharts: View {
                     Image(systemName: "chevron.backward")
                         .foregroundColor(Color(.systemGray))
                 }
-                ScrollView(.horizontal) {
-                    ForEach(0..<12) { month in
+                    ForEach(0..<3) { month in
                         HStack(){
                             VStack(){
                                 Spacer()
@@ -166,7 +165,6 @@ struct CategoryCharts: View {
                                 .padding(.bottom, 10)
                                 Text(months[month])
                                     .font((Font.custom("DIN Alternate Bold", size: 16)))
-                            }
                         }
                     }
                 }
@@ -197,7 +195,6 @@ struct CategoryCharts: View {
 //        BarChartDashView(viewCharts: $display)
 //    }
 //}
-
 
 //VStack(){
 //    Spacer()
@@ -272,7 +269,6 @@ struct CategoryCharts: View {
 //        .font((Font.custom("DIN Alternate Bold", size: 16)))
 //}
 
-
 //ScrollView(.horizontal) {
 //    ForEach(1..<12) { month in
 //        VStack(){
@@ -313,7 +309,6 @@ struct CategoryCharts: View {
 //        }
 //    }
 //}
-
 
 //                VStack(){
 //                    Spacer()

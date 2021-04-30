@@ -24,7 +24,7 @@ final class BudgetViewModel: ObservableObject, Identifiable {
     
     func addBudget(category: UserData.Category){
         budgets.append(Budget(category: category.name, limit: 0, spent: 0, percentage: 0, color: category.color, iconName: category.iconName))
-
+        update()
     }
     
     
@@ -69,11 +69,12 @@ final class BudgetViewModel: ObservableObject, Identifiable {
                        Budget(category: "Recreation", limit: 1200, spent: 500,  percentage: 500/1200, color: Color(.systemPink), iconName: "gamecontroller.fill"),
                        Budget(category: "Credit Card", limit: 1200, spent: 500, percentage: 500/1200, color: Color(.systemOrange), iconName: "creditcard.fill")]
         }
-    }
+}
     
     
     
-    struct Budget: Hashable {
+    struct Budget: Hashable, Identifiable {
+        let id = UUID()
         var category: String
         var limit: CGFloat
         var spent: CGFloat

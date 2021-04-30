@@ -75,12 +75,15 @@ struct NetWorthCardView: View {
 
 struct GreetingCardView: View {
     @State var timeOfDay: String = "evening"
+    @State var name: String = (UserDefaults.standard.value(forKey: "name") ?? "User") as! String
+
+
     
     var body: some View {
         ZStack(){
             Card(width: 375, height: 150)
 //            Text("Good \(timeOfDay) \(UserDefaults.standard.value(forKey: "name") as! String)!")
-            Text("Good \(timeOfDay) Ben!")
+            Text("Good \(timeOfDay) \(name)!")
                 .font(.custom("DIN Alternate Bold", size: 28))
                 .foregroundColor(.green)
         }

@@ -20,13 +20,10 @@ struct SignUpView: View {
                 .frame(width: 150, height: 150)
                 .padding(.top, 130)
             
+            InputField(input: $fullname, placeholder: "Name", icon: "person")
             InputField(input: $email, placeholder: "Email", icon: "envelope")
             SecureInputField(password: $password, placeholder: "Password", icon: "lock")
-                .padding(.top, 10)
             SecureInputField(password: $confirmPassword, placeholder: "Confirm Password", icon: "lock")
-                .padding(.top, 10)
-
-            
             VStack {
                 Button(action: { withAnimation { viewRouter.currentPage = .page2 } }) { Text("Already have an account? Sign In").font(.custom("DIN Alternate Bold", size: 16)).foregroundColor(blue)}
                     .padding(.top, 10)
@@ -49,20 +46,18 @@ struct SignUpView: View {
                 }
                 Spacer()
             }
-            
             ZStack(){
                 AuthButtonBG()
                     .shadow(color: .white, radius: 1)
                 Button(action:{ signup()})
-                    { Text("Sign Up").font(.body).foregroundColor(.white)}
-                    .disabled(password.isEmpty || email.isEmpty || confirmPassword.isEmpty)
+                { Text("Sign Up").font(.body).foregroundColor(.white)
                     .alert(isPresented: $showingAlert) {
                         Alert(title: Text("Sign Up Error"), message: Text(alertMessage ?? "Error signing up. Please Try again."), dismissButton: .default(Text("Dismiss")))
                     }
-                    .sheet(isPresented: $showLink){
-                        LinkView()
-                            .onDisappear(perform: { withAnimation { viewRouter.currentPage = .page3 } } )
-                    }
+                    .disabled(fullname.isEmpty || email.isEmpty || password.isEmpty || confirmPassword.isEmpty)}
+                .sheet(isPresented: $showLink, onDismiss:  {                     UserDefaults.standard.set(fullname, forKey: "name"); viewRouter.currentPage = .page3 }) {
+                    LinkView()
+                }
             }
             .padding(.bottom, 70)
         }

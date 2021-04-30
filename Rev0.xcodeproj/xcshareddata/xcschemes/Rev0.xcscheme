@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B5C6566A25DD311F00A9FABC"
-               BuildableName = "Rev0.app"
-               BlueprintName = "Rev0"
+               BuildableName = "BudgeIt.app"
+               BlueprintName = "BudgeIt"
                ReferencedContainer = "container:Rev0.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B5C6566A25DD311F00A9FABC"
-            BuildableName = "Rev0.app"
-            BlueprintName = "Rev0"
+            BuildableName = "BudgeIt.app"
+            BlueprintName = "BudgeIt"
             ReferencedContainer = "container:Rev0.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B5C6566A25DD311F00A9FABC"
-            BuildableName = "Rev0.app"
-            BlueprintName = "Rev0"
+            BuildableName = "BudgeIt.app"
+            BlueprintName = "BudgeIt"
             ReferencedContainer = "container:Rev0.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

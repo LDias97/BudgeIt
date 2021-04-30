@@ -17,7 +17,7 @@ struct LinkView: View {
         }
         .onDisappear(){
             if (plaid.vc.didSetUp){
-                viewRouter.currentPage = .page3
+                print("set up = true")
             }
         }
     }

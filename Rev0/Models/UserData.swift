@@ -230,17 +230,17 @@ extension UserData {
         ]
         
         static let colors: [Category: Color] = [
-            .Food : red,
-            .Healthcare : orange,
-            .Recreation : yellow,
+            .Food : teal,
+            .Healthcare : pink,
+            .Recreation : orange,
             .Auto : green,
             .Bills : blue,
-            .Travel : magenta,
-            .Shopping : pink,
+            .Travel : blue,
+            .Shopping : yellow,
             .PersonalCare : lightPurple,
             .HomeImprovement : darkPurple,
             .Community : indigo,
-            .Services : teal,
+            .Services : red,
             .Miscellaneous : teal,
             .CC : lightPurple
         ]

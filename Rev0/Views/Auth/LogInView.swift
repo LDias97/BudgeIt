@@ -9,12 +9,10 @@ struct LogInView: View {
     
     var body: some View {
         VStack(spacing: 20){
-            VStack(spacing: 5){
                 Image("b")
                     .resizable()
                     .frame(width: 150, height: 150)
                     .padding(.top, 130)
-            }
             
             InputField(input: $email, placeholder: "Email", icon: "envelope")
             SecureInputField(password: $password, placeholder: "Password", icon: "lock")

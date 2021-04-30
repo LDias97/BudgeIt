@@ -91,7 +91,7 @@ struct SlideOne: View {
                 }
             }
             .padding(.bottom)
-            Button(action: {  withAnimation { slide = 3; offset -= UIScreen.main.bounds.width * 2; } }){
+            Button(action: {  withAnimation { viewRouter.currentPage = .page1; } }){
                 Text("Skip")
                     .foregroundColor(.white)
             }
@@ -139,7 +139,7 @@ struct SlideTwo: View {
                 }
             }
             .padding(.bottom)
-            Button(action: {  withAnimation { slide = 3; offset -= UIScreen.main.bounds.width; } }){
+            Button(action: {  withAnimation { viewRouter.currentPage = .page1; } }){
                 Text("Skip")
                     .foregroundColor(.white)
             }
